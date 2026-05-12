@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotherMap 管理画面コンポーネント</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body>
+  <div id="top" class="admin-layout">
+    <header class="admin-header">
+      <button type="button" class="sidebar-toggle" data-toggle="sidebar" aria-label="サイドバーを開閉" aria-expanded="false">
+        <span class="material-symbols-rounded" aria-hidden="true">menu</span>
+      </button>
+
+      <div class="admin-logo">
+        <a href="../index.html" aria-label="MotherMap">
+          <img src="../assets/images/mothermap_logo.png" alt="MotherMap" class="logo-full" />
+          <img src="../assets/images/mothermap_logo_mini.png" alt="" class="logo-mini" aria-hidden="true" />
+        </a>
+      </div>
+
+      <nav class="admin-navbar" aria-label="ヘッダーメニュー">
+        <ul>
+          <li>
+            <a href="../index.html" aria-label="ダッシュボード">
+              <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+              <span class="admin-navbar-label">ダッシュボード</span>
+            </a>
+          </li>
+          <li>
+            <a href="page-index.html" aria-label="ページ一覧">
+              <span class="material-symbols-rounded" aria-hidden="true">article</span>
+              <span class="admin-navbar-label">ページ</span>
+            </a>
+          </li>
+          <li>
+            <a href="component.html" class="is-active" aria-label="コンポーネント">
+              <span class="material-symbols-rounded" aria-hidden="true">widgets</span>
+              <span class="admin-navbar-label">コンポーネント</span>
+            </a>
+          </li>
+          <li>
+            <a href="modal.html" aria-label="モーダル">
+              <span class="material-symbols-rounded" aria-hidden="true">dialogs</span>
+              <span class="admin-navbar-label">モーダル</span>
+            </a>
+          </li>
+          <li>
+            <a href="no-iconbar.html" aria-label="アイコンバーなし">
+              <span class="material-symbols-rounded" aria-hidden="true">web_asset_off</span>
+              <span class="admin-navbar-label">アイコンバーなし</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="admin-header-actions">
+        <button type="button" data-action="notify" aria-label="通知">
+          <span class="material-symbols-rounded" aria-hidden="true">notifications</span>
+          <span class="notification-badge" aria-hidden="true"></span>
+        </button>
+
+        <button type="button" data-action="help" aria-label="ヘルプ">
+          <span class="material-symbols-rounded" aria-hidden="true">help</span>
+        </button>
+
+        <div class="admin-user-menu">
+          <button type="button" data-toggle="user-menu" aria-expanded="true" aria-controls="user-dropdown">
+            <span class="avatar">真</span>
+            <span class="user-name">真鍋 智彦</span>
+            <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+          </button>
+
+          <div id="user-dropdown" class="dropdown-menu is-open" data-menu="user" role="menu">
+            <a href="#" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">person</span>
+              プロフィール
+            </a>
+            <a href="#" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">manage_accounts</span>
+              アカウント設定
+            </a>
+            <button type="button" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">logout</span>
+              ログアウト
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="admin-iconbar" aria-label="グローバルメニュー">
+      <ul>
+        <li>
+          <a href="../index.html" aria-label="ダッシュボード" data-tooltip="ダッシュボード（トップ）へ">
+            <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="page-index.html" aria-label="ページ" data-tooltip="ページ一覧へ">
+            <span class="material-symbols-rounded" aria-hidden="true">article</span>
+          </a>
+        </li>
+        <li>
+          <a href="component.html" class="is-active" aria-label="コンポーネント" data-tooltip="コンポーネント一覧へ">
+            <span class="material-symbols-rounded" aria-hidden="true">widgets</span>
+          </a>
+        </li>
+        <li>
+          <a href="modal.html" aria-label="モーダル" data-tooltip="モーダルサンプルへ">
+            <span class="material-symbols-rounded" aria-hidden="true">dialogs</span>
+          </a>
+        </li>
+        <li>
+          <a href="no-iconbar.html" aria-label="アイコンバーなし" data-tooltip="アイコンバーなしレイアウトへ">
+            <span class="material-symbols-rounded" aria-hidden="true">web_asset_off</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <aside class="admin-sidebar">
+      <section>
+        <h2>カタログ</h2>
+        <nav class="admin-side-nav" aria-label="コンポーネントカタログ">
+          <ul>
+            <li><a href="#nav" class="is-active"><span class="material-symbols-rounded" aria-hidden="true">menu</span>ナビ</a></li>
+            <li><a href="#typography"><span class="material-symbols-rounded" aria-hidden="true">text_fields</span>タイポグラフィ</a></li>
+            <li><a href="#forms"><span class="material-symbols-rounded" aria-hidden="true">tune</span>フォーム</a></li>
+            <li><a href="#buttons"><span class="material-symbols-rounded" aria-hidden="true">radio_button_checked</span>ボタン</a></li>
+            <li><a href="#cards"><span class="material-symbols-rounded" aria-hidden="true">grid_view</span>カード</a></li>
+            <li><a href="#lists"><span class="material-symbols-rounded" aria-hidden="true">view_list</span>リスト</a></li>
+            <li><a href="#tables"><span class="material-symbols-rounded" aria-hidden="true">table</span>テーブル</a></li>
+            <li><a href="#chat"><span class="material-symbols-rounded" aria-hidden="true">forum</span>チャット</a></li>
+            <li><a href="#feedback"><span class="material-symbols-rounded" aria-hidden="true">notifications</span>フィードバック</a></li>
+          </ul>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="admin-main">
+      <div class="dashboard-content">
+        <section class="scope-bar" aria-label="ページ情報">
+          <div class="scope-field">
+            <span class="label">コンポーネント</span>
+            <select aria-label="カテゴリ切り替え">
+              <option>全体</option>
+              <option>ナビ</option>
+              <option>フォーム</option>
+              <option>カード/リスト</option>
+              <option>フィードバック</option>
+            </select>
+          </div>
+        </section>
+
+        <nav class="content-nav" aria-label="ページ内メニュー">
+          <a href="#nav" class="is-active"><span class="material-symbols-rounded" aria-hidden="true">menu</span>ナビ</a>
+          <a href="#typography"><span class="material-symbols-rounded" aria-hidden="true">text_fields</span>タイポグラフィ</a>
+          <a href="#forms"><span class="material-symbols-rounded" aria-hidden="true">tune</span>フォーム</a>
+          <a href="#buttons"><span class="material-symbols-rounded" aria-hidden="true">radio_button_checked</span>ボタン</a>
+          <a href="#cards"><span class="material-symbols-rounded" aria-hidden="true">grid_view</span>カード</a>
+          <a href="#lists"><span class="material-symbols-rounded" aria-hidden="true">view_list</span>リスト</a>
+          <a href="#tables"><span class="material-symbols-rounded" aria-hidden="true">table</span>テーブル</a>
+          <a href="#chat"><span class="material-symbols-rounded" aria-hidden="true">forum</span>チャット</a>
+          <a href="#feedback"><span class="material-symbols-rounded" aria-hidden="true">notifications</span>フィードバック</a>
+        </nav>
+
+        <section id="nav" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">ナビゲーション</h2>
+              <a class="ui-btn--outline ui-btn--primary" href="#top">
+                <span class="material-symbols-rounded" aria-hidden="true">arrow_upward</span>
+                ページ上部へ
+              </a>
+            </div>
+
+            <div class="ui-form" style="gap: var(--space-xl);">
+              <div class="ui-field">
+                <span class="ui-label">パンくず</span>
+                <nav class="ui-breadcrumbs" aria-label="パンくず（サンプル）">
+                  <a href="../index.html">ダッシュボード</a>
+                  <span class="sep" aria-hidden="true">/</span>
+                  <a href="#">工事管理</a>
+                  <span class="sep" aria-hidden="true">/</span>
+                  <span aria-current="page">工事一覧</span>
+                </nav>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">タブ（`ui-tabs`）</span>
+                <div class="ui-tabs" role="tablist" aria-label="タブ（サンプル）">
+                  <button type="button" class="is-active" role="tab" aria-selected="true">概要</button>
+                  <button type="button" role="tab" aria-selected="false">チャット</button>
+                  <button type="button" role="tab" aria-selected="false">タスク</button>
+                  <button type="button" role="tab" aria-selected="false">書類</button>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">ページネーション</span>
+                <div class="ui-pagination" role="navigation" aria-label="ページネーション（サンプル）">
+                  <div class="ui-page-meta">
+                    <span class="ui-badge">全 128 件</span>
+                    <span>1〜20 件目 / 128 件</span>
+                  </div>
+                  <div class="ui-page" aria-label="ページ選択">
+                    <button type="button" class="is-disabled" disabled aria-label="前へ">
+                      <span class="material-symbols-rounded" aria-hidden="true">chevron_left</span>
+                    </button>
+                    <button type="button" class="is-active" aria-current="page">1</button>
+                    <button type="button">2</button>
+                    <button type="button">3</button>
+                    <span class="is-disabled" aria-hidden="true">…</span>
+                    <button type="button">7</button>
+                    <button type="button" aria-label="次へ">
+                      <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="list-card-group">
+              <a href="#" class="info-row">
+                <div class="main">
+                  <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+                  <span class="name">ヘッダーナビ（`.admin-navbar`）</span>
+                </div>
+                <div class="meta">
+                  <span class="meta-text">状態: 通常</span>
+                  <span class="meta-text">状態: `.is-active`</span>
+                </div>
+              </a>
+
+              <a href="#" class="info-row">
+                <div class="main">
+                  <span class="material-symbols-rounded" aria-hidden="true">view_sidebar</span>
+                  <span class="name">サイドナビ（`.admin-side-nav`）</span>
+                </div>
+                <div class="meta">
+                  <span class="meta-text">通常/アクティブ</span>
+                </div>
+              </a>
+
+              <a href="#" class="info-row">
+                <div class="main">
+                  <span class="material-symbols-rounded" aria-hidden="true">apps</span>
+                  <span class="name">アイコンバー（`.admin-iconbar`）</span>
+                </div>
+                <div class="meta">
+                  <span class="meta-text">ホバー／選択時</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="forms" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">フォーム</h2>
+              <button type="button" class="ui-btn--outline ui-btn--primary">
+                <span class="material-symbols-rounded" aria-hidden="true">tune</span>
+                例: フィルタ適用
+              </button>
+            </div>
+
+            <div class="ui-tabs" role="tablist" aria-label="フォームサンプル切り替え">
+              <button type="button" class="is-active" role="tab" aria-selected="true">基本</button>
+              <button type="button" role="tab" aria-selected="false">詳細</button>
+              <button type="button" role="tab" aria-selected="false">状態</button>
+            </div>
+
+            <form class="ui-form" style="margin-top: var(--space-lg);">
+              <div class="ui-form-grid">
+                <div class="ui-field">
+                  <label class="ui-label" for="demo-text">テキスト入力</label>
+                  <input id="demo-text" class="ui-control" type="text" placeholder="例）山田 太郎" />
+                  <p class="ui-help">通常のテキスト入力。フォーカス時は既存のリング色に合わせています。</p>
+                </div>
+
+                <div class="ui-field">
+                  <label class="ui-label" for="demo-email">メールアドレス</label>
+                  <input id="demo-email" class="ui-control" type="email" placeholder="例）tanaka@example.jp" />
+                  <p class="ui-help">バリデーション表示（赤など）は必要なら後で追加できます。</p>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <label class="ui-label" for="demo-textarea">複数行テキスト</label>
+                <textarea id="demo-textarea" class="ui-control" placeholder="メモ / 申し送りなど"></textarea>
+              </div>
+
+              <div class="ui-form-grid">
+                <div class="ui-field">
+                  <span class="ui-label">チェックボックス</span>
+                  <div class="ui-checkgroup" role="group" aria-label="チェックボックス例">
+                    <label class="ui-choice"><input type="checkbox" checked /> 選択肢 1</label>
+                    <label class="ui-choice"><input type="checkbox" /> 選択肢 2</label>
+                    <label class="ui-choice"><input type="checkbox" /> 選択肢 3</label>
+                  </div>
+                </div>
+
+                <div class="ui-field">
+                  <span class="ui-label">ラジオボタン</span>
+                  <div class="ui-radiogroup" role="radiogroup" aria-label="ラジオボタン例">
+                    <label class="ui-choice"><input type="radio" name="demo-radio" checked /> 男性</label>
+                    <label class="ui-choice"><input type="radio" name="demo-radio" /> 女性</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-form-grid">
+                <div class="ui-field">
+                  <label class="ui-label" for="demo-select">セレクト</label>
+                  <select id="demo-select" class="ui-control">
+                    <option>選択肢 1</option>
+                    <option>選択肢 2</option>
+                    <option>選択肢 3</option>
+                  </select>
+                </div>
+
+                <div class="ui-field">
+                  <label class="ui-label" for="demo-multi">複数選択</label>
+                  <select id="demo-multi" class="ui-control" multiple size="4" aria-label="複数選択の例">
+                    <option selected>見積書</option>
+                    <option>契約書</option>
+                    <option selected>工程表</option>
+                    <option>検査記録</option>
+                    <option>写真一式</option>
+                    <option>その他</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display:flex; gap: var(--space-sm); flex-wrap: wrap;">
+                <button type="button" class="ui-btn--outline ui-btn--primary">
+                  <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
+                  検証（例）
+                </button>
+                <span class="ui-badge">バッジ</span>
+                <span class="ui-badge">ステータス</span>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="typography" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">タイポグラフィ</h2>
+              <span class="ui-badge">タイポグラフィ</span>
+            </div>
+
+            <div class="ui-prose">
+              <h1>見出しレベル 1（H1）</h1>
+              <h2>見出しレベル 2（H2）</h2>
+              <h3>見出しレベル 3（H3）</h3>
+              <h4>見出しレベル 4（H4）</h4>
+              <h5>見出しレベル 5（H5）</h5>
+              <h6>見出しレベル 6（H6）</h6>
+
+              <div class="ui-alert" style="margin: var(--space-xl) 0;">
+                <span class="material-symbols-rounded" aria-hidden="true">info</span>
+                <div>
+                  <p class="title">補足（アラート内の見出し）</p>
+                  <p class="text">既存トーンに合わせて、本文は読みやすい行間（1.7）に調整しています。</p>
+                </div>
+              </div>
+
+              <p class="lead">リード文は <span class="text-primary">.lead</span> で強調できます。</p>
+              <p>本文のサンプルです。工事の進捗や関係者への共有事項など、複数行にわたる説明が入ります。適度な行間と余白で読みやすさを確保してください。</p>
+
+              <div class="ui-form-grid" style="margin-top: var(--space-xl);">
+                <div class="ui-field">
+                  <span class="ui-label">文字色</span>
+                  <p style="margin:0;">
+                    <span class="text-muted">.text-muted</span> /
+                    <span class="text-primary">.text-primary</span> /
+                    <span class="text-success">.text-success</span> /
+                    <span class="text-info">.text-info</span> /
+                    <span class="text-warning">.text-warning</span> /
+                    <span class="text-danger">.text-danger</span>
+                  </p>
+                </div>
+                <div class="ui-field">
+                  <span class="ui-label">大文字・小文字</span>
+                  <p style="margin:0;">
+                    <span class="text-lowercase">SAMPLE TEXT</span>（小文字化） /
+                    <span class="text-uppercase">sample text</span>（大文字化） /
+                    <span class="text-capitalized">capitalized sample</span>（語頭大文字）
+                  </p>
+                </div>
+              </div>
+
+              <div style="margin-top: var(--space-xl); display:grid; gap: var(--space-md);">
+                <span class="ui-badge">引用</span>
+                <blockquote>
+                  <p>「良いUIは、情報の密度と余白のバランスで決まる。」</p>
+                  <footer>- MotherMap</footer>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="buttons" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">ボタン</h2>
+              <button type="button" class="ui-btn--outline ui-btn--primary">
+                <span class="material-symbols-rounded" aria-hidden="true">add</span>
+                アクションボタン
+              </button>
+            </div>
+
+            <div class="ui-form" style="gap: var(--space-xl);">
+              <div class="ui-field">
+                <span class="ui-label">ボタン種別</span>
+                <div class="ui-btn-row">
+                  <button type="button" class="ui-btn--primary">プライマリ</button>
+                  <button type="button" class="ui-btn--secondary">セカンダリ</button>
+                  <button type="button" class="ui-btn--success">成功</button>
+                  <button type="button" class="ui-btn--danger">危険</button>
+                  <button type="button" class="ui-btn--warning">警告</button>
+                  <button type="button" class="ui-btn--info">情報</button>
+                  <button type="button" class="ui-btn--light">ライト</button>
+                  <button type="button" class="ui-btn--dark">ダーク</button>
+                  <button type="button" class="ui-btn--link">リンク</button>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">無効状態</span>
+                <div class="ui-btn-row">
+                  <button type="button" class="ui-btn--primary" disabled>プライマリ</button>
+                  <button type="button" class="ui-btn--secondary" disabled>セカンダリ</button>
+                  <button type="button" class="ui-btn--danger" disabled>危険</button>
+                  <button type="button" class="ui-btn--link is-disabled" aria-disabled="true">リンク</button>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">アウトライン</span>
+                <div class="ui-btn-row">
+                  <button type="button" class="ui-btn--outline ui-btn--primary">プライマリ</button>
+                  <button type="button" class="ui-btn--outline">デフォルト</button>
+                  <button type="button" class="ui-btn--outline ui-btn--danger">危険</button>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">ボタングループ</span>
+                <div class="ui-btn-row">
+                  <div class="ui-btn-group" role="group" aria-label="ボタングループ例">
+                    <button type="button" class="ui-btn--secondary">左</button>
+                    <button type="button" class="ui-btn--secondary">中央</button>
+                    <button type="button" class="ui-btn--secondary">右</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">サイズ</span>
+                <div class="ui-btn-row">
+                  <button type="button" class="ui-btn--secondary ui-btn--sm">小</button>
+                  <button type="button" class="ui-btn--primary">標準</button>
+                  <button type="button" class="ui-btn--dark ui-btn--lg">大</button>
+                </div>
+              </div>
+
+              <div class="list-card-group">
+                <a href="#" class="info-row">
+                  <div class="main">
+                    <span class="material-symbols-rounded" aria-hidden="true">smart_button</span>
+                    <span class="name">既存ボタン（`.outline-button`）</span>
+                  </div>
+                  <div class="meta">
+                    <span class="meta-text">現行UIの主要CTA</span>
+                  </div>
+                </a>
+                <a href="#" class="info-row">
+                  <div class="main">
+                    <span class="material-symbols-rounded" aria-hidden="true">account_circle</span>
+                    <span class="name">ユーザーメニュー（`.admin-user-menu`）</span>
+                  </div>
+                  <div class="meta">
+                    <span class="meta-text">ドロップダウン表示</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="cards" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">カード</h2>
+              <button type="button" class="ui-btn--outline ui-btn--primary">
+                <span class="material-symbols-rounded" aria-hidden="true">refresh</span>
+                更新
+              </button>
+            </div>
+
+            <div class="summary-grid">
+              <article class="summary-box">
+                <span class="material-symbols-rounded" aria-hidden="true">pending_actions</span>
+                <p class="label">サマリーカード</p>
+                <p class="value">8件</p>
+              </article>
+              <article class="summary-box">
+                <span class="material-symbols-rounded" aria-hidden="true">person_off</span>
+                <p class="label">サマリーカード</p>
+                <p class="value">3件</p>
+              </article>
+              <article class="summary-box">
+                <span class="material-symbols-rounded" aria-hidden="true">running_with_errors</span>
+                <p class="label">サマリーカード</p>
+                <p class="value">2件</p>
+              </article>
+              <article class="summary-box">
+                <span class="material-symbols-rounded" aria-hidden="true">inventory</span>
+                <p class="label">サマリーカード</p>
+                <p class="value">7件</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="lists" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">リスト（リストグループ）</h2>
+              <button type="button" class="ui-btn--outline ui-btn--primary">
+                <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                一覧へ
+              </button>
+            </div>
+
+            <div class="ui-form-grid">
+              <div class="ui-field">
+                <span class="ui-label">基本例</span>
+                <div class="ui-listgroup" role="list">
+                  <div role="listitem"><span class="title">現場確認の依頼</span></div>
+                  <div role="listitem"><span class="title">図面差し替えの承認待ち</span></div>
+                  <div role="listitem"><span class="title">住民説明会の日程調整</span></div>
+                  <div role="listitem"><span class="title">産廃搬出スケジュール共有</span></div>
+                  <div role="listitem"><span class="title">完了報告のドラフト</span></div>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">選択中・無効・バッジ</span>
+                <div class="ui-listgroup" role="list">
+                  <a class="is-active" href="#" role="listitem">
+                    <span class="title">選択中の項目</span>
+                    <span class="meta"><span class="ui-badge">14</span></span>
+                  </a>
+                  <a href="#" role="listitem">
+                    <span class="title">バッジ付きの項目</span>
+                    <span class="meta"><span class="ui-badge">2</span></span>
+                  </a>
+                  <button type="button" class="is-disabled" disabled role="listitem">
+                    <span class="title">無効な項目</span>
+                  </button>
+                  <a class="ui-listitem--tone-primary" href="#" role="listitem">
+                    <span class="title">プライマリ強調</span>
+                  </a>
+                  <a class="ui-listitem--tone-danger" href="#" role="listitem">
+                    <span class="title">危険・要注意の強調</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="ui-field" style="margin-top: var(--space-xl);">
+              <span class="ui-label">カスタム内容</span>
+              <div class="ui-listgroup" role="list">
+                <a class="ui-listitem--custom" href="#" role="listitem">
+                  <div style="min-width:0;">
+                    <p class="heading">リスト項目の見出し</p>
+                    <p class="subtext">3 日前 ・ 現場写真の追加をお願いします。養生範囲が図面と異なる箇所があるため、確認後にコメントをお願いします。</p>
+                  </div>
+                  <span class="meta"><span class="ui-badge">新着</span></span>
+                </a>
+                <a class="ui-listitem--custom" href="#" role="listitem">
+                  <div style="min-width:0;">
+                    <p class="heading">別の項目見出し</p>
+                    <p class="subtext">1 週間前 ・ 次回定例会の資料を共有しました。未読の方は目を通しておいてください。</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="ui-field" style="margin-top: var(--space-xl);">
+              <span class="ui-label">既存コンポーネント（`.info-row`）</span>
+              <div class="list-card-group">
+                <a href="#" class="info-row">
+                  <div class="main">
+                    <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
+                    <span class="name">情報行（`.info-row`）</span>
+                  </div>
+                  <div class="meta">
+                    <span class="meta-text is-strong">未読 2件</span>
+                    <span class="meta-text">最終更新: 2026/01/15</span>
+                  </div>
+                </a>
+                <a href="#" class="info-row">
+                  <div class="main">
+                    <span class="material-symbols-rounded" aria-hidden="true">location_city</span>
+                    <span class="name">情報行（長めの名前が入るケース）〇〇〇〇〇〇〇〇〇〇〇〇</span>
+                  </div>
+                  <div class="meta">
+                    <span class="meta-text">メンション 1件</span>
+                    <span class="meta-text">未読 8件</span>
+                    <span class="meta-text">最終更新: 2026/01/15</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="dashboard-bottom-grid" style="margin-top: var(--space-xl);">
+              <div class="section-block">
+                <h2 class="section-title">ドキュメント（グリッド）</h2>
+                <div class="document-grid">
+                  <article class="document-box">
+                    <p class="label">提案書</p>
+                    <p class="value">9件</p>
+                  </article>
+                  <article class="document-box">
+                    <p class="label">代理店発注書</p>
+                    <p class="value">10件</p>
+                  </article>
+                  <article class="document-box">
+                    <p class="label">消防書類</p>
+                    <p class="value">8件</p>
+                  </article>
+                  <article class="document-box">
+                    <p class="label">住民案内・配布資料</p>
+                    <p class="value">3件</p>
+                  </article>
+                </div>
+              </div>
+
+              <div class="section-block">
+                <h2 class="section-title">補助情報</h2>
+                <div class="list-card-group">
+                  <a href="#" class="info-row">
+                    <div class="main">
+                      <span class="material-symbols-rounded" aria-hidden="true">info</span>
+                      <span class="name">右カラムに置く想定のカード</span>
+                    </div>
+                    <div class="meta">
+                      <span class="meta-text">説明</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="tables" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">テーブル</h2>
+              <button type="button" class="ui-btn--outline ui-btn--primary">
+                <span class="material-symbols-rounded" aria-hidden="true">download</span>
+                帳票ダウンロード（例）
+              </button>
+            </div>
+
+            <div class="ui-form" style="gap: var(--space-xl);">
+              <div class="ui-field">
+                <span class="ui-label">基本（縞模様／ホバー）</span>
+                <div style="overflow:auto; max-width: 100%;">
+                  <table class="ui-table ui-table--striped ui-table--hover" aria-label="テーブル例">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>工事名</th>
+                        <th>住所</th>
+                        <th>開始</th>
+                        <th>終了</th>
+                        <th>状態</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>〇●マンション改修 A 棟</td>
+                        <td>東京都港区港南 1-2-3</td>
+                        <td>2026/01/13</td>
+                        <td>2026/01/16</td>
+                        <td>要確認 <span class="ui-badge">新着</span></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>△■ビル外壁塗装</td>
+                        <td>神奈川県横浜市西区みなとみらい 4-5-6</td>
+                        <td>2026/01/13</td>
+                        <td>2026/01/22</td>
+                        <td>完了</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>×●コーポ屋上防水</td>
+                        <td>埼玉県さいたま市大宮区桜木町 7-8-9</td>
+                        <td>2026/01/13</td>
+                        <td>2026/01/23</td>
+                        <td>進行中</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">プロジェクト一覧（日本語想定）</span>
+                <div style="overflow:auto; max-width: 100%;">
+                  <table class="ui-table ui-table--hover" aria-label="工事一覧テーブル例">
+                <thead>
+                  <tr>
+                    <th>工事名</th>
+                    <th>担当</th>
+                    <th>状態</th>
+                    <th>更新日</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>〇●マンションA</td>
+                    <td>真鍋</td>
+                    <td>確認待ち <span class="ui-badge">New</span></td>
+                    <td>2026/01/15</td>
+                  </tr>
+                  <tr>
+                    <td>△■マンションA</td>
+                    <td>山田</td>
+                    <td>進行中</td>
+                    <td>2026/01/14</td>
+                  </tr>
+                  <tr>
+                    <td>×●コーポA</td>
+                    <td>佐藤</td>
+                    <td>遅延</td>
+                    <td>2026/01/12</td>
+                  </tr>
+                </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="chat" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">チャット</h2>
+              <button type="button" class="ui-btn--outline ui-btn--primary" data-message="チャットを開きました">
+                <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+                スレッドへ（例）
+              </button>
+            </div>
+
+            <div class="ui-chat" aria-label="チャットUIサンプル">
+              <div class="header" role="group" aria-label="スレッド情報">
+                <div class="topic">
+                  <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
+                  <div style="min-width:0;">
+                    <p class="name">〇●マンションA</p>
+                    <p class="sub">参加者: 真鍋 / 山田　・　未読 2件</p>
+                  </div>
+                </div>
+                <div class="toolbar ui-btn-row">
+                  <button type="button" class="ui-btn--outline" aria-label="検索">
+                    <span class="material-symbols-rounded" aria-hidden="true">search</span>
+                    検索
+                  </button>
+                  <button type="button" class="ui-btn--outline" aria-label="設定">
+                    <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+                    設定
+                  </button>
+                </div>
+              </div>
+
+              <div class="thread" role="log" aria-live="polite" aria-label="メッセージ一覧">
+                <div class="divider" role="separator"><span>2026/01/15</span></div>
+
+                <div class="msg">
+                  <div class="avatar" aria-hidden="true">山</div>
+                  <div class="bubble">
+                    <div class="meta">
+                      <span class="who">山田</span>
+                      <span class="time">09:12</span>
+                    </div>
+                    <div class="message">
+                      お疲れさまです。現地の養生、今日中に完了できそうです。
+                    </div>
+                    <div class="reactions" aria-label="リアクション（例）">
+                      <button type="button" class="reaction" aria-label="👍 2件">👍 2</button>
+                      <button type="button" class="reaction" aria-label="確認 1件">✅ 1</button>
+                    </div>
+                  </div>
+                  <div class="row-actions" aria-label="メッセージ操作">
+                    <button type="button" aria-label="リアクション"><span class="material-symbols-rounded" aria-hidden="true">add_reaction</span></button>
+                    <button type="button" aria-label="返信"><span class="material-symbols-rounded" aria-hidden="true">reply</span></button>
+                    <button type="button" aria-label="その他"><span class="material-symbols-rounded" aria-hidden="true">more_horiz</span></button>
+                  </div>
+                </div>
+
+                <div class="msg">
+                  <div class="avatar" aria-hidden="true">山</div>
+                  <div class="bubble">
+                    <div class="meta">
+                      <span class="who">山田</span>
+                      <span class="time">09:15</span>
+                    </div>
+                    <div class="message">
+                      写真も後ほど共有します。確認事項があれば教えてください。
+                    </div>
+                  </div>
+                  <div class="row-actions" aria-label="メッセージ操作">
+                    <button type="button" aria-label="リアクション"><span class="material-symbols-rounded" aria-hidden="true">add_reaction</span></button>
+                    <button type="button" aria-label="返信"><span class="material-symbols-rounded" aria-hidden="true">reply</span></button>
+                    <button type="button" aria-label="その他"><span class="material-symbols-rounded" aria-hidden="true">more_horiz</span></button>
+                  </div>
+                </div>
+
+                <div class="divider is-unread" role="separator"><span>未読</span></div>
+
+                <div class="msg is-me">
+                  <div class="avatar" aria-hidden="true">真</div>
+                  <div class="bubble">
+                    <div class="meta">
+                      <span class="who">あなた</span>
+                      <span class="time">09:20</span>
+                    </div>
+                    <div class="message">
+                      ありがとうございます！エレベーター養生の仕上がりだけ重点的に見てもらえますか？
+                    </div>
+                  </div>
+                  <div class="row-actions" aria-label="メッセージ操作">
+                    <button type="button" aria-label="リアクション"><span class="material-symbols-rounded" aria-hidden="true">add_reaction</span></button>
+                    <button type="button" aria-label="返信"><span class="material-symbols-rounded" aria-hidden="true">reply</span></button>
+                    <button type="button" aria-label="その他"><span class="material-symbols-rounded" aria-hidden="true">more_horiz</span></button>
+                  </div>
+                </div>
+
+                <div class="msg is-me">
+                  <div class="avatar" aria-hidden="true">真</div>
+                  <div class="bubble">
+                    <div class="meta">
+                      <span class="who">あなた</span>
+                      <span class="time">09:21</span>
+                    </div>
+                    <div class="message">
+                      あと、住民掲示板の告知も差し替え予定なので、差し替え前後の写真があると助かります。
+                    </div>
+                  </div>
+                  <div class="row-actions" aria-label="メッセージ操作">
+                    <button type="button" aria-label="リアクション"><span class="material-symbols-rounded" aria-hidden="true">add_reaction</span></button>
+                    <button type="button" aria-label="返信"><span class="material-symbols-rounded" aria-hidden="true">reply</span></button>
+                    <button type="button" aria-label="その他"><span class="material-symbols-rounded" aria-hidden="true">more_horiz</span></button>
+                  </div>
+                </div>
+              </div>
+
+              <form class="composer" aria-label="メッセージ送信">
+                <div class="composer-row">
+                  <button type="button" class="ui-btn--outline" aria-label="絵文字" data-message="絵文字">
+                    <span class="material-symbols-rounded" aria-hidden="true">sentiment_satisfied</span>
+                  </button>
+                  <button type="button" class="ui-btn--outline" aria-label="添付">
+                    <span class="material-symbols-rounded" aria-hidden="true">attach_file</span>
+                  </button>
+                  <input class="ui-control" type="text" placeholder="メッセージを入力…（Enterで送信の想定）" aria-label="メッセージ" />
+                  <button type="button" class="ui-btn--primary" data-message="送信しました">
+                    <span class="material-symbols-rounded" aria-hidden="true">send</span>
+                    送信
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section id="feedback" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">フィードバック</h2>
+              <button type="button" class="ui-btn--outline ui-btn--primary" data-message="トースト表示">
+                <span class="material-symbols-rounded" aria-hidden="true">toast</span>
+                トースト（例）
+              </button>
+            </div>
+
+            <div class="ui-form" style="gap: var(--space-xl);">
+              <div class="ui-field">
+                <span class="ui-label">アラート</span>
+                <div class="ui-form" style="gap: var(--space-md);">
+                  <div class="ui-alert ui-alert--info">
+                    <span class="material-symbols-rounded" aria-hidden="true">info</span>
+                    <div>
+                      <p class="title">情報</p>
+                      <p class="text">操作の補足やヒントなど、軽い案内に使います。</p>
+                    </div>
+                  </div>
+                  <div class="ui-alert ui-alert--success">
+                    <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
+                    <div>
+                      <p class="title">成功</p>
+                      <p class="text">保存が完了しました。</p>
+                    </div>
+                  </div>
+                  <div class="ui-alert ui-alert--warning">
+                    <span class="material-symbols-rounded" aria-hidden="true">warning</span>
+                    <div>
+                      <p class="title">警告</p>
+                      <p class="text">入力内容に不足があります。確認してください。</p>
+                    </div>
+                  </div>
+                  <div class="ui-alert ui-alert--danger">
+                    <span class="material-symbols-rounded" aria-hidden="true">error</span>
+                    <div>
+                      <p class="title">危険・エラー</p>
+                      <p class="text">保存に失敗しました。時間をおいて再度お試しください。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-form-grid">
+                <div class="ui-field">
+                  <span class="ui-label">トースト（表示サンプル）</span>
+                  <div class="ui-alert">
+                    <span class="material-symbols-rounded" aria-hidden="true">toast</span>
+                    <div>
+                      <p class="title">トースト</p>
+                      <p class="text">画面右下に出る短い通知（実物はページ右下に常時表示中）。</p>
+                    </div>
+                  </div>
+                  <p class="ui-help">このページは下部の `.toast` を常時表示して見本にしています。</p>
+                </div>
+
+                <div class="ui-field">
+                  <span class="ui-label">読み込み中</span>
+                  <div class="ui-alert">
+                    <span class="ui-spinner" aria-hidden="true"></span>
+                    <div>
+                      <p class="title">読み込み中…</p>
+                      <p class="text">API 通信や保存処理中に使う想定です。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">空の状態</span>
+                <div class="ui-empty" role="status" aria-live="polite">
+                  <span class="material-symbols-rounded" aria-hidden="true">inbox</span>
+                  <p class="title">データがありません</p>
+                  <p class="text">条件に一致する項目が見つかりませんでした。フィルター条件を見直してください。</p>
+                  <div class="ui-btn-row" style="justify-content:center;">
+                    <button type="button" class="ui-btn--primary">新規作成</button>
+                    <button type="button" class="ui-btn--outline">フィルター解除</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">モーダル（静的サンプル）</span>
+                <p class="ui-help">実動は `assets/js/app.js` 側に開閉処理を追加するのが本筋ですが、ここでは見た目を確認できる静的サンプルを置いています。</p>
+                <div class="ui-modal-overlay" aria-hidden="true" style="position: relative; inset: auto; padding: var(--space-xl); border-radius: var(--radius-md);">
+                  <div class="ui-modal" role="dialog" aria-modal="true" aria-label="確認ダイアログ（サンプル）">
+                    <div class="header">
+                      <p class="title">削除してもよろしいですか？</p>
+                      <button type="button" class="close" aria-label="閉じる">
+                        <span class="material-symbols-rounded" aria-hidden="true">close</span>
+                      </button>
+                    </div>
+                    <div class="body">
+                      <p class="ui-help">この操作は取り消せません。関連する書類やタスクにも影響する可能性があります。</p>
+                      <div class="ui-alert ui-alert--warning">
+                        <span class="material-symbols-rounded" aria-hidden="true">warning</span>
+                        <div>
+                          <p class="title">注意</p>
+                          <p class="text">削除前にバックアップ/出力を推奨します。</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="footer">
+                      <button type="button" class="ui-btn--outline">キャンセル</button>
+                      <button type="button" class="ui-btn--danger">削除</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">既存コンポーネント</span>
+                <div class="list-card-group">
+                  <a href="#" class="info-row">
+                    <div class="main">
+                      <span class="material-symbols-rounded" aria-hidden="true">notifications</span>
+                      <span class="name">通知バッジ（`.notification-badge`）</span>
+                    </div>
+                    <div class="meta">
+                      <span class="meta-text">ヘッダー内に表示</span>
+                    </div>
+                  </a>
+                  <a href="#" class="info-row">
+                    <div class="main">
+                      <span class="material-symbols-rounded" aria-hidden="true">layers</span>
+                      <span class="name">オーバーレイ（`.overlay`）</span>
+                    </div>
+                    <div class="meta">
+                      <span class="meta-text">サイドバー開閉時</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="admin-footer">
+          <p>&copy; 2026 MotherMap. All rights reserved.</p>
+          <a href="#top">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_upward</span>
+            ページ上部へ
+          </a>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="overlay" data-overlay hidden></div>
+  <div class="toast is-show" data-toast role="status" aria-live="polite">これはトースト表示のサンプルです。</div>
+  <script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+

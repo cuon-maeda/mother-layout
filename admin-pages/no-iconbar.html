@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotherMap アイコンバーなしレイアウト</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body>
+  <div id="top" class="admin-layout admin-layout--no-iconbar">
+    <header class="admin-header">
+      <button type="button" class="sidebar-toggle" data-toggle="sidebar" aria-label="サイドバーを開閉" aria-expanded="false">
+        <span class="material-symbols-rounded" aria-hidden="true">menu</span>
+      </button>
+
+      <div class="admin-logo">
+        <a href="../index.html" aria-label="MotherMap">
+          <img src="../assets/images/mothermap_logo.png" alt="MotherMap" class="logo-full" />
+          <img src="../assets/images/mothermap_logo_mini.png" alt="" class="logo-mini" aria-hidden="true" />
+        </a>
+      </div>
+
+      <nav class="admin-navbar" aria-label="ヘッダーメニュー">
+        <ul>
+          <li>
+            <a href="../index.html" aria-label="ダッシュボード">
+              <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+              <span class="admin-navbar-label">ダッシュボード</span>
+            </a>
+          </li>
+          <li>
+            <a href="page-index.html" aria-label="ページ一覧">
+              <span class="material-symbols-rounded" aria-hidden="true">article</span>
+              <span class="admin-navbar-label">ページ</span>
+            </a>
+          </li>
+          <li>
+            <a href="component.html" aria-label="コンポーネント">
+              <span class="material-symbols-rounded" aria-hidden="true">widgets</span>
+              <span class="admin-navbar-label">コンポーネント</span>
+            </a>
+          </li>
+          <li>
+            <a href="modal.html" aria-label="モーダル">
+              <span class="material-symbols-rounded" aria-hidden="true">dialogs</span>
+              <span class="admin-navbar-label">モーダル</span>
+            </a>
+          </li>
+          <li>
+            <a href="no-iconbar.html" class="is-active" aria-label="アイコンバーなし">
+              <span class="material-symbols-rounded" aria-hidden="true">web_asset_off</span>
+              <span class="admin-navbar-label">アイコンバーなし</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="admin-header-actions">
+        <button type="button" data-action="notify" aria-label="通知">
+          <span class="material-symbols-rounded" aria-hidden="true">notifications</span>
+          <span class="notification-badge" aria-hidden="true"></span>
+        </button>
+
+        <button type="button" data-action="help" aria-label="ヘルプ">
+          <span class="material-symbols-rounded" aria-hidden="true">help</span>
+        </button>
+
+        <div class="admin-user-menu">
+          <button type="button" data-toggle="user-menu" aria-expanded="false" aria-controls="user-dropdown">
+            <span class="avatar">真</span>
+            <span class="user-name">真鍋 智彦</span>
+            <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+          </button>
+
+          <div id="user-dropdown" class="dropdown-menu" data-menu="user" role="menu">
+            <a href="#" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">person</span>
+              プロフィール
+            </a>
+            <a href="#" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">manage_accounts</span>
+              アカウント設定
+            </a>
+            <button type="button" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">logout</span>
+              ログアウト
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <aside class="admin-sidebar">
+      <section>
+        <h2>管理メニュー</h2>
+        <nav class="admin-side-nav" aria-label="管理メニュー">
+          <ul>
+            <li>
+              <a href="../index.html">
+                <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+                ダッシュボード
+              </a>
+            </li>
+            <li class="has-submenu">
+              <button type="button" data-accordion aria-expanded="true" aria-controls="sample-pages-submenu-modal">
+                <span class="material-symbols-rounded" aria-hidden="true">article</span>
+                ページ
+                <span class="material-symbols-rounded submenu-arrow" aria-hidden="true">expand_more</span>
+              </button>
+              <ul id="sample-pages-submenu-modal" class="submenu">
+                <li>
+                  <a href="form-basic.html">基本フォーム</a>
+                </li>
+                <li>
+                  <a href="list-basic.html">一覧</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="component.html">
+                <span class="material-symbols-rounded" aria-hidden="true">widgets</span>
+                コンポーネント一覧
+              </a>
+            </li>
+            <li>
+              <a href="modal.html">
+                <span class="material-symbols-rounded" aria-hidden="true">dialogs</span>
+                モーダル
+              </a>
+            </li>
+            <li>
+              <a href="no-iconbar.html" class="is-active">
+                <span class="material-symbols-rounded" aria-hidden="true">web_asset_off</span>
+                アイコンバーなし
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="admin-main">
+      <div class="dashboard-content">
+        <section class="scope-bar" aria-label="ページ情報">
+          <div class="scope-field">
+            <span class="label">アイコンバーなし</span>
+            <select aria-label="表示切り替え">
+              <option>標準</option>
+              <option>ダミー</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title">このページについて</h2>
+              <button type="button" class="ui-btn--outline ui-btn--primary" data-message="保存しました">
+                <span class="material-symbols-rounded" aria-hidden="true">save</span>
+                保存（例）
+              </button>
+            </div>
+
+            <div class="ui-alert ui-alert--info">
+              <span class="material-symbols-rounded" aria-hidden="true">info</span>
+              <div>
+                <p class="title">アイコンバー非表示パターン</p>
+                <p class="text">`admin-iconbar` が存在しないページでも、サイドバー開閉とレイアウトが崩れないことを確認するためのサンプルです。</p>
+              </div>
+            </div>
+
+            <div class="ui-form-grid" style="margin-top: var(--space-xl);">
+              <div class="ui-field">
+                <span class="ui-label">ページネーション（例）</span>
+                <div class="ui-pagination" role="navigation" aria-label="ページネーション（サンプル）">
+                  <div class="ui-page-meta">
+                    <span class="ui-badge">Total 48</span>
+                    <span>1–20 / 48</span>
+                  </div>
+                  <div class="ui-page" aria-label="ページ選択">
+                    <button type="button" class="is-disabled" disabled aria-label="前へ">
+                      <span class="material-symbols-rounded" aria-hidden="true">chevron_left</span>
+                    </button>
+                    <button type="button" class="is-active" aria-current="page">1</button>
+                    <button type="button">2</button>
+                    <button type="button">3</button>
+                    <span class="is-disabled" aria-hidden="true">…</span>
+                    <button type="button">5</button>
+                    <button type="button" aria-label="次へ">
+                      <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">ボタン（例）</span>
+                <div class="ui-btn-row">
+                  <button type="button" class="ui-btn--primary">Primary</button>
+                  <button type="button" class="ui-btn--outline ui-btn--primary">Outline</button>
+                  <button type="button" class="ui-btn--danger">Danger</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="admin-footer">
+          <p>&copy; 2026 MotherMap. All rights reserved.</p>
+          <a href="#top">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_upward</span>
+            ページ上部へ
+          </a>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="overlay" data-overlay hidden></div>
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+  <script src="../assets/js/app.js" defer></script>
+</body>
+</html>
+
