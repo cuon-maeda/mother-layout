@@ -88,7 +88,7 @@ HTML から CSS は相対パスで読み込みます（ルート: `assets/css/st
 
 例: `admin-layout`, `admin-header`, `admin-navbar`, `admin-iconbar`, `admin-sidebar`, `admin-main`, `admin-side-nav`, `admin-footer`
 
-- **レイアウトバリアント**: `admin-layout--no-iconbar` のように **`--`** で修飾（BEM の modifier に相当）。
+- **レイアウトバリアント**: `admin-layout--no-iconbar`・`admin-layout--no-sidebar` のように **`--`** で修飾（BEM の modifier に相当）。
 - **状態**: **`is-*`**（後述）を併用。例: `admin-layout.is-nav-open`
 
 ### 3.2 汎用 UI ブロック（`ui-*`）
@@ -186,6 +186,7 @@ UI の一時的な状態は **`is-` プレフィックス**を推奨します。
 - **`admin-iconbar`**: **5 アイコン**（ダッシュボード → ページ → コンポーネント → モーダル → アイコンバーなし）。**ページ**は `page-index.html` へ。ホバー用に **`data-tooltip`**（タッチ主体では `:hover` ツールチップは出ない前提）。
 - **`admin-sidebar`（ページサンプル）**: **「ページ」**を `has-submenu` の親ボタンとし、子の **`submenu`** に **基本フォーム**・**一覧** のみを並べる。`page-index.html` 上では子に `is-active` は付けない（親のみ開いた状態）。
 - **`admin-layout--no-iconbar`**: `admin-iconbar` を置かない（意図したレイアウトのサンプル）。
+- **`admin-layout--no-sidebar`**: `admin-sidebar` を置かない。PC ではサイドバー列を確保しない（例: `pages/calendar.html`）。`admin-iconbar` がある場合はアイコンバー＋メインの2列。`--no-iconbar` と併用時はヘッダー＋メインのみ。
 - **`ui-modal`**: `.header` / `.body` / `.footer`、見出しは `.header` 内の `.title`、閉じるは `.close`。
 - **状態**: `meta-text` の強調は **`is-strong`**（`--` 修飾の別クラスにしない）。
 - **避けるもの**: クラス名の `__` 連結（子は短名＋子孫セレクタで CSS）。

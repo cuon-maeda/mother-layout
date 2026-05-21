@@ -7,7 +7,6 @@
   const userMenu = document.querySelector('[data-menu="user"]');
   const toast = document.querySelector('[data-toast]');
   const accordionButtons = document.querySelectorAll('[data-accordion]');
-  const contentNavLinks = document.querySelectorAll('.content-nav a');
   const modalOverlays = document.querySelectorAll('[data-modal-overlay]');
   let activeModal = null;
   let modalCloseTimer = null;
@@ -74,12 +73,26 @@
   };
 
   const toggleSidebar = () => {
-    if (sidebar?.classList.contains('is-open')) {
+    if (layout?.classList.contains('is-nav-open')) {
       closeSidebar();
       return;
     }
 
     openSidebar();
+  };
+
+  const getMainScrollContainer = () => document.querySelector('.admin-main');
+
+  const smoothScrollBehavior = () =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+
+  const scrollMainToTop = () => {
+    getMainScrollContainer()?.scrollTo({ top: 0, behavior: smoothScrollBehavior() });
+  };
+
+  const scrollToHashTarget = (target) => {
+    if (!target) return;
+    target.scrollIntoView({ behavior: smoothScrollBehavior(), block: 'start' });
   };
 
   const closeUserMenu = () => {
@@ -115,11 +128,44 @@
     }
   });
 
-  contentNavLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      contentNavLinks.forEach((item) => item.classList.remove('is-active'));
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (!href || href === '#') return;
+
+    const hash = decodeURIComponent(href.slice(1));
+    if (!hash) return;
+
+    const contentNav = link.closest('.content-nav');
+    if (contentNav) {
+      contentNav.querySelectorAll('a').forEach((item) => item.classList.remove('is-active'));
       link.classList.add('is-active');
-    });
+    }
+
+    if (hash === 'top') {
+      event.preventDefault();
+      scrollMainToTop();
+      return;
+    }
+
+    const target = document.getElementById(hash);
+    if (!target) return;
+
+    const main = getMainScrollContainer();
+    if (!main) return;
+
+    if (main.contains(target)) {
+      event.preventDefault();
+      scrollToHashTarget(target);
+      return;
+    }
+
+    if (target.classList.contains('admin-layout')) {
+      event.preventDefault();
+      scrollMainToTop();
+    }
   });
 
   document.addEventListener('keydown', (event) => {
@@ -191,4 +237,6 @@
   document.querySelector('[data-action="help"]')?.addEventListener('click', () => {
     showToast('\u30d8\u30eb\u30d7\u3092\u958b\u304d\u307e\u3059');
   });
+
+  window.MotherMapShell = { openModal, closeModal, showToast };
 })();
