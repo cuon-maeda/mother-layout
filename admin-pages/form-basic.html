@@ -148,6 +148,9 @@
                 <li>
                   <a href="list-basic.html">一覧</a>
                 </li>
+                <li>
+                  <a href="detail-basic.html">詳細</a>
+                </li>
               </ul>
             </li>
             <li>
@@ -169,15 +172,11 @@
 
     <main class="admin-main">
       <div class="dashboard-content">
-        <section class="scope-bar" aria-label="ページ情報">
-          <div class="scope-field">
-            <span class="label">基本フォーム</span>
-            <select aria-label="表示切り替え">
-              <option>新規登録</option>
-              <option>編集（サンプル）</option>
-            </select>
-          </div>
-        </section>
+        <nav class="ui-breadcrumbs" aria-label="パンくず">
+          <a href="../index.html">ダッシュボード</a>
+          <span class="sep" aria-hidden="true">/</span>
+          <span aria-current="page">新規工事の登録</span>
+        </nav>
 
         <section class="dashboard-section">
           <div class="section-block">
@@ -189,7 +188,7 @@
               </a>
             </div>
 
-            <div class="ui-alert ui-alert--info" style="margin-bottom: var(--space-lg);">
+            <div class="ui-alert ui-alert--info">
               <span class="material-symbols-rounded" aria-hidden="true">info</span>
               <div>
                 <p class="title">デモ用ページ</p>
@@ -247,7 +246,7 @@
                 </div>
               </div>
 
-              <div class="ui-btn-row" style="margin-top: var(--space-md);">
+              <div class="ui-btn-row">
                 <button type="button" class="ui-btn--primary" data-message="保存しました（デモ）">
                   <span class="material-symbols-rounded" aria-hidden="true">save</span>
                   保存

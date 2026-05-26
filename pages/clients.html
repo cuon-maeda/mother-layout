@@ -113,7 +113,7 @@
             <div class="section-header">
               <div>
                 <h2 class="section-title">利用会社一覧</h2>
-                <p style="margin: var(--space-xs) 0 0; color: var(--color-text-muted); font-size: 14px; font-weight: 500;">Clients</p>
+                <p class="section-subtitle">Clients</p>
               </div>
               <div class="ui-btn-row" role="group" aria-label="一覧操作">
                 <button type="button" class="ui-btn--outline ui-btn--primary" data-message="CSV を出力しました（デモ）">
@@ -128,7 +128,7 @@
             </div>
 
             <form class="ui-form" action="#" method="get" aria-label="利用会社の検索（サンプル）">
-              <div class="ui-form-grid" style="margin-bottom: var(--space-xl);">
+              <div class="ui-form-grid ui-form-grid--mb-xl">
                 <div class="ui-field">
                   <label class="ui-label" for="cl-code">利用会社コード</label>
                   <input id="cl-code" class="ui-control" type="search" name="code" placeholder="利用会社コード" autocomplete="off" />
@@ -141,7 +141,7 @@
                   <label class="ui-label" for="cl-rep">代表者名</label>
                   <input id="cl-rep" class="ui-control" type="search" name="rep" placeholder="代表者名" autocomplete="off" />
                 </div>
-                <div class="ui-field" style="align-self: end;">
+                <div class="ui-field ui-field--align-end">
                   <span class="ui-label" aria-hidden="true">&nbsp;</span>
                   <div class="ui-btn-row">
                     <button type="submit" class="ui-btn--primary">
@@ -156,7 +156,7 @@
 
             <div class="ui-field">
               <span class="ui-label">検索結果</span>
-              <div style="overflow: auto; max-width: 100%;">
+              <div class="ui-scroll-x">
                 <table class="ui-table ui-table--striped ui-table--hover" aria-label="利用会社一覧テーブル">
                   <thead>
                     <tr>
@@ -196,7 +196,7 @@
               </div>
             </div>
 
-            <div class="ui-pagination" role="navigation" aria-label="ページネーション" style="margin-top: var(--space-xl); justify-content: center;">
+            <div class="ui-pagination" role="navigation" aria-label="ページネーション">
               <div class="ui-page-meta">
                 <span class="ui-badge">全 4 件</span>
                 <span>1 ページ目 / 1 ページ</span>

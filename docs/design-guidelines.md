@@ -10,7 +10,7 @@
 |------|------|
 | スタイルシート | `assets/css/styles.css` |
 | エントリ HTML | `index.html`（ルート） |
-| その他ページ | `admin-pages/*.html`（例: `page-index.html`, `form-basic.html`, `list-basic.html`, `component.html` ほか） |
+| その他ページ | `admin-pages/*.html`（例: `page-index.html`, `form-basic.html`, `list-basic.html`, `detail-basic.html`, `component.html` ほか） |
 | スクリプト | `assets/js/app.js` |
 
 HTML から CSS は相対パスで読み込みます（ルート: `assets/css/styles.css`、`admin-pages/`: `../assets/css/styles.css`）。
@@ -175,6 +175,12 @@ UI の一時的な状態は **`is-` プレフィックス**を推奨します。
 
 - `prefers-reduced-motion: reduce` 時はトランジション等を極力短くするメディアクエリあり。激しいアニメを足す場合は同様に配慮する。
 
+### 4.9 インライン `style` を避ける
+
+- HTML の `style="..."` は使わず、**`assets/css/styles.css` にクラスを足す**。
+- 繰り返しの余白・レイアウトは **`ui-scroll-x`**, **`ui-form--gap-xl`**, **`ui-field--mt-xl`** などの **`ui-*` 修飾クラス**、または **`.section-block` 配下の文脈ルール**（例: `.section-block > .section-header + .ui-alert`）で表現する。
+- ページ全体の縦間隔は **`.dashboard-content` の `gap`** を優先し、個別要素への `margin-bottom` の重ねがけは避ける。
+
 ---
 
 ## 5. HTML 整合性のチェック項目（自己点検用）
@@ -189,7 +195,7 @@ UI の一時的な状態は **`is-` プレフィックス**を推奨します。
 - **`admin-layout--no-sidebar`**: `admin-sidebar` を置かない。PC ではサイドバー列を確保しない（例: `pages/calendar.html`）。`admin-iconbar` がある場合はアイコンバー＋メインの2列。`--no-iconbar` と併用時はヘッダー＋メインのみ。
 - **`ui-modal`**: `.header` / `.body` / `.footer`、見出しは `.header` 内の `.title`、閉じるは `.close`。
 - **状態**: `meta-text` の強調は **`is-strong`**（`--` 修飾の別クラスにしない）。
-- **避けるもの**: クラス名の `__` 連結（子は短名＋子孫セレクタで CSS）。
+- **避けるもの**: クラス名の `__` 連結（子は短名＋子孫セレクタで CSS）。**インライン `style`**（§4.9）。
 
 ---
 

@@ -170,6 +170,17 @@
           <a href="#feedback"><span class="material-symbols-rounded" aria-hidden="true">notifications</span>フィードバック</a>
         </nav>
 
+        <div class="ui-field ui-field--mb-md">
+          <span class="ui-label">パンくず（推奨：`section` の外）</span>
+          <nav class="ui-breadcrumbs" aria-label="パンくず（サンプル）">
+            <a href="../index.html">ダッシュボード</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <a href="#">工事管理</a>
+            <span class="sep" aria-hidden="true">/</span>
+            <span aria-current="page">工事一覧</span>
+          </nav>
+        </div>
+
         <section id="nav" class="dashboard-section">
           <div class="section-block">
             <div class="section-header">
@@ -180,18 +191,7 @@
               </a>
             </div>
 
-            <div class="ui-form" style="gap: var(--space-xl);">
-              <div class="ui-field">
-                <span class="ui-label">パンくず</span>
-                <nav class="ui-breadcrumbs" aria-label="パンくず（サンプル）">
-                  <a href="../index.html">ダッシュボード</a>
-                  <span class="sep" aria-hidden="true">/</span>
-                  <a href="#">工事管理</a>
-                  <span class="sep" aria-hidden="true">/</span>
-                  <span aria-current="page">工事一覧</span>
-                </nav>
-              </div>
-
+            <div class="ui-form ui-form--gap-xl">
               <div class="ui-field">
                 <span class="ui-label">タブ（`ui-tabs`）</span>
                 <div class="ui-tabs" role="tablist" aria-label="タブ（サンプル）">
@@ -277,7 +277,7 @@
               <button type="button" role="tab" aria-selected="false">状態</button>
             </div>
 
-            <form class="ui-form" style="margin-top: var(--space-lg);">
+            <form class="ui-form ui-form--mt-lg">
               <div class="ui-form-grid">
                 <div class="ui-field">
                   <label class="ui-label" for="demo-text">テキスト入力</label>
@@ -339,7 +339,7 @@
                 </div>
               </div>
 
-              <div style="display:flex; gap: var(--space-sm); flex-wrap: wrap;">
+              <div class="ui-flex-wrap">
                 <button type="button" class="ui-btn--outline ui-btn--primary">
                   <span class="material-symbols-rounded" aria-hidden="true">check_circle</span>
                   検証（例）
@@ -366,7 +366,7 @@
               <h5>見出しレベル 5（H5）</h5>
               <h6>見出しレベル 6（H6）</h6>
 
-              <div class="ui-alert" style="margin: var(--space-xl) 0;">
+              <div class="ui-alert ui-alert--my-xl">
                 <span class="material-symbols-rounded" aria-hidden="true">info</span>
                 <div>
                   <p class="title">補足（アラート内の見出し）</p>
@@ -377,10 +377,10 @@
               <p class="lead">リード文は <span class="text-primary">.lead</span> で強調できます。</p>
               <p>本文のサンプルです。工事の進捗や関係者への共有事項など、複数行にわたる説明が入ります。適度な行間と余白で読みやすさを確保してください。</p>
 
-              <div class="ui-form-grid" style="margin-top: var(--space-xl);">
+              <div class="ui-form-grid ui-form-grid--mt-xl">
                 <div class="ui-field">
                   <span class="ui-label">文字色</span>
-                  <p style="margin:0;">
+                  <p class="ui-text-reset">
                     <span class="text-muted">.text-muted</span> /
                     <span class="text-primary">.text-primary</span> /
                     <span class="text-success">.text-success</span> /
@@ -391,7 +391,7 @@
                 </div>
                 <div class="ui-field">
                   <span class="ui-label">大文字・小文字</span>
-                  <p style="margin:0;">
+                  <p class="ui-text-reset">
                     <span class="text-lowercase">SAMPLE TEXT</span>（小文字化） /
                     <span class="text-uppercase">sample text</span>（大文字化） /
                     <span class="text-capitalized">capitalized sample</span>（語頭大文字）
@@ -399,7 +399,7 @@
                 </div>
               </div>
 
-              <div style="margin-top: var(--space-xl); display:grid; gap: var(--space-md);">
+              <div class="ui-block-stack">
                 <span class="ui-badge">引用</span>
                 <blockquote>
                   <p>「良いUIは、情報の密度と余白のバランスで決まる。」</p>
@@ -420,7 +420,7 @@
               </button>
             </div>
 
-            <div class="ui-form" style="gap: var(--space-xl);">
+            <div class="ui-form ui-form--gap-xl">
               <div class="ui-field">
                 <span class="ui-label">ボタン種別</span>
                 <div class="ui-btn-row">
@@ -580,18 +580,18 @@
               </div>
             </div>
 
-            <div class="ui-field" style="margin-top: var(--space-xl);">
+            <div class="ui-field ui-field--mt-xl">
               <span class="ui-label">カスタム内容</span>
               <div class="ui-listgroup" role="list">
                 <a class="ui-listitem--custom" href="#" role="listitem">
-                  <div style="min-width:0;">
+                  <div class="ui-min-w-0">
                     <p class="heading">リスト項目の見出し</p>
                     <p class="subtext">3 日前 ・ 現場写真の追加をお願いします。養生範囲が図面と異なる箇所があるため、確認後にコメントをお願いします。</p>
                   </div>
                   <span class="meta"><span class="ui-badge">新着</span></span>
                 </a>
                 <a class="ui-listitem--custom" href="#" role="listitem">
-                  <div style="min-width:0;">
+                  <div class="ui-min-w-0">
                     <p class="heading">別の項目見出し</p>
                     <p class="subtext">1 週間前 ・ 次回定例会の資料を共有しました。未読の方は目を通しておいてください。</p>
                   </div>
@@ -599,7 +599,7 @@
               </div>
             </div>
 
-            <div class="ui-field" style="margin-top: var(--space-xl);">
+            <div class="ui-field ui-field--mt-xl">
               <span class="ui-label">既存コンポーネント（`.info-row`）</span>
               <div class="list-card-group">
                 <a href="#" class="info-row">
@@ -626,7 +626,7 @@
               </div>
             </div>
 
-            <div class="dashboard-bottom-grid" style="margin-top: var(--space-xl);">
+            <div class="dashboard-bottom-grid dashboard-bottom-grid--mt-xl">
               <div class="section-block">
                 <h2 class="section-title">ドキュメント（グリッド）</h2>
                 <div class="document-grid">
@@ -677,10 +677,10 @@
               </button>
             </div>
 
-            <div class="ui-form" style="gap: var(--space-xl);">
+            <div class="ui-form ui-form--gap-xl">
               <div class="ui-field">
                 <span class="ui-label">基本（縞模様／ホバー）</span>
-                <div style="overflow:auto; max-width: 100%;">
+                <div class="ui-scroll-x">
                   <table class="ui-table ui-table--striped ui-table--hover" aria-label="テーブル例">
                     <thead>
                       <tr>
@@ -724,7 +724,7 @@
 
               <div class="ui-field">
                 <span class="ui-label">プロジェクト一覧（日本語想定）</span>
-                <div style="overflow:auto; max-width: 100%;">
+                <div class="ui-scroll-x">
                   <table class="ui-table ui-table--hover" aria-label="工事一覧テーブル例">
                 <thead>
                   <tr>
@@ -775,7 +775,7 @@
               <div class="header" role="group" aria-label="スレッド情報">
                 <div class="topic">
                   <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
-                  <div style="min-width:0;">
+                  <div class="ui-min-w-0">
                     <p class="name">〇●マンションA</p>
                     <p class="sub">参加者: 真鍋 / 山田　・　未読 2件</p>
                   </div>
@@ -903,10 +903,10 @@
               </button>
             </div>
 
-            <div class="ui-form" style="gap: var(--space-xl);">
+            <div class="ui-form ui-form--gap-xl">
               <div class="ui-field">
                 <span class="ui-label">アラート</span>
-                <div class="ui-form" style="gap: var(--space-md);">
+                <div class="ui-form ui-form--gap-md">
                   <div class="ui-alert ui-alert--info">
                     <span class="material-symbols-rounded" aria-hidden="true">info</span>
                     <div>
@@ -969,7 +969,7 @@
                   <span class="material-symbols-rounded" aria-hidden="true">inbox</span>
                   <p class="title">データがありません</p>
                   <p class="text">条件に一致する項目が見つかりませんでした。フィルター条件を見直してください。</p>
-                  <div class="ui-btn-row" style="justify-content:center;">
+                  <div class="ui-btn-row ui-btn-row--center">
                     <button type="button" class="ui-btn--primary">新規作成</button>
                     <button type="button" class="ui-btn--outline">フィルター解除</button>
                   </div>
@@ -979,7 +979,7 @@
               <div class="ui-field">
                 <span class="ui-label">モーダル（静的サンプル）</span>
                 <p class="ui-help">実動は `assets/js/app.js` 側に開閉処理を追加するのが本筋ですが、ここでは見た目を確認できる静的サンプルを置いています。</p>
-                <div class="ui-modal-overlay" aria-hidden="true" style="position: relative; inset: auto; padding: var(--space-xl); border-radius: var(--radius-md);">
+                <div class="ui-modal-overlay ui-modal-overlay--preview" aria-hidden="true">
                   <div class="ui-modal" role="dialog" aria-modal="true" aria-label="確認ダイアログ（サンプル）">
                     <div class="header">
                       <p class="title">削除してもよろしいですか？</p>

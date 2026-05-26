@@ -148,6 +148,9 @@
                 <li>
                   <a href="list-basic.html" class="is-active">一覧</a>
                 </li>
+                <li>
+                  <a href="detail-basic.html">詳細</a>
+                </li>
               </ul>
             </li>
             <li>
@@ -169,17 +172,11 @@
 
     <main class="admin-main">
       <div class="dashboard-content">
-        <section class="scope-bar" aria-label="ページ情報">
-          <div class="scope-field">
-            <span class="label">工事一覧</span>
-            <select aria-label="状態で絞り込み">
-              <option>すべて</option>
-              <option>進行中</option>
-              <option>確認待ち</option>
-              <option>完了</option>
-            </select>
-          </div>
-        </section>
+        <nav class="ui-breadcrumbs" aria-label="パンくず">
+          <a href="../index.html">ダッシュボード</a>
+          <span class="sep" aria-hidden="true">/</span>
+          <span aria-current="page">工事一覧</span>
+        </nav>
 
         <section class="dashboard-section">
           <div class="section-block">
@@ -191,7 +188,7 @@
               </a>
             </div>
 
-            <div class="ui-pagination" role="navigation" aria-label="ページネーション" style="margin-bottom: var(--space-lg);">
+            <div class="ui-pagination" role="navigation" aria-label="ページネーション">
               <div class="ui-page-meta">
                 <span class="ui-badge">全 48 件</span>
                 <span>1〜10 件目 / 48 件</span>
@@ -213,7 +210,7 @@
 
             <div class="ui-field">
               <span class="ui-label">テーブル表示</span>
-              <div style="overflow: auto; max-width: 100%;">
+              <div class="ui-scroll-x">
                 <table class="ui-table ui-table--striped ui-table--hover" aria-label="工事一覧テーブル">
                   <thead>
                     <tr>
@@ -226,7 +223,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>〇●マンションA 共用部改修</td>
+                      <td><a href="detail-basic.html">〇●マンションA 共用部改修</a></td>
                       <td>PRJ-2026-014</td>
                       <td>真鍋</td>
                       <td>確認待ち <span class="ui-badge">新着</span></td>
@@ -265,10 +262,10 @@
               </div>
             </div>
 
-            <div class="ui-field" style="margin-top: var(--space-xl);">
+            <div class="ui-field">
               <span class="ui-label">カード型リスト（抜粋）</span>
               <div class="list-card-group">
-                <a href="#" class="info-row">
+                <a href="detail-basic.html" class="info-row">
                   <div class="main">
                     <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
                     <span class="name">〇●マンションA</span>

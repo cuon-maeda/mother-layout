@@ -866,28 +866,154 @@
       flex-wrap: wrap;
       align-items: center;
       gap: var(--space-xs);
-      padding: var(--space-sm) var(--space-md);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.94);
-      box-shadow: var(--shadow-sm);
       color: var(--color-muted);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 600;
     }
 
     .ui-breadcrumbs a {
       color: var(--color-primary);
-      padding: 2px var(--space-xs);
-      border-radius: 6px;
+      text-decoration: none;
     }
 
     .ui-breadcrumbs a:hover {
-      background: var(--color-primary-tint);
+      text-decoration: underline;
     }
 
     .ui-breadcrumbs .sep {
       opacity: 0.7;
+    }
+
+    /* Layout / spacing helpers（HTML の style 属性の代替） */
+    .ui-scroll-x {
+      overflow: auto;
+      max-width: 100%;
+    }
+
+    .ui-min-w-0 {
+      min-width: 0;
+    }
+
+    .ui-flex-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .ui-block-stack {
+      display: grid;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    .ui-form--gap-xl {
+      gap: var(--space-xl);
+    }
+
+    .ui-form--gap-md {
+      gap: var(--space-md);
+    }
+
+    .ui-form--mt-lg {
+      margin-top: var(--space-lg);
+    }
+
+    .ui-field--mb-md {
+      margin-bottom: var(--space-md);
+    }
+
+    .ui-field--mt-xl {
+      margin-top: var(--space-xl);
+    }
+
+    .ui-form-grid--mt-xl {
+      margin-top: var(--space-xl);
+    }
+
+    .ui-form-grid--mb-xl {
+      margin-bottom: var(--space-xl);
+    }
+
+    .ui-field--align-end {
+      align-self: end;
+    }
+
+    .ui-label--mb-sm {
+      margin-bottom: var(--space-sm);
+    }
+
+    .ui-label--section {
+      margin-top: var(--space-xl);
+      margin-bottom: var(--space-sm);
+    }
+
+    .ui-btn-row--center {
+      justify-content: center;
+    }
+
+    .ui-alert--my-xl {
+      margin: var(--space-xl) 0;
+    }
+
+    .ui-text-reset {
+      margin: 0;
+    }
+
+    .section-subtitle {
+      margin: var(--space-xs) 0 0;
+      color: var(--color-muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .ui-modal-overlay--preview {
+      position: relative;
+      inset: auto;
+      padding: var(--space-xl);
+      border-radius: var(--radius-md);
+    }
+
+    .dashboard-bottom-grid--mt-xl {
+      margin-top: var(--space-xl);
+    }
+
+    /* section-block 内の縦リズム（サンプルページ共通） */
+    .section-block > .section-header + .ui-alert {
+      margin-bottom: var(--space-lg);
+    }
+
+    .section-block > .section-header + .ui-pagination {
+      margin-bottom: var(--space-lg);
+    }
+
+    .section-block > .ui-tabs {
+      margin-bottom: var(--space-lg);
+    }
+
+    .section-block > .ui-field + .ui-field {
+      margin-top: var(--space-xl);
+    }
+
+    .section-block > .ui-btn-row:last-child {
+      margin-top: var(--space-xl);
+    }
+
+    .section-block form > .ui-btn-row:last-child {
+      margin-top: var(--space-md);
+    }
+
+    .section-block > .ui-pagination:last-of-type {
+      margin-top: var(--space-xl);
+      justify-content: center;
+    }
+
+    .section-title .ui-badge {
+      margin-left: var(--space-sm);
+      vertical-align: middle;
+    }
+
+    .section-header .ui-btn-row {
+      margin: 0;
     }
 
     .ui-pagination {
