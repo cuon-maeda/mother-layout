@@ -1286,7 +1286,7 @@
 
     .ui-modal {
       --modal-overlay-pad: var(--space-xl);
-      width: min(560px, 100%);
+      width: min(720px, 100%);
       max-height: calc(100vh - var(--modal-overlay-pad) * 2);
       max-height: calc(100dvh - var(--modal-overlay-pad) * 2);
       display: flex;
