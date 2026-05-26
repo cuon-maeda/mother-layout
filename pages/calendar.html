@@ -148,22 +148,21 @@
 
     <main class="admin-main">
       <div class="dashboard-content dashboard-content--wide">
-        <section class="scope-bar" aria-label="ページ情報">
-          <div class="scope-field">
-            <span class="label">予定表</span>
-            <select aria-label="表示する工事">
-              <option>すべての工事</option>
-              <option>担当分のみ</option>
-              <option>〇●マンションA</option>
-              <option>△■マンションB</option>
-            </select>
-          </div>
-        </section>
-
         <section class="dashboard-section">
           <div class="section-block work-calendar" data-work-calendar>
             <div class="section-header">
-              <h2 class="section-title">すべての工事</h2>
+              <div class="section-header-start">
+                <h2 class="section-title">予定表</h2>
+                <div class="section-header-filter">
+                  <label class="visually-hidden" for="calendar-filter">表示する工事</label>
+                  <select id="calendar-filter" class="ui-control" data-calendar-filter>
+                    <option value="all">すべての工事</option>
+                    <option value="mine">担当分のみ</option>
+                    <option value="p1">〇●マンションA</option>
+                    <option value="p2">△■マンションB</option>
+                  </select>
+                </div>
+              </div>
               <div class="section-header-actions">
                 <button type="button" class="ui-btn--outline" data-calendar-print>
                   <span class="material-symbols-rounded" aria-hidden="true">print</span>

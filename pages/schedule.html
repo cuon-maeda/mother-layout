@@ -148,20 +148,19 @@
 
     <main class="admin-main">
       <div class="dashboard-content dashboard-content--wide">
-        <section class="scope-bar" aria-label="ページ情報">
-          <div class="scope-field">
-            <span class="label">工程表</span>
-            <select aria-label="表示する工事" data-schedule-filter>
-              <option value="all">すべての工事</option>
-              <option value="mine">担当分のみ</option>
-            </select>
-          </div>
-        </section>
-
         <section class="dashboard-section">
           <div class="section-block process-schedule" data-process-schedule>
             <div class="section-header">
-              <h2 class="section-title" data-schedule-title>工程表</h2>
+              <div class="section-header-start">
+                <h2 class="section-title" data-schedule-title>工程表</h2>
+                <div class="section-header-filter">
+                  <label class="visually-hidden" for="schedule-filter">表示する工事</label>
+                  <select id="schedule-filter" class="ui-control" data-schedule-filter>
+                    <option value="all">すべての工事</option>
+                    <option value="mine">担当分のみ</option>
+                  </select>
+                </div>
+              </div>
               <div class="section-header-actions">
                 <button type="button" class="ui-btn--outline" data-schedule-today>今日へ</button>
               </div>
