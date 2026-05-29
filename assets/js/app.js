@@ -122,6 +122,131 @@
     });
   });
 
+  const initSearchPanels = () => {
+    document.querySelectorAll('form[data-search-panel]').forEach((form) => {
+      const toggle = form.querySelector('[data-search-panel-toggle]');
+      const body = form.querySelector('[data-search-panel-body]');
+      const summary = form.querySelector('[data-search-panel-summary]');
+      const advCountEl = form.querySelector('[data-search-panel-adv-count]');
+      const toggleLabel = toggle?.querySelector('[data-search-panel-toggle-label]');
+
+      const getFields = (root) =>
+        Array.from(root.querySelectorAll('[data-filter-field]')).map((field) => ({
+          control: field.querySelector('input, select, textarea'),
+          label: field.dataset.filterLabel || '',
+        }));
+
+      const getControlValue = (control) => {
+        if (!control) return '';
+        return String(control.value || '').trim();
+      };
+
+      const getDisplayValue = (control) => {
+        if (!control) return '';
+        if (control.tagName === 'SELECT') {
+          const option = control.selectedOptions[0];
+          if (option?.value) return option.textContent.trim();
+          return '';
+        }
+        return getControlValue(control);
+      };
+
+      const clearControl = (control) => {
+        if (!control) return;
+        if (control.tagName === 'SELECT') control.selectedIndex = 0;
+        else control.value = '';
+      };
+
+      const countAdvancedActive = () => {
+        if (!body) return 0;
+        return getFields(body).filter(({ control }) => getControlValue(control)).length;
+      };
+
+      const updateAdvCount = () => {
+        if (!advCountEl) return;
+        const count = countAdvancedActive();
+        advCountEl.textContent = String(count);
+        advCountEl.hidden = count === 0;
+      };
+
+      const renderSummary = () => {
+        if (!summary) return;
+        summary.replaceChildren();
+
+        const active = getFields(form).filter(({ control }) => getControlValue(control));
+        if (!active.length) return;
+
+        const heading = document.createElement('span');
+        heading.className = 'ui-search-panel__summary-label';
+        heading.textContent = '適用中';
+        summary.append(heading);
+
+        active.forEach(({ control, label }) => {
+          const chip = document.createElement('span');
+          chip.className = 'ui-filter-chip';
+
+          const text = document.createElement('span');
+          text.className = 'ui-filter-chip__text';
+          text.textContent = `${label}: ${getDisplayValue(control)}`;
+          chip.append(text);
+
+          const remove = document.createElement('button');
+          remove.type = 'button';
+          remove.className = 'ui-filter-chip__remove';
+          remove.setAttribute('aria-label', `${label}の条件を解除`);
+          remove.innerHTML =
+            '<span class="material-symbols-rounded" aria-hidden="true">close</span>';
+          remove.addEventListener('click', () => {
+            clearControl(control);
+            control.dispatchEvent(new Event('input', { bubbles: true }));
+          });
+
+          chip.append(remove);
+          summary.append(chip);
+        });
+      };
+
+      const syncPanel = () => {
+        renderSummary();
+        updateAdvCount();
+      };
+
+      const setExpanded = (expanded) => {
+        form.classList.toggle('is-expanded', expanded);
+        toggle?.setAttribute('aria-expanded', String(expanded));
+        body?.setAttribute('aria-hidden', String(!expanded));
+        if (toggleLabel) {
+          toggleLabel.textContent = expanded ? '詳細条件を隠す' : '詳細条件を表示';
+        }
+      };
+
+      setExpanded(form.dataset.searchPanelDefault === 'expanded');
+      syncPanel();
+
+      toggle?.addEventListener('click', () => {
+        setExpanded(!form.classList.contains('is-expanded'));
+      });
+
+      form.addEventListener('input', syncPanel);
+      form.addEventListener('change', syncPanel);
+
+      form.addEventListener('reset', () => {
+        requestAnimationFrame(() => {
+          syncPanel();
+          setExpanded(false);
+        });
+      });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        setExpanded(false);
+        showToast('検索を実行しました（デモ）');
+      });
+    });
+  };
+
+  initSearchPanels();
+
   document.addEventListener('click', (event) => {
     if (!event.target.closest('.admin-user-menu')) {
       closeUserMenu();

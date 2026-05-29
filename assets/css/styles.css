@@ -934,6 +934,172 @@
       margin-bottom: var(--space-xl);
     }
 
+    /* 一覧ページ向け：検索条件が多いときに一覧を圧迫しないパネル */
+    .ui-search-panel {
+      margin-bottom: var(--space-lg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .ui-search-panel .ui-label {
+      font-size: 12px;
+    }
+
+    .ui-search-panel .ui-control {
+      min-height: 40px;
+      font-size: 14px;
+    }
+
+    .ui-search-panel :is(button, a)[class*="ui-btn--"] {
+      min-height: 40px;
+      padding: 0 var(--space-md);
+      font-size: 13px;
+    }
+
+    .ui-search-panel__toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: var(--space-md);
+      padding: var(--space-md) var(--space-lg);
+    }
+
+    .ui-search-panel__primary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+      flex: 1 1 16rem;
+      gap: var(--space-md);
+      min-width: 0;
+      align-items: start;
+    }
+
+    .ui-search-panel__actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-shrink: 0;
+    }
+
+    .ui-search-panel__chevron {
+      transition: transform 0.2s ease;
+    }
+
+    .ui-search-panel.is-expanded .ui-search-panel__chevron {
+      transform: rotate(180deg);
+    }
+
+    .ui-search-panel__adv-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.25rem;
+      min-height: 1.25rem;
+      padding: 0 0.35rem;
+      margin-left: 0.15rem;
+      border-radius: 999px;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .ui-search-panel__body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.22s ease, border-color 0.22s ease;
+      border-top: 1px solid transparent;
+    }
+
+    .ui-search-panel.is-expanded .ui-search-panel__body {
+      grid-template-rows: 1fr;
+      border-top-color: var(--color-border);
+    }
+
+    .ui-search-panel__body-inner {
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* padding は is-expanded と連動させない（閉じ始めで padding だけ消えると空きが見える） */
+    .ui-search-panel__body-inner > .ui-form-grid--filters {
+      min-height: 0;
+      padding: var(--space-md) var(--space-lg) var(--space-lg);
+    }
+
+    .ui-form-grid--filters {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+
+    .ui-search-panel__summary {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-xs) var(--space-sm);
+      padding: 0 var(--space-lg) var(--space-md);
+    }
+
+    .ui-search-panel__summary:empty {
+      display: none;
+    }
+
+    .ui-search-panel__summary-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-muted);
+      margin-right: var(--space-xs);
+    }
+
+    .ui-filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      max-width: 100%;
+      padding: 0.2rem 0.35rem 0.2rem 0.55rem;
+      border: 1px solid rgba(5, 47, 77, 0.14);
+      border-radius: 999px;
+      background: var(--color-surface-soft);
+      color: var(--color-text);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .ui-filter-chip__text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .ui-filter-chip__remove {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.35rem;
+      height: 1.35rem;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--color-muted);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .ui-filter-chip__remove:hover {
+      background: rgba(5, 47, 77, 0.08);
+      color: var(--color-text);
+    }
+
+    .ui-filter-chip__remove .material-symbols-rounded {
+      font-size: 1rem;
+    }
+
     .ui-field--align-end {
       align-self: end;
     }
@@ -978,6 +1144,14 @@
     }
 
     /* section-block 内の縦リズム（サンプルページ共通） */
+    .section-block > .section-header + .ui-search-panel {
+      margin-top: calc(-1 * var(--space-sm));
+    }
+
+    .section-block > .ui-search-panel + .ui-field {
+      margin-top: var(--space-lg);
+    }
+
     .section-block > .section-header + .ui-alert {
       margin-bottom: var(--space-lg);
     }
@@ -2036,8 +2210,86 @@
     .text-uppercase { text-transform: uppercase; }
     .text-capitalized { text-transform: capitalize; }
 
+    @media (max-width: 1200px) {
+      .ui-form-grid--filters {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .ui-form-grid--filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .ui-search-panel__toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      /* 縦並び時は flex-grow が「高さ」に効くため、内容分の高さに留める */
+      .ui-search-panel__primary {
+        flex: 0 0 auto;
+        width: 100%;
+      }
+
+      .ui-search-panel__actions {
+        flex: 0 0 auto;
+        justify-content: flex-end;
+      }
+    }
+
     @media (max-width: 768px) {
       .ui-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ui-form-grid--filters {
+        grid-template-columns: 1fr;
+      }
+
+      .ui-search-panel__toolbar {
+        padding: var(--space-sm) var(--space-md);
+        gap: var(--space-sm);
+      }
+
+      .ui-search-panel__primary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-sm);
+      }
+
+      .ui-search-panel__primary .ui-field {
+        gap: 0.2rem;
+      }
+
+      .ui-search-panel .ui-label {
+        font-size: 11px;
+        line-height: 1.25;
+      }
+
+      .ui-search-panel .ui-control {
+        height: 36px;
+        min-height: 36px;
+        padding: 0 var(--space-sm);
+        font-size: 16px;
+        line-height: 1.2;
+      }
+
+      .ui-search-panel :is(button, a)[class*="ui-btn--"] {
+        min-height: 36px;
+        padding: 0 var(--space-sm);
+      }
+
+      .ui-search-panel__summary {
+        padding: 0 var(--space-md) var(--space-sm);
+      }
+
+      .ui-search-panel__body-inner > .ui-form-grid--filters {
+        padding: var(--space-sm) var(--space-md) var(--space-md);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ui-search-panel__primary {
         grid-template-columns: 1fr;
       }
     }

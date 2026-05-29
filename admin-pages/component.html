@@ -162,6 +162,7 @@
           <a href="#nav" class="is-active"><span class="material-symbols-rounded" aria-hidden="true">menu</span>ナビ</a>
           <a href="#typography"><span class="material-symbols-rounded" aria-hidden="true">text_fields</span>タイポグラフィ</a>
           <a href="#forms"><span class="material-symbols-rounded" aria-hidden="true">tune</span>フォーム</a>
+          <a href="#list-search"><span class="material-symbols-rounded" aria-hidden="true">filter_list</span>一覧検索</a>
           <a href="#buttons"><span class="material-symbols-rounded" aria-hidden="true">radio_button_checked</span>ボタン</a>
           <a href="#cards"><span class="material-symbols-rounded" aria-hidden="true">grid_view</span>カード</a>
           <a href="#lists"><span class="material-symbols-rounded" aria-hidden="true">view_list</span>リスト</a>
@@ -348,6 +349,122 @@
                 <span class="ui-badge">ステータス</span>
               </div>
             </form>
+          </div>
+        </section>
+
+        <section id="list-search" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <div>
+                <h2 class="section-title">一覧検索パネル</h2>
+                <p class="section-subtitle">`.ui-search-panel` — 条件が多い一覧向け</p>
+              </div>
+              <a class="ui-btn--outline ui-btn--primary" href="../pages/clients.html">
+                <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                利用会社一覧で確認
+              </a>
+            </div>
+
+            <div class="ui-alert ui-alert--info">
+              <span class="material-symbols-rounded" aria-hidden="true">info</span>
+              <div>
+                <p class="title">使い方</p>
+                <p class="text">よく使う条件はツールバーに常時表示し、残りは「詳細条件」で折りたたみます。検索実行後はパネルを閉じ、適用中の条件はチップで一覧直上に要約表示します。</p>
+              </div>
+            </div>
+
+            <form class="ui-search-panel" action="#" method="get" data-search-panel aria-label="一覧検索パネル（サンプル）">
+              <div class="ui-search-panel__toolbar">
+                <div class="ui-search-panel__primary">
+                  <div class="ui-field" data-filter-field data-filter-label="キーワード">
+                    <label class="ui-label" for="demo-filter-q">キーワード</label>
+                    <input id="demo-filter-q" class="ui-control" type="search" name="q" placeholder="名称・コード" autocomplete="off" />
+                  </div>
+                  <div class="ui-field" data-filter-field data-filter-label="担当者">
+                    <label class="ui-label" for="demo-filter-owner">担当者</label>
+                    <input id="demo-filter-owner" class="ui-control" type="search" name="owner" placeholder="担当者名" autocomplete="off" />
+                  </div>
+                </div>
+                <div class="ui-search-panel__actions">
+                  <button type="submit" class="ui-btn--primary">
+                    <span class="material-symbols-rounded" aria-hidden="true">search</span>
+                    検索
+                  </button>
+                  <button type="reset" class="ui-btn--outline">クリア</button>
+                  <button
+                    type="button"
+                    class="ui-btn--outline ui-search-panel__toggle"
+                    data-search-panel-toggle
+                    aria-expanded="false"
+                    aria-controls="demo-search-advanced"
+                  >
+                    <span class="material-symbols-rounded ui-search-panel__chevron" aria-hidden="true">expand_more</span>
+                    <span data-search-panel-toggle-label>詳細条件を表示</span>
+                    <span class="ui-search-panel__adv-count" data-search-panel-adv-count hidden>0</span>
+                  </button>
+                </div>
+              </div>
+
+              <div id="demo-search-advanced" class="ui-search-panel__body" data-search-panel-body aria-hidden="true">
+                <div class="ui-search-panel__body-inner">
+                  <div class="ui-form-grid ui-form-grid--filters">
+                    <div class="ui-field" data-filter-field data-filter-label="状態">
+                      <label class="ui-label" for="demo-filter-status">状態</label>
+                      <select id="demo-filter-status" class="ui-control" name="status">
+                        <option value="">すべて</option>
+                        <option value="open">進行中</option>
+                        <option value="done">完了</option>
+                      </select>
+                    </div>
+                    <div class="ui-field" data-filter-field data-filter-label="優先度">
+                      <label class="ui-label" for="demo-filter-priority">優先度</label>
+                      <select id="demo-filter-priority" class="ui-control" name="priority">
+                        <option value="">すべて</option>
+                        <option value="high">高</option>
+                        <option value="low">低</option>
+                      </select>
+                    </div>
+                    <div class="ui-field" data-filter-field data-filter-label="更新日（開始）">
+                      <label class="ui-label" for="demo-filter-from">更新日（開始）</label>
+                      <input id="demo-filter-from" class="ui-control" type="date" name="from" />
+                    </div>
+                    <div class="ui-field" data-filter-field data-filter-label="更新日（終了）">
+                      <label class="ui-label" for="demo-filter-to">更新日（終了）</label>
+                      <input id="demo-filter-to" class="ui-control" type="date" name="to" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-search-panel__summary" data-search-panel-summary aria-live="polite"></div>
+            </form>
+
+            <div class="ui-field">
+              <span class="ui-label">検索結果（ダミー）</span>
+              <div class="ui-scroll-x">
+                <table class="ui-table ui-table--striped ui-table--hover" aria-label="サンプル一覧">
+                  <thead>
+                    <tr>
+                      <th scope="col">名称</th>
+                      <th scope="col">担当</th>
+                      <th scope="col">状態</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>サンプル行 A</td>
+                      <td>真鍋</td>
+                      <td>進行中</td>
+                    </tr>
+                    <tr>
+                      <td>サンプル行 B</td>
+                      <td>山田</td>
+                      <td>完了</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </section>
 
