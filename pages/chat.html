@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotherMap 工事スレッド</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body>
+  <div id="top" class="admin-layout admin-layout--chat">
+    <header class="admin-header">
+      <button type="button" class="sidebar-toggle" data-toggle="sidebar" aria-label="サイドバーを開閉" aria-expanded="false">
+        <span class="material-symbols-rounded" aria-hidden="true">menu</span>
+      </button>
+
+      <div class="admin-logo">
+        <a href="../index.html" aria-label="MotherMap">
+          <img src="../assets/images/mothermap_logo.png" alt="MotherMap" class="logo-full" />
+          <img src="../assets/images/mothermap_logo_mini.png" alt="" class="logo-mini" aria-hidden="true" />
+        </a>
+      </div>
+
+      <nav class="admin-navbar" aria-label="ヘッダーメニュー">
+        <ul>
+          <li>
+            <a href="../index.html" aria-label="ダッシュボード">
+              <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+              <span class="admin-navbar-label">ダッシュボード</span>
+            </a>
+          </li>
+          <li>
+            <a href="chat.html" class="is-active" aria-current="page" aria-label="工事スレッド">
+              <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+              <span class="admin-navbar-label">工事スレッド</span>
+            </a>
+          </li>
+          <li>
+            <a href="schedule.html" aria-label="工程表">
+              <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+              <span class="admin-navbar-label">工程表</span>
+            </a>
+          </li>
+          <li>
+            <a href="calendar.html" aria-label="予定表">
+              <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+              <span class="admin-navbar-label">予定表</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="タスク管理">
+              <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+              <span class="admin-navbar-label">タスク管理</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="書類管理">
+              <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+              <span class="admin-navbar-label">書類管理</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="設定">
+              <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+              <span class="admin-navbar-label">設定</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="admin-header-actions">
+        <button type="button" data-action="notify" aria-label="通知">
+          <span class="material-symbols-rounded" aria-hidden="true">notifications</span>
+          <span class="notification-badge" aria-hidden="true"></span>
+        </button>
+
+        <button type="button" data-action="help" aria-label="ヘルプ">
+          <span class="material-symbols-rounded" aria-hidden="true">help</span>
+        </button>
+
+        <div class="admin-user-menu">
+          <button type="button" data-toggle="user-menu" aria-expanded="false" aria-controls="user-dropdown">
+            <span class="avatar">真</span>
+            <span class="user-name">真鍋 智彦</span>
+            <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+          </button>
+
+          <div id="user-dropdown" class="dropdown-menu" data-menu="user" role="menu">
+            <a href="#" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">person</span>
+              プロフィール
+            </a>
+            <a href="#" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">manage_accounts</span>
+              アカウント設定
+            </a>
+            <button type="button" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">logout</span>
+              ログアウト
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="admin-iconbar" aria-label="グローバルメニュー">
+      <ul>
+        <li>
+          <a href="../index.html" aria-label="ダッシュボード" data-tooltip="ダッシュボードへ">
+            <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="chat.html" class="is-active" aria-current="page" aria-label="工事スレッド" data-tooltip="工事スレッドへ">
+            <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+          </a>
+        </li>
+        <li>
+          <a href="schedule.html" aria-label="工程表" data-tooltip="工程表へ">
+            <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="calendar.html" aria-label="予定表" data-tooltip="予定表へ">
+            <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="タスク管理" data-tooltip="タスク管理へ">
+            <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="書類管理" data-tooltip="書類管理へ">
+            <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="設定" data-tooltip="設定へ">
+            <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <aside class="admin-sidebar admin-sidebar--threads">
+      <section>
+        <h2>工事スレッド</h2>
+
+        <nav class="thread-nav" aria-label="工事スレッド一覧">
+          <ul class="list">
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">forum</span>
+                <span class="body">
+                  <span class="name">全体</span>
+                </span>
+              </a>
+            </li>
+
+            <li class="item is-active">
+              <a href="chat.html" class="link is-active" aria-current="page">
+                <span class="icon material-symbols-rounded" aria-hidden="true">apartment</span>
+                <span class="body">
+                  <span class="name">〇●マンションA</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
+              </a>
+              <ul class="sub" aria-label="〇●マンションA の関連ページ">
+                <li>
+                  <a href="#">
+                    <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+                    全体工程管理
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
+                    詳細工程管理
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="material-symbols-rounded" aria-hidden="true">construction</span>
+                    残工事情報
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">apartment</span>
+                <span class="body">
+                  <span class="name">△■マンションA</span>
+                  <span class="meta">メンション 1件</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
+              </a>
+            </li>
+
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">location_city</span>
+                <span class="body">
+                  <span class="name">×●コーポA</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
+              </a>
+            </li>
+
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">apartment</span>
+                <span class="body">
+                  <span class="name">〇●マンションA</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
+              </a>
+            </li>
+
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">apartment</span>
+                <span class="body">
+                  <span class="name">〇●マンションA</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="admin-main">
+      <div class="dashboard-content dashboard-content--chat">
+        <div class="chat-view-switch">
+          <input type="radio" name="chat-view" id="chat-view-chat" class="input" checked />
+          <input type="radio" name="chat-view" id="chat-view-info" class="input" />
+          <div class="tabs" role="tablist" aria-label="チャット画面の表示切替">
+            <label for="chat-view-chat" class="tab" role="tab">
+              <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+              チャット
+            </label>
+            <label for="chat-view-info" class="tab" role="tab">
+              <span class="material-symbols-rounded" aria-hidden="true">info</span>
+              工事情報
+            </label>
+          </div>
+        </div>
+
+        <div class="chat-board">
+          <div class="main" id="chat-panel">
+            <div class="ui-chat" aria-label="〇●マンションA チャット">
+              <div class="header" role="group" aria-label="スレッド情報">
+                <div class="topic">
+                  <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
+                  <div class="ui-min-w-0">
+                    <p class="name">〇●マンションA</p>
+                    <p class="sub">参加者: 真鍋 / 山田 / 前田　・　未読 2件</p>
+                  </div>
+                </div>
+                <div class="toolbar ui-btn-row">
+                  <a href="schedule.html" class="ui-btn--outline ui-btn--primary">
+                    <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+                    工程表
+                  </a>
+                  <a href="calendar.html" class="ui-btn--outline ui-btn--primary">
+                    <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+                    予定表
+                  </a>
+                  <button type="button" class="ui-btn--outline ui-btn--primary" data-message="タスク一覧へ">
+                    <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+                    タスク一覧
+                  </button>
+                  <button type="button" class="ui-btn--outline ui-btn--primary" data-message="書類管理へ">
+                    <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+                    書類管理
+                  </button>
+                </div>
+              </div>
+
+              <div class="thread" role="log" aria-live="polite" aria-label="メッセージ一覧">
+                <div class="msg">
+                  <div class="avatar" aria-hidden="true">前</div>
+                  <div class="bubble">
+                    <div class="meta">
+                      <span class="who">前田悠斗Cuon</span>
+                      <span class="time">2月16日 16:53</span>
+                    </div>
+                    <div class="message">
+                      お疲れさまです。301号室の入居者様より、工事日程の変更希望がありました。ご確認をお願いします。
+                    </div>
+                    <div class="row-actions" aria-label="メッセージ操作">
+                      <button type="button" class="action" aria-label="リアクション">
+                        <span class="material-symbols-rounded" aria-hidden="true">add_reaction</span>
+                        <span class="label">リアクション</span>
+                      </button>
+                      <button type="button" class="action" aria-label="返信">
+                        <span class="material-symbols-rounded" aria-hidden="true">reply</span>
+                        <span class="label">返信</span>
+                      </button>
+                      <button type="button" class="action" aria-label="その他">
+                        <span class="material-symbols-rounded" aria-hidden="true">more_horiz</span>
+                        <span class="label">その他</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="msg">
+                  <div class="avatar" aria-hidden="true">真</div>
+                  <div class="bubble">
+                    <div class="meta">
+                      <span class="who">真鍋 智彦</span>
+                      <span class="time">2月16日 17:02</span>
+                    </div>
+                    <div class="message">
+                      承知しました。コールセンター経由でチケットを起票します。施工業者の方にも共有します。
+                    </div>
+                    <div class="row-actions" aria-label="メッセージ操作">
+                      <button type="button" class="action" aria-label="リアクション">
+                        <span class="material-symbols-rounded" aria-hidden="true">add_reaction</span>
+                        <span class="label">リアクション</span>
+                      </button>
+                      <button type="button" class="action" aria-label="返信">
+                        <span class="material-symbols-rounded" aria-hidden="true">reply</span>
+                        <span class="label">返信</span>
+                      </button>
+                      <button type="button" class="action" aria-label="その他">
+                        <span class="material-symbols-rounded" aria-hidden="true">more_horiz</span>
+                        <span class="label">その他</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="msg">
+                  <div class="avatar" aria-hidden="true">CS</div>
+                  <div class="bubble">
+                    <div class="meta">
+                      <span class="who">コールセンター</span>
+                      <span class="time">2月16日 17:10</span>
+                    </div>
+                    <div class="message">
+                      <div class="ui-chat-embed" role="group" aria-label="チケット">
+                        <p class="lead">コールセンターからチケットが作成されました。</p>
+                        <p class="title">301号室の日程変更の確認</p>
+                        <p class="to">to 施工業者</p>
+                        <div class="comment">
+                          <p class="heading">施工業者のコメント</p>
+                          <p class="text">
+                            現地確認のうえ、2/20（木）午前中であれば対応可能です。養生の影響範囲は301号室前のみで問題ありません。
+                          </p>
+                        </div>
+                        <div class="ui-field">
+                          <label class="ui-label" for="ticket-reply">返信内容</label>
+                          <textarea id="ticket-reply" class="ui-control" rows="3" placeholder="返信内容を入力"></textarea>
+                        </div>
+                        <button type="button" class="ui-btn--primary" data-message="チケットへ返信しました">
+                          <span class="material-symbols-rounded" aria-hidden="true">send</span>
+                          送信
+                        </button>
+                      </div>
+                    </div>
+                    <div class="row-actions" aria-label="メッセージ操作">
+                      <button type="button" class="action" aria-label="リアクション">
+                        <span class="material-symbols-rounded" aria-hidden="true">add_reaction</span>
+                        <span class="label">リアクション</span>
+                      </button>
+                      <button type="button" class="action" aria-label="返信">
+                        <span class="material-symbols-rounded" aria-hidden="true">reply</span>
+                        <span class="label">返信</span>
+                      </button>
+                      <button type="button" class="action" aria-label="その他">
+                        <span class="material-symbols-rounded" aria-hidden="true">more_horiz</span>
+                        <span class="label">その他</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="divider is-unread" role="separator"><span>未読</span></div>
+
+                <div class="msg">
+                  <div class="avatar" aria-hidden="true">山</div>
+                  <div class="bubble">
+                    <div class="meta">
+                      <span class="who">山田（施工業者）</span>
+                      <span class="time">2月17日 09:15</span>
+                    </div>
+                    <div class="message">
+                      現地確認のうえ、2/20（木）午前中であれば対応可能です。養生の影響範囲は301号室前のみで問題ありません。
+                    </div>
+                    <div class="row-actions" aria-label="メッセージ操作">
+                      <button type="button" class="action" aria-label="リアクション">
+                        <span class="material-symbols-rounded" aria-hidden="true">add_reaction</span>
+                        <span class="label">リアクション</span>
+                      </button>
+                      <button type="button" class="action" aria-label="返信">
+                        <span class="material-symbols-rounded" aria-hidden="true">reply</span>
+                        <span class="label">返信</span>
+                      </button>
+                      <button type="button" class="action" aria-label="その他">
+                        <span class="material-symbols-rounded" aria-hidden="true">more_horiz</span>
+                        <span class="label">その他</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="msg">
+                  <div class="avatar" aria-hidden="true">佐</div>
+                  <div class="bubble">
+                    <div class="meta">
+                      <span class="who">佐藤</span>
+                      <span class="time">2月17日 10:42</span>
+                    </div>
+                    <div class="message">
+                      住民掲示板の差し替え案内を共有しました。写真は別スレッドにアップします。
+                    </div>
+                    <div class="reactions" aria-label="リアクション">
+                      <button type="button" class="reaction" aria-label="確認 1件">✅ 1</button>
+                    </div>
+                    <div class="row-actions" aria-label="メッセージ操作">
+                      <button type="button" class="action" aria-label="リアクション">
+                        <span class="material-symbols-rounded" aria-hidden="true">add_reaction</span>
+                        <span class="label">リアクション</span>
+                      </button>
+                      <button type="button" class="action" aria-label="返信">
+                        <span class="material-symbols-rounded" aria-hidden="true">reply</span>
+                        <span class="label">返信</span>
+                      </button>
+                      <button type="button" class="action" aria-label="その他">
+                        <span class="material-symbols-rounded" aria-hidden="true">more_horiz</span>
+                        <span class="label">その他</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <form class="composer" aria-label="メッセージ送信">
+                <div class="composer-row">
+                  <button type="button" class="ui-btn--outline" aria-label="ファイルを添付">
+                    <span class="material-symbols-rounded" aria-hidden="true">attach_file</span>
+                  </button>
+                  <input class="ui-control" type="text" placeholder="ここにメッセージ内容を入力" aria-label="メッセージ" />
+                  <button type="button" class="ui-btn--primary" data-message="送信しました" aria-label="送信">
+                    <span class="material-symbols-rounded" aria-hidden="true">arrow_upward</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <aside class="aside" id="info-panel" aria-label="工事関連情報">
+            <div class="section-block">
+              <div class="section-header">
+                <h2 class="section-title">工事概要</h2>
+                <button type="button" class="ui-btn--outline ui-btn--primary ui-btn--sm" data-message="詳細画面へ">
+                  詳細画面へ
+                </button>
+              </div>
+
+              <nav class="panel-tabs" role="tablist" aria-label="工事概要の表示切替">
+                <ul class="list">
+                  <li>
+                    <button type="button" class="tab" role="tab" aria-selected="false">工事</button>
+                  </li>
+                  <li>
+                    <button type="button" class="tab is-active" role="tab" aria-selected="true">物件</button>
+                  </li>
+                  <li>
+                    <button type="button" class="tab" role="tab" aria-selected="false">担当</button>
+                  </li>
+                  <li>
+                    <button type="button" class="tab" role="tab" aria-selected="false">撮影</button>
+                  </li>
+                  <li>
+                    <button type="button" class="tab" role="tab" aria-selected="false">オプション</button>
+                  </li>
+                </ul>
+              </nav>
+
+              <table class="ui-table ui-table--detail" aria-label="物件情報">
+                <tbody>
+                  <tr>
+                    <th scope="row">物件コード</th>
+                    <td>B-10482</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">管理番号</th>
+                    <td>MGT-2026-014</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">住所</th>
+                    <td>東京都〇〇区〇〇 1-2-3</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">戸数</th>
+                    <td>48戸</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">担当</th>
+                    <td>真鍋 智彦</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="ui-btn-row">
+                <a href="schedule.html" class="ui-btn--outline ui-btn--primary">全体工程管理</a>
+                <a href="schedule.html" class="ui-btn--outline ui-btn--primary">詳細工程管理</a>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-header">
+                <h2 class="section-title">タスク管理</h2>
+                <button
+                  type="button"
+                  class="ui-btn--outline ui-btn--primary ui-btn--sm"
+                  data-modal-target="#chat-task-status-modal"
+                  aria-label="タスクのステータス変更"
+                >ステータス変更</button>
+              </div>
+
+              <div class="document-grid" aria-label="タスク一覧">
+                <article class="document-box document-box--widget is-status-done">
+                  <p class="label">工事関連資料配布</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-done">完了</span></p>
+                  <p class="meta">期限：2026/01/05</p>
+                </article>
+                <article class="document-box document-box--widget is-status-pending">
+                  <p class="label">入館手続き確認</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-pending">未着手</span></p>
+                  <p class="meta">期限：2026/01/12</p>
+                </article>
+                <article class="document-box document-box--widget is-status-progress">
+                  <p class="label">養生範囲の写真共有</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-progress">進行中</span></p>
+                  <p class="meta">期限：2026/01/15</p>
+                </article>
+                <article class="document-box document-box--widget is-status-done">
+                  <p class="label">住民説明会の案内</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-done">完了</span></p>
+                  <p class="meta">期限：2026/01/08</p>
+                </article>
+                <article class="document-box document-box--widget is-status-pending">
+                  <p class="label">産廃搬出スケジュール</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-pending">未着手</span></p>
+                  <p class="meta">期限：2026/01/20</p>
+                </article>
+                <article class="document-box document-box--widget is-status-pending">
+                  <p class="label">完了報告ドラフト</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-pending">未着手</span></p>
+                  <p class="meta">期限：2026/02/28</p>
+                </article>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-header">
+                <h2 class="section-title">提出書類</h2>
+                <button type="button" class="ui-btn--outline ui-btn--primary ui-btn--sm" data-message="提出書類管理へ">
+                  提出書類管理へ
+                </button>
+              </div>
+
+              <div class="document-grid" aria-label="提出書類一覧">
+                <article class="document-box document-box--widget is-status-done">
+                  <p class="label">提案書</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-done">登録済み</span></p>
+                  <p class="meta">期限：2026/01/05</p>
+                </article>
+                <article class="document-box document-box--widget is-status-pending">
+                  <p class="label">消防書類</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-pending">未登録</span></p>
+                  <p class="meta">期限：2026/01/12</p>
+                </article>
+                <article class="document-box document-box--widget is-status-done">
+                  <p class="label">代理店発注書</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-done">登録済み</span></p>
+                  <p class="meta">期限：2026/01/08</p>
+                </article>
+                <article class="document-box document-box--widget is-status-pending">
+                  <p class="label">住民案内・配布資料</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-pending">未登録</span></p>
+                  <p class="meta">期限：2026/01/15</p>
+                </article>
+                <article class="document-box document-box--widget is-status-done">
+                  <p class="label">受注書類</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-done">登録済み</span></p>
+                  <p class="meta">期限：2026/01/10</p>
+                </article>
+                <article class="document-box document-box--widget is-status-pending">
+                  <p class="label">産廃</p>
+                  <p class="value"><span class="ui-badge document-status-badge is-status-pending">未登録</span></p>
+                  <p class="meta">期限：2026/01/20</p>
+                </article>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <footer class="admin-footer">
+          <p>&copy; 2026 MotherMap. All rights reserved.</p>
+          <a href="#top">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_upward</span>
+            ページ上部へ
+          </a>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <div id="chat-task-status-modal" class="ui-modal-overlay" data-modal-overlay aria-hidden="true" hidden>
+    <div class="ui-modal ui-modal--schedule-items" role="dialog" aria-modal="true" aria-labelledby="chat-task-status-modal-title">
+      <div class="header">
+        <p class="title" id="chat-task-status-modal-title">タスク一覧</p>
+        <button type="button" class="close" data-modal-close aria-label="閉じる">
+          <span class="material-symbols-rounded" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="body">
+        <p class="modal-project">〇●マンションA（例）</p>
+        <div class="document-grid" aria-label="タスク一覧（ステータス変更）">
+          <article class="document-box document-box--item is-status-done">
+            <div class="document-box-head">
+              <p class="label">工事関連資料配布</p>
+              <span class="ui-badge document-status-badge is-status-done">完了</span>
+            </div>
+            <dl class="document-item-meta">
+              <div>
+                <dt>期限</dt>
+                <dd><time datetime="2026-01-05">2026/01/05</time></dd>
+              </div>
+              <div>
+                <dt>ステータス</dt>
+                <dd>
+                  <select class="ui-control" aria-label="工事関連資料配布のステータス">
+                    <option>未着手</option>
+                    <option>進行中</option>
+                    <option selected>完了</option>
+                  </select>
+                </dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="document-box document-box--item is-status-pending">
+            <div class="document-box-head">
+              <p class="label">入館手続き確認</p>
+              <span class="ui-badge document-status-badge is-status-pending">未着手</span>
+            </div>
+            <dl class="document-item-meta">
+              <div>
+                <dt>期限</dt>
+                <dd><time datetime="2026-01-12">2026/01/12</time></dd>
+              </div>
+              <div>
+                <dt>ステータス</dt>
+                <dd>
+                  <select class="ui-control" aria-label="入館手続き確認のステータス">
+                    <option selected>未着手</option>
+                    <option>進行中</option>
+                    <option>完了</option>
+                  </select>
+                </dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="document-box document-box--item is-status-progress">
+            <div class="document-box-head">
+              <p class="label">養生範囲の写真共有</p>
+              <span class="ui-badge document-status-badge is-status-progress">進行中</span>
+            </div>
+            <dl class="document-item-meta">
+              <div>
+                <dt>期限</dt>
+                <dd><time datetime="2026-01-15">2026/01/15</time></dd>
+              </div>
+              <div>
+                <dt>ステータス</dt>
+                <dd>
+                  <select class="ui-control" aria-label="養生範囲の写真共有のステータス">
+                    <option>未着手</option>
+                    <option selected>進行中</option>
+                    <option>完了</option>
+                  </select>
+                </dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="document-box document-box--item is-status-done">
+            <div class="document-box-head">
+              <p class="label">住民説明会の案内</p>
+              <span class="ui-badge document-status-badge is-status-done">完了</span>
+            </div>
+            <dl class="document-item-meta">
+              <div>
+                <dt>期限</dt>
+                <dd><time datetime="2026-01-08">2026/01/08</time></dd>
+              </div>
+              <div>
+                <dt>ステータス</dt>
+                <dd>
+                  <select class="ui-control" aria-label="住民説明会の案内のステータス">
+                    <option>未着手</option>
+                    <option>進行中</option>
+                    <option selected>完了</option>
+                  </select>
+                </dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="document-box document-box--item is-status-pending">
+            <div class="document-box-head">
+              <p class="label">産廃搬出スケジュール</p>
+              <span class="ui-badge document-status-badge is-status-pending">未着手</span>
+            </div>
+            <dl class="document-item-meta">
+              <div>
+                <dt>期限</dt>
+                <dd><time datetime="2026-01-20">2026/01/20</time></dd>
+              </div>
+              <div>
+                <dt>ステータス</dt>
+                <dd>
+                  <select class="ui-control" aria-label="産廃搬出スケジュールのステータス">
+                    <option selected>未着手</option>
+                    <option>進行中</option>
+                    <option>完了</option>
+                  </select>
+                </dd>
+              </div>
+            </dl>
+          </article>
+
+          <article class="document-box document-box--item is-status-pending">
+            <div class="document-box-head">
+              <p class="label">完了報告ドラフト</p>
+              <span class="ui-badge document-status-badge is-status-pending">未着手</span>
+            </div>
+            <dl class="document-item-meta">
+              <div>
+                <dt>期限</dt>
+                <dd><time datetime="2026-02-28">2026/02/28</time></dd>
+              </div>
+              <div>
+                <dt>ステータス</dt>
+                <dd>
+                  <select class="ui-control" aria-label="完了報告ドラフトのステータス">
+                    <option selected>未着手</option>
+                    <option>進行中</option>
+                    <option>完了</option>
+                  </select>
+                </dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+      </div>
+      <div class="footer">
+        <button type="button" class="ui-btn--outline" data-modal-close>閉じる</button>
+        <button
+          type="button"
+          class="ui-btn--primary"
+          data-chat-task-save
+          data-message="ステータスを変更しました（デモ）"
+          data-modal-close
+        >変更を保存</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" data-overlay hidden></div>
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/chat.js" defer></script>
+</body>
+</html>

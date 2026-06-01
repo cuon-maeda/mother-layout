@@ -10,7 +10,7 @@
 |------|------|
 | スタイルシート | `assets/css/styles.css` |
 | エントリ HTML | `index.html`（ルート） |
-| その他ページ | `admin-pages/*.html`（例: `page-index.html`, `form-basic.html`, `list-basic.html`, `detail-basic.html`, `component.html` ほか） |
+| その他ページ | `admin-pages/*.html`（例: `page-index.html`, `form-basic.html`, `list-basic.html`, `detail-basic.html`, `component.html` ほか）、業務画面サンプルは `pages/*.html`（例: `chat.html`, `schedule.html`） |
 | スクリプト | `assets/js/app.js` |
 
 HTML から CSS は相対パスで読み込みます（ルート: `assets/css/styles.css`、`admin-pages/`: `../assets/css/styles.css`）。
@@ -105,7 +105,11 @@ HTML から CSS は相対パスで読み込みます（ルート: `assets/css/st
 
 意味のあるまとまりは、短い **ケバブケースのブロック名**でよいです。
 
-例: `scope-field`, `summary-box`, `info-row`, `document-box`, `content-nav`, `dashboard-section`, `meta-text`
+例: `scope-field`, `summary-box`, `info-row`, `document-box`, `content-nav`, `dashboard-section`, `meta-text`, `thread-nav`, `chat-board`
+
+- **`thread-nav`**: 子は `.list` / `.item` / `.link` / `.sub` など短名。選択中（`.item.is-active`）のみ `.sub` を表示。
+- **`chat-board`**: 子は `.main`（チャット列）と `.aside`（右ウィジェット列）。修飾は `dashboard-content--chat` など `ui-*` / `admin-*` と同様に `--`。
+- **`panel-tabs`**: 狭いパネル（例: 工事概要）用のタブ。`ui-tabs` の代わりに **3列グリッド**（モバイルは2列）。子は `.list` / `.tab`。
 
 ### 3.4 状態クラス（`is-*`）
 

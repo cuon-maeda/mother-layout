@@ -491,6 +491,19 @@
     const deadline = item?.deadline || '';
     const deadlineLabel = deadline ? formatDateLabel(deadline) : '—';
     const statusAttr = kind === 'tasks' ? 'data-schedule-task-status' : 'data-schedule-document-status';
+    const statusControl =
+      kind === 'documents'
+        ? ''
+        : `
+          <div>
+            <dt>ステータス</dt>
+            <dd>
+              <select class="ui-control" ${statusAttr} aria-label="${escapeHtml(label)}のステータス">
+                ${renderStatusOptions(status)}
+              </select>
+            </dd>
+          </div>
+        `;
 
     return `
       <article class="document-box document-box--item ${statusClass}" data-status="${escapeHtml(status)}" data-project-id="${escapeHtml(projectId)}" data-item-kind="${kind}" data-item-key="${escapeHtml(itemKey)}">
@@ -503,14 +516,7 @@
             <dt>期限</dt>
             <dd><time datetime="${escapeHtml(deadline)}">${escapeHtml(deadlineLabel)}</time></dd>
           </div>
-          <div>
-            <dt>ステータス</dt>
-            <dd>
-              <select class="ui-control" ${statusAttr} aria-label="${escapeHtml(label)}のステータス">
-                ${renderStatusOptions(status)}
-              </select>
-            </dd>
-          </div>
+          ${statusControl}
         </dl>
       </article>
     `;
