@@ -18,7 +18,7 @@
       </button>
 
       <div class="admin-logo">
-        <a href="../index.html" aria-label="MotherMap">
+        <a href="dashboard.html" aria-label="MotherMap">
           <img src="../assets/images/mothermap_logo.png" alt="MotherMap" class="logo-full" />
           <img src="../assets/images/mothermap_logo_mini.png" alt="" class="logo-mini" aria-hidden="true" />
         </a>
@@ -27,7 +27,7 @@
       <nav class="admin-navbar" aria-label="ヘッダーメニュー">
         <ul>
           <li>
-            <a href="dashboard.html" class="is-active" aria-label="ダッシュボード">
+            <a href="dashboard.html" class="is-active" aria-current="page" aria-label="ダッシュボード">
               <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
               <span class="admin-navbar-label">ダッシュボード</span>
             </a>
@@ -50,6 +50,24 @@
               <span class="admin-navbar-label">予定表</span>
             </a>
           </li>
+          <li>
+            <a href="#" aria-label="タスク管理">
+              <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+              <span class="admin-navbar-label">タスク管理</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="書類管理">
+              <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+              <span class="admin-navbar-label">書類管理</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="設定">
+              <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+              <span class="admin-navbar-label">設定</span>
+            </a>
+          </li>
         </ul>
       </nav>
 
@@ -64,23 +82,18 @@
         </button>
 
         <div class="admin-user-menu">
-          <button
-            type="button"
-            data-toggle="user-menu"
-            aria-expanded="false"
-            aria-controls="user-dropdown"
-          >
+          <button type="button" data-toggle="user-menu" aria-expanded="false" aria-controls="user-dropdown">
             <span class="avatar">真</span>
             <span class="user-name">真鍋 智彦</span>
             <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
           </button>
 
           <div id="user-dropdown" class="dropdown-menu" data-menu="user" role="menu">
-            <a href="/profile" role="menuitem">
+            <a href="#" role="menuitem">
               <span class="material-symbols-rounded" aria-hidden="true">person</span>
               プロフィール
             </a>
-            <a href="/account" role="menuitem">
+            <a href="#" role="menuitem">
               <span class="material-symbols-rounded" aria-hidden="true">manage_accounts</span>
               アカウント設定
             </a>
@@ -96,7 +109,7 @@
     <nav class="admin-iconbar" aria-label="グローバルメニュー">
       <ul>
         <li>
-          <a href="dashboard.html" class="is-active" aria-label="ダッシュボード" data-tooltip="ダッシュボードへ">
+          <a href="dashboard.html" class="is-active" aria-current="page" aria-label="ダッシュボード" data-tooltip="ダッシュボードへ">
             <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
           </a>
         </li>
@@ -113,6 +126,21 @@
         <li>
           <a href="calendar.html" aria-label="予定表" data-tooltip="予定表へ">
             <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="タスク管理" data-tooltip="タスク管理へ">
+            <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="書類管理" data-tooltip="書類管理へ">
+            <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="設定" data-tooltip="設定へ">
+            <span class="material-symbols-rounded" aria-hidden="true">settings</span>
           </a>
         </li>
       </ul>

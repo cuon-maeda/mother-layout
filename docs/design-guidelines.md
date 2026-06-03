@@ -192,8 +192,10 @@ UI の一時的な状態は **`is-` プレフィックス**を推奨します。
 静的プレビュー（`file://` やルート直下のサーバー）では次を揃えると迷いが減ります。
 
 - **アセット**: ルートは `assets/css/styles.css` 等、`admin-pages/` は `../assets/...`。
-- **`admin-navbar`**: トップレベルは各 `a` に `aria-label`。ラベル「**ページ**」は **`page-index.html`（ページ一覧）** へ。一覧の中では **基本フォーム** と **一覧** を同じグループとして扱う。開発用では **`admin-iconbar` の5アイコンと同じ並び・リンク先**に揃える。
-- **`admin-iconbar`**: **5 アイコン**（ダッシュボード → ページ → コンポーネント → モーダル → アイコンバーなし）。**ページ**は `page-index.html` へ。ホバー用に **`data-tooltip`**（タッチ主体では `:hover` ツールチップは出ない前提）。
+- **`admin-navbar` / `admin-iconbar`（`pages/` アプリ画面）**: **7 項目**を同じ並び・リンク先で揃える（ダッシュボード → 工事スレッド → 工程表 → 予定表 → タスク管理 → 書類管理 → 設定）。現在地は `is-active` と `aria-current="page"`。各 `a` に `aria-label`、アイコンバーには **`data-tooltip`**。
+- **`admin-navbar`（ルート `index.html` / `admin-pages/`）**: トップレベルは各 `a` に `aria-label`。ラベル「**ページ**」は **`page-index.html`（ページ一覧）** へ。開発用では **`admin-iconbar` の5アイコンと同じ並び・リンク先**に揃える。
+- **`admin-iconbar`（ルート / `admin-pages/`）**: **5 アイコン**（ダッシュボード → ページ → コンポーネント → モーダル → アイコンバーなし）。**ページ**は `page-index.html` へ。
+- **`admin-sidebar`（工事コンテキスト: `chat.html` / `detail-schedule.html` など）**: **`thread-nav`** で工事一覧。選択中の `.item` のみ `.sub`（全体工程管理・詳細工程管理・残工事情報）。グローバル項目はサイドバーに重ねない（ヘッダー / アイコンバー担当）。
 - **`admin-sidebar`（ページサンプル）**: **「ページ」**を `has-submenu` の親ボタンとし、子の **`submenu`** に **基本フォーム**・**一覧** のみを並べる。`page-index.html` 上では子に `is-active` は付けない（親のみ開いた状態）。
 - **`admin-layout--no-iconbar`**: `admin-iconbar` を置かない（意図したレイアウトのサンプル）。
 - **`admin-layout--no-sidebar`**: `admin-sidebar` を置かない。PC ではサイドバー列を確保しない（例: `pages/calendar.html`）。`admin-iconbar` がある場合はアイコンバー＋メインの2列。`--no-iconbar` と併用時はヘッダー＋メインのみ。

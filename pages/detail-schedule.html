@@ -148,55 +148,87 @@
 
     <aside class="admin-sidebar">
       <section>
-        <p class="detail-schedule-project">〇〇マンションA</p>
-        <nav class="admin-side-nav" aria-label="工事メニュー">
-          <ul>
-            <li>
-              <a href="chat.html">
-                <span class="material-symbols-rounded" aria-hidden="true">forum</span>
-                工事スレッド
+        <h2>工事スレッド</h2>
+
+        <nav class="thread-nav" aria-label="工事スレッド一覧">
+          <ul class="list">
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">forum</span>
+                <span class="body">
+                  <span class="name">全体</span>
+                </span>
               </a>
             </li>
-            <li>
-              <a href="schedule.html">
-                <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
-                工程表
+
+            <li class="item is-active">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">apartment</span>
+                <span class="body">
+                  <span class="name">〇●マンションA</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
+              </a>
+              <ul class="sub" aria-label="〇●マンションA の関連ページ">
+                <li>
+                  <a href="#">
+                    <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+                    全体工程管理
+                  </a>
+                </li>
+                <li>
+                  <a href="detail-schedule.html" class="is-active" aria-current="page">
+                    <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
+                    詳細工程管理
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="material-symbols-rounded" aria-hidden="true">construction</span>
+                    残工事情報
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">apartment</span>
+                <span class="body">
+                  <span class="name">△■マンションA</span>
+                  <span class="meta">メンション 1件</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
               </a>
             </li>
-            <li>
-              <a href="calendar.html">
-                <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
-                予定表
+
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">location_city</span>
+                <span class="body">
+                  <span class="name">×●コーポA</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
               </a>
             </li>
-            <li>
-              <a href="#">
-                <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
-                タスク管理
+
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">apartment</span>
+                <span class="body">
+                  <span class="name">〇●マンションA</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
               </a>
             </li>
-            <li>
-              <a href="#">
-                <span class="material-symbols-rounded" aria-hidden="true">folder</span>
-                書類管理
-              </a>
-            </li>
-            <li>
-              <a href="schedule.html">
-                <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
-                全体工程管理
-              </a>
-            </li>
-            <li>
-              <a href="detail-schedule.html" class="is-active" aria-current="page">
-                <span class="material-symbols-rounded" aria-hidden="true">grid_view</span>
-                詳細工程管理
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="material-symbols-rounded" aria-hidden="true">construction</span>
-                残工事情報
+
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">apartment</span>
+                <span class="body">
+                  <span class="name">〇●マンションA</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
               </a>
             </li>
           </ul>
@@ -208,7 +240,10 @@
       <div class="dashboard-content dashboard-content--wide">
         <section class="dashboard-section detail-schedule-page">
           <div class="section-header detail-schedule-head">
-            <h2 class="section-title">詳細工程管理</h2>
+            <div class="section-header-start">
+              <h2 class="section-title">詳細工程管理</h2>
+              <p class="meta-text">〇●マンションA</p>
+            </div>
             <div class="section-header-actions ui-btn-row">
               <button
                 type="button"
