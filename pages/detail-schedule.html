@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotherMap 詳細工程管理</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body>
+  <div id="top" class="admin-layout admin-layout--detail-schedule">
+    <header class="admin-header">
+      <button type="button" class="sidebar-toggle" data-toggle="sidebar" aria-label="サイドバーを開閉" aria-expanded="false">
+        <span class="material-symbols-rounded" aria-hidden="true">menu</span>
+      </button>
+
+      <div class="admin-logo">
+        <a href="dashboard.html" aria-label="MotherMap">
+          <img src="../assets/images/mothermap_logo.png" alt="MotherMap" class="logo-full" />
+          <img src="../assets/images/mothermap_logo_mini.png" alt="" class="logo-mini" aria-hidden="true" />
+        </a>
+      </div>
+
+      <nav class="admin-navbar" aria-label="ヘッダーメニュー">
+        <ul>
+          <li>
+            <a href="dashboard.html" aria-label="ダッシュボード">
+              <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+              <span class="admin-navbar-label">ダッシュボード</span>
+            </a>
+          </li>
+          <li>
+            <a href="chat.html" aria-label="工事スレッド">
+              <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+              <span class="admin-navbar-label">工事スレッド</span>
+            </a>
+          </li>
+          <li>
+            <a href="schedule.html" aria-label="工程表">
+              <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+              <span class="admin-navbar-label">工程表</span>
+            </a>
+          </li>
+          <li>
+            <a href="calendar.html" aria-label="予定表">
+              <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+              <span class="admin-navbar-label">予定表</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="タスク管理">
+              <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+              <span class="admin-navbar-label">タスク管理</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="書類管理">
+              <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+              <span class="admin-navbar-label">書類管理</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="設定">
+              <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+              <span class="admin-navbar-label">設定</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="admin-header-actions">
+        <button type="button" data-action="notify" aria-label="通知">
+          <span class="material-symbols-rounded" aria-hidden="true">notifications</span>
+          <span class="notification-badge" aria-hidden="true"></span>
+        </button>
+
+        <button type="button" data-action="help" aria-label="ヘルプ">
+          <span class="material-symbols-rounded" aria-hidden="true">help</span>
+        </button>
+
+        <div class="admin-user-menu">
+          <button type="button" data-toggle="user-menu" aria-expanded="false" aria-controls="user-dropdown">
+            <span class="avatar">真</span>
+            <span class="user-name">真鍋 智彦</span>
+            <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+          </button>
+
+          <div id="user-dropdown" class="dropdown-menu" data-menu="user" role="menu">
+            <a href="#" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">person</span>
+              プロフィール
+            </a>
+            <a href="#" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">manage_accounts</span>
+              アカウント設定
+            </a>
+            <button type="button" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">logout</span>
+              ログアウト
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="admin-iconbar" aria-label="グローバルメニュー">
+      <ul>
+        <li>
+          <a href="dashboard.html" aria-label="ダッシュボード" data-tooltip="ダッシュボードへ">
+            <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="chat.html" aria-label="工事スレッド" data-tooltip="工事スレッドへ">
+            <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+          </a>
+        </li>
+        <li>
+          <a href="schedule.html" aria-label="工程表" data-tooltip="工程表へ">
+            <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="calendar.html" aria-label="予定表" data-tooltip="予定表へ">
+            <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="タスク管理" data-tooltip="タスク管理へ">
+            <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="書類管理" data-tooltip="書類管理へ">
+            <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="設定" data-tooltip="設定へ">
+            <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <aside class="admin-sidebar">
+      <section>
+        <p class="detail-schedule-project">〇〇マンションA</p>
+        <nav class="admin-side-nav" aria-label="工事メニュー">
+          <ul>
+            <li>
+              <a href="chat.html">
+                <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+                工事スレッド
+              </a>
+            </li>
+            <li>
+              <a href="schedule.html">
+                <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+                工程表
+              </a>
+            </li>
+            <li>
+              <a href="calendar.html">
+                <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+                予定表
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+                タスク管理
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+                書類管理
+              </a>
+            </li>
+            <li>
+              <a href="schedule.html">
+                <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
+                全体工程管理
+              </a>
+            </li>
+            <li>
+              <a href="detail-schedule.html" class="is-active" aria-current="page">
+                <span class="material-symbols-rounded" aria-hidden="true">grid_view</span>
+                詳細工程管理
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="material-symbols-rounded" aria-hidden="true">construction</span>
+                残工事情報
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="admin-main">
+      <div class="dashboard-content dashboard-content--wide">
+        <section class="dashboard-section detail-schedule-page">
+          <div class="section-header detail-schedule-head">
+            <h2 class="section-title">詳細工程管理</h2>
+            <div class="section-header-actions ui-btn-row">
+              <button
+                type="button"
+                class="ui-btn--outline ui-btn--primary"
+                data-detail-schedule-toggle-view
+                aria-pressed="false"
+                aria-label="一覧表と工事枠表を切り替え"
+              >
+                <span class="material-symbols-rounded" aria-hidden="true">sync</span>
+                表示切替
+              </button>
+              <div class="detail-schedule-change-menu">
+                <button
+                  type="button"
+                  class="ui-btn--outline ui-btn--primary"
+                  data-detail-schedule-change-toggle
+                  aria-expanded="false"
+                  aria-controls="detail-schedule-change-dropdown"
+                  aria-haspopup="menu"
+                >
+                  変更
+                  <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+                </button>
+                <div
+                  id="detail-schedule-change-dropdown"
+                  class="dropdown-menu"
+                  role="menu"
+                >
+                  <a href="detail-schedule-room-layout.html" role="menuitem">
+                    <span class="material-symbols-rounded" aria-hidden="true">view_module</span>
+                    部屋構成変更
+                  </a>
+                  <a href="detail-schedule-process-info.html" role="menuitem">
+                    <span class="material-symbols-rounded" aria-hidden="true">edit_calendar</span>
+                    工程情報変更
+                  </a>
+                </div>
+              </div>
+              <button type="button" class="ui-btn--outline ui-btn--primary" data-detail-schedule-excel-export>
+                <span class="material-symbols-rounded" aria-hidden="true">download</span>
+                EXCEL出力
+              </button>
+            </div>
+          </div>
+
+          <div class="detail-schedule workspace" data-detail-schedule-workspace>
+              <div class="main">
+                <div class="detail-schedule-list-view" data-detail-schedule-list-view hidden>
+                  <dl class="detail-schedule-summary" aria-label="行程サマリー">
+                    <div class="detail-schedule-summary-item">
+                      <dt>共用部</dt>
+                      <dd data-detail-schedule-summary-common>2026/01/20 〜 2026/02/10</dd>
+                    </div>
+                    <div class="detail-schedule-summary-item">
+                      <dt>専有部</dt>
+                      <dd data-detail-schedule-summary-private>2026/01/27 〜 2026/01/31</dd>
+                    </div>
+                    <div class="detail-schedule-summary-item">
+                      <dt>住戸数</dt>
+                      <dd data-detail-schedule-summary-units>40</dd>
+                    </div>
+                    <div class="detail-schedule-summary-item">
+                      <dt>枠パターン</dt>
+                      <dd data-detail-schedule-summary-pattern>[09:00〜12:00] [13:00〜15:00] [15:00〜17:00] [18:00〜19:00]</dd>
+                    </div>
+                    <div class="detail-schedule-summary-item detail-schedule-summary-item--options">
+                      <dt>オプション工事</dt>
+                      <dd data-detail-schedule-summary-options>—</dd>
+                    </div>
+                  </dl>
+                  <ul class="slot-board-legend slot-board-legend--list" aria-label="一覧表の凡例">
+                    <li class="slot-board-legend-icons">
+                      <span class="slot-board-legend-entry">
+                        <span class="slot-room-icon slot-room-icon--history" aria-hidden="true"><span class="material-symbols-rounded">history</span></span>
+                        対応履歴あり
+                      </span>
+                      <span class="slot-board-legend-entry">
+                        <span class="slot-room-icon slot-room-icon--remarks" aria-hidden="true"><span class="material-symbols-rounded">sticky_note_2</span></span>
+                        部屋備考
+                      </span>
+                      <span class="slot-board-legend-entry">
+                        <span class="slot-room-priority" aria-hidden="true">優</span>
+                        優先工事
+                      </span>
+                    </li>
+                  </ul>
+                  <div class="ui-scroll-x">
+                    <table
+                      class="ui-table ui-table--striped ui-table--hover detail-schedule-list-table"
+                      aria-label="工事枠一覧"
+                    >
+                      <thead>
+                        <tr>
+                          <th scope="col">
+                            <span class="th-sort">工事日程<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col">
+                            <span class="th-sort">工事枠<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col">
+                            <span class="th-sort">部屋<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col">
+                            <span class="th-sort">受付状況<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col">
+                            <span class="th-sort">オプション工事<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col">
+                            <span class="th-sort">部屋備考<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col"><span class="visually-hidden">操作</span></th>
+                        </tr>
+                      </thead>
+                      <tbody data-detail-schedule-list-body></tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="detail-schedule-board-view" data-detail-schedule-board-view>
+                <div class="toolbar">
+                  <div class="toolbar-ng">
+                    <label class="mode-toggle ui-choice">
+                      <input type="checkbox" data-detail-schedule-ng-mode />
+                      NG枠設定モード
+                    </label>
+                    <p class="ng-mode-hint" data-ng-mode-hint hidden>空いているセル（点線枠）をクリックして NG 枠を設定できます。部屋が配置されているセルは設定できません。</p>
+                  </div>
+                  <button
+                    type="button"
+                    class="ui-btn--outline ui-btn--sm ui-btn--primary"
+                    data-modal-target="#detail-schedule-add-band-modal"
+                    data-detail-schedule-open-add-band
+                  >
+                    <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+                    時間帯追加
+                  </button>
+                </div>
+
+                <ul class="slot-board-legend" aria-label="工事枠の凡例">
+                  <li class="slot-board-legend-ng" data-ng-mode-legend hidden>
+                    <span class="sample slot-sample slot-sample--ng-target" aria-hidden="true"></span>空セル（クリックで NG 枠を設定）
+                    <span class="sample slot-sample slot-sample--ng-set" aria-hidden="true"><span class="material-symbols-rounded">close</span></span>NG 枠（設定済み）
+                  </li>
+                  <li>
+                    <span class="sample slot-sample slot-sample--ng">NG</span>NG 枠
+                    <span class="sample slot-sample slot-sample--unconfirmed">未</span>未確定
+                    <span class="sample slot-sample slot-sample--confirmed">確</span>確定
+                    <span class="sample slot-sample slot-sample--done">済</span>対応済み
+                  </li>
+                  <li class="slot-board-legend-icons">
+                    <span class="slot-board-legend-entry">
+                      <span class="slot-room-icon slot-room-icon--history" aria-hidden="true"><span class="material-symbols-rounded">history</span></span>
+                      対応履歴あり
+                    </span>
+                    <span class="slot-board-legend-entry">
+                      <span class="slot-room-icon slot-room-icon--remarks" aria-hidden="true"><span class="material-symbols-rounded">sticky_note_2</span></span>
+                      部屋備考
+                    </span>
+                    <span class="slot-board-legend-entry">
+                      <span class="slot-room-priority" aria-hidden="true">優</span>
+                      優先工事
+                    </span>
+                  </li>
+                </ul>
+
+                <div class="ui-scroll-x">
+                  <table class="ui-table slot-board" aria-label="工事枠スケジュール" data-detail-schedule-table>
+                    <thead>
+                      <tr data-detail-schedule-thead>
+                        <th scope="col" class="col-time">時間帯</th>
+                      </tr>
+                    </thead>
+                    <tbody data-detail-schedule-board></tbody>
+                  </table>
+                </div>
+
+                <div class="slot-board-actions" data-detail-schedule-actions hidden>
+                  <p class="hint">工事枠の変更があります。内容を確認して登録してください。</p>
+                  <div class="ui-btn-row">
+                    <button type="button" class="ui-btn--outline" data-detail-schedule-cancel>変更を破棄</button>
+                    <button type="button" class="ui-btn--primary" data-detail-schedule-register>登録</button>
+                  </div>
+                </div>
+                </div>
+
+                <div class="subsection">
+                  <h3 class="subsection-title">未定</h3>
+                  <div class="ui-scroll-x">
+                    <table class="ui-table ui-table--striped ui-table--hover pending-table" aria-label="未定の部屋一覧">
+                      <thead>
+                        <tr>
+                          <th scope="col">
+                            <span class="th-sort">部屋番号<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col">
+                            <span class="th-sort">部屋備考<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1005</td>
+                          <td>入居者不在のため日程調整中</td>
+                        </tr>
+                        <tr>
+                          <td>1102</td>
+                          <td>オプション申込あり（要確認）</td>
+                        </tr>
+                        <tr>
+                          <td>1208</td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="subsection">
+                  <h3 class="subsection-title">変更履歴(工事日程)</h3>
+                  <div class="ui-scroll-x">
+                    <table class="ui-table ui-table--striped ui-table--hover history-table" aria-label="変更履歴（工事日程）">
+                      <thead>
+                        <tr>
+                          <th scope="col" rowspan="2">
+                            <span class="th-sort">日付<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col" rowspan="2">
+                            <span class="th-sort">操作者<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col" rowspan="2">
+                            <span class="th-sort">対象<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col" colspan="2">変更内容</th>
+                        </tr>
+                        <tr>
+                          <th scope="col">変更前</th>
+                          <th scope="col">変更後</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>2026/01/15 14:32</td>
+                          <td>真鍋 智彦</td>
+                          <td>301</td>
+                          <td>1/27 09:00〜12:00</td>
+                          <td>1/28 13:00〜15:00</td>
+                        </tr>
+                        <tr>
+                          <td>2026/01/14 10:05</td>
+                          <td>山田 太郎</td>
+                          <td>301</td>
+                          <td>1/27 13:00〜15:00</td>
+                          <td>1/27 09:00〜12:00</td>
+                        </tr>
+                        <tr>
+                          <td>2026/01/12 16:48</td>
+                          <td>前田 悠斗</td>
+                          <td>505</td>
+                          <td>—</td>
+                          <td>1/27 09:00〜12:00</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="subsection">
+                  <h3 class="subsection-title">変更履歴(オプション申込)</h3>
+                  <div class="ui-scroll-x">
+                    <table class="ui-table ui-table--striped ui-table--hover history-table" aria-label="変更履歴（オプション申込）">
+                      <thead>
+                        <tr>
+                          <th scope="col" rowspan="2">
+                            <span class="th-sort">日付<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col" rowspan="2">
+                            <span class="th-sort">操作者<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col" rowspan="2">
+                            <span class="th-sort">対象<span class="material-symbols-rounded" aria-hidden="true">unfold_more</span></span>
+                          </th>
+                          <th scope="col" colspan="2">変更内容</th>
+                        </tr>
+                        <tr>
+                          <th scope="col">変更前</th>
+                          <th scope="col">変更後</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>2026/01/15 11:20</td>
+                          <td>真鍋 智彦</td>
+                          <td>301</td>
+                          <td>—</td>
+                          <td>オプション 1 式</td>
+                        </tr>
+                        <tr>
+                          <td>2026/01/13 09:15</td>
+                          <td>佐藤 花子</td>
+                          <td>804</td>
+                          <td>オプション 1 式</td>
+                          <td>オプション 2 式</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <aside class="aside" aria-label="部屋・行程の詳細" data-room-detail-aside>
+                <div class="section-block">
+                  <div class="section-header">
+                    <h3 class="section-title" data-room-detail-title>部屋詳細（301）</h3>
+                    <a
+                      href="room-detail.html?room=301"
+                      class="ui-btn--outline ui-btn--primary ui-btn--sm"
+                      data-room-detail-edit
+                    >編集</a>
+                  </div>
+
+                  <nav class="panel-tabs panel-tabs--2" role="tablist" aria-label="部屋詳細の表示切替" data-room-detail-tabs>
+                    <ul class="list">
+                      <li>
+                        <button type="button" class="tab is-active" role="tab" aria-selected="true" data-room-tab="概要">概要</button>
+                      </li>
+                      <li>
+                        <button type="button" class="tab" role="tab" aria-selected="false" data-room-tab="履歴">履歴</button>
+                      </li>
+                    </ul>
+                  </nav>
+
+                  <div class="room-tab-panels" data-room-tab-panels>
+                    <div class="room-tab-panel is-active" data-room-tab-panel="概要">
+                      <table class="ui-table ui-table--detail" aria-label="部屋の概要" data-room-overview-table>
+                        <tbody data-room-overview-body></tbody>
+                      </table>
+                    </div>
+
+                    <div class="room-tab-panel" data-room-tab-panel="履歴" hidden>
+                      <div class="ui-scroll-x">
+                        <table class="ui-table ui-table--striped" aria-label="部屋の履歴" data-room-history-table>
+                          <thead>
+                            <tr>
+                              <th scope="col">日付</th>
+                              <th scope="col">操作者</th>
+                              <th scope="col">内容</th>
+                            </tr>
+                          </thead>
+                          <tbody data-room-history-body></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="section-block">
+                  <div class="section-header">
+                    <h3 class="section-title">行程情報</h3>
+                  </div>
+
+                  <table class="ui-table ui-table--detail" aria-label="行程情報">
+                    <tbody>
+                      <tr>
+                        <th scope="row">共用部</th>
+                        <td data-detail-schedule-itinerary-common>2026/01/20 〜 2026/02/10</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">専有部</th>
+                        <td data-detail-schedule-itinerary-private>2026/01/27 〜 2026/01/31</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">住戸数</th>
+                        <td data-detail-schedule-itinerary-units>40</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">枠パターン</th>
+                        <td>
+                          <span data-slot-pattern>[09:00〜12:00] [13:00〜15:00] [15:00〜17:00] [18:00〜19:00]</span>
+                          <span class="slot-pattern-note" data-slot-pattern-note hidden></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">オプション工事</th>
+                        <td data-detail-schedule-itinerary-options>—</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </aside>
+          </div>
+        </section>
+
+        <footer class="admin-footer">
+          <p>&copy; 2026 MotherMap. All rights reserved.</p>
+          <a href="#top">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_upward</span>
+            ページ上部へ
+          </a>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="overlay" data-overlay hidden></div>
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <div id="detail-schedule-add-band-modal" class="ui-modal-overlay" data-modal-overlay aria-hidden="true" hidden>
+    <div class="ui-modal ui-modal--detail-schedule-band" role="dialog" aria-modal="true" aria-labelledby="detail-schedule-add-band-modal-title">
+      <div class="header">
+        <p class="title" id="detail-schedule-add-band-modal-title">時間帯を追加</p>
+        <button type="button" class="close" data-modal-close aria-label="閉じる">
+          <span class="material-symbols-rounded" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <form id="detail-schedule-add-band-form" class="body" data-detail-schedule-add-band-form>
+        <div class="ui-alert ui-alert--danger" data-detail-schedule-band-error hidden>
+          <span class="material-symbols-rounded" aria-hidden="true">error</span>
+          <div>
+            <p class="title">入力内容を確認してください</p>
+            <p class="text" data-detail-schedule-band-error-text>終了時刻は開始時刻より後にしてください。</p>
+          </div>
+        </div>
+        <div class="ui-form-grid">
+          <div class="ui-field">
+            <label class="ui-label" for="detail-schedule-band-start">開始時刻</label>
+            <input
+              id="detail-schedule-band-start"
+              class="ui-control"
+              type="time"
+              name="start"
+              value="09:00"
+              required
+            />
+          </div>
+          <div class="ui-field">
+            <label class="ui-label" for="detail-schedule-band-end">終了時刻</label>
+            <input
+              id="detail-schedule-band-end"
+              class="ui-control"
+              type="time"
+              name="end"
+              value="12:00"
+              required
+            />
+          </div>
+        </div>
+        <p class="meta-text">追加した時間帯は開始時刻の順に並び替えられます。</p>
+      </form>
+      <div class="footer">
+        <button type="button" class="ui-btn--outline" data-modal-close>キャンセル</button>
+        <button type="submit" class="ui-btn--primary" form="detail-schedule-add-band-form">追加</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/detail-schedule.js" defer></script>
+</body>
+</html>

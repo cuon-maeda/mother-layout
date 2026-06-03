@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MotherMap 管理ダッシュボード</title>
+  <title>MotherMap 制作物一覧</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
@@ -27,7 +27,13 @@
       <nav class="admin-navbar" aria-label="ヘッダーメニュー">
         <ul>
           <li>
-            <a href="index.html" class="is-active" aria-label="ダッシュボード">
+            <a href="index.html" class="is-active" aria-label="制作物一覧">
+              <span class="material-symbols-rounded" aria-hidden="true">folder_open</span>
+              <span class="admin-navbar-label">制作物一覧</span>
+            </a>
+          </li>
+          <li>
+            <a href="pages/dashboard.html" aria-label="ダッシュボード">
               <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
               <span class="admin-navbar-label">ダッシュボード</span>
             </a>
@@ -102,7 +108,12 @@
     <nav class="admin-iconbar" aria-label="グローバルメニュー">
       <ul>
         <li>
-          <a href="index.html" class="is-active" aria-label="ダッシュボード" data-tooltip="ダッシュボード（トップ）へ">
+          <a href="index.html" class="is-active" aria-label="制作物一覧" data-tooltip="制作物一覧（トップ）へ">
+            <span class="material-symbols-rounded" aria-hidden="true">folder_open</span>
+          </a>
+        </li>
+        <li>
+          <a href="pages/dashboard.html" aria-label="ダッシュボード" data-tooltip="管理ダッシュボードへ">
             <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
           </a>
         </li>
@@ -136,7 +147,13 @@
         <nav class="admin-side-nav" aria-label="管理メニュー">
           <ul>
             <li>
-              <a href="/dashboard" class="is-active">
+              <a href="index.html" class="is-active">
+                <span class="material-symbols-rounded" aria-hidden="true">folder_open</span>
+                制作物一覧
+              </a>
+            </li>
+            <li>
+              <a href="pages/dashboard.html">
                 <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
                 ダッシュボード
               </a>
@@ -166,13 +183,13 @@
               </a>
             </li>
             <li>
-              <a href="/schedule">
+              <a href="pages/schedule.html">
                 <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
                 工程表
               </a>
             </li>
             <li>
-              <a href="/calendar">
+              <a href="pages/calendar.html">
                 <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
                 予定表
               </a>
@@ -232,240 +249,165 @@
 
     <main class="admin-main">
       <div class="dashboard-content">
-        <section class="scope-bar" aria-label="スコープ選択">
+        <section class="scope-bar" aria-label="制作物情報">
           <div class="scope-field">
-            <label for="scope-select" class="label">スコープ</label>
-            <select id="scope-select">
-              <option>担当/全体</option>
-              <option>担当のみ</option>
-              <option>全体のみ</option>
+            <span class="label">制作物一覧</span>
+            <select aria-label="表示切り替え">
+              <option>すべて</option>
+              <option>業務画面のみ</option>
+              <option>認証のみ</option>
             </select>
           </div>
         </section>
 
-        <nav class="content-nav" aria-label="メインコンテンツ内メニュー">
-          <a href="#required-projects" class="is-active">
-            <span class="material-symbols-rounded" aria-hidden="true">priority_high</span>
-            確認が必要
-          </a>
-          <a href="#recent-chat">
-            <span class="material-symbols-rounded" aria-hidden="true">forum</span>
-            チャット
-          </a>
-          <a href="#remaining-tasks">
-            <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
-            残タスク
-          </a>
-          <a href="#missing-documents">
-            <span class="material-symbols-rounded" aria-hidden="true">folder</span>
-            未提出書類
-          </a>
-        </nav>
-
-        <section id="required-projects" class="dashboard-section">
-          <div class="section-block">
-            <h2 class="section-title">確認が必要な工事</h2>
-
-            <div class="summary-grid">
-              <article class="summary-box">
-                <span class="material-symbols-rounded" aria-hidden="true">pending_actions</span>
-                <p class="label">登録未完了</p>
-                <p class="value">8件</p>
-              </article>
-
-              <article class="summary-box">
-                <span class="material-symbols-rounded" aria-hidden="true">person_off</span>
-                <p class="label">未アサイン</p>
-                <p class="value">3件</p>
-              </article>
-
-              <article class="summary-box">
-                <span class="material-symbols-rounded" aria-hidden="true">running_with_errors</span>
-                <p class="label">工事遅延</p>
-                <p class="value">2件</p>
-              </article>
-
-              <article class="summary-box">
-                <span class="material-symbols-rounded" aria-hidden="true">inventory</span>
-                <p class="label">残工事</p>
-                <p class="value">7件</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="recent-chat" class="dashboard-section">
+        <section class="dashboard-section">
           <div class="section-block">
             <div class="section-header">
-              <h2 class="section-title">更新された工事スレッド</h2>
-              <button type="button" class="ui-btn--outline ui-btn--primary" data-message="工事スレッドへ">
-                <span class="material-symbols-rounded" aria-hidden="true">forum</span>
-                工事スレッドへ
-              </button>
+              <h2 class="section-title">pages 制作物一覧</h2>
+              <a class="ui-btn--outline ui-btn--primary" href="pages/dashboard.html">
+                <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+                管理ダッシュボードへ
+              </a>
             </div>
 
-            <div class="list-card-group">
-              <a href="#" class="info-row">
+            <div class="ui-alert ui-alert--info">
+              <span class="material-symbols-rounded" aria-hidden="true">info</span>
+              <div>
+                <p class="title">業務画面サンプル（pages/）</p>
+                <p class="text">ルートの index.html は開発用の制作物一覧です。実際の管理ダッシュボードは <code>pages/dashboard.html</code> にあります。admin-pages の UI サンプルはヘッダーの「ページ」から開けます。</p>
+              </div>
+            </div>
+
+            <p class="ui-label ui-label--mb-sm">認証</p>
+            <div class="list-card-group" aria-label="認証画面">
+              <a href="pages/login.html" class="info-row">
                 <div class="main">
-                  <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
-                  <span class="name">〇●マンションA</span>
+                  <span class="material-symbols-rounded" aria-hidden="true">login</span>
+                  <span class="name">ログイン</span>
                 </div>
                 <div class="meta">
-                  <span class="meta-text">未読　2件</span>
-                  <span class="meta-text">最終更新日：2026/01/15</span>
+                  <span class="meta-text">`login.html`</span>
+                  <span class="meta-text">ログイン画面</span>
                 </div>
               </a>
-
-              <a href="#" class="info-row">
+              <a href="pages/login-id-reminder.html" class="info-row">
                 <div class="main">
-                  <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
-                  <span class="name">△■マンションA</span>
+                  <span class="material-symbols-rounded" aria-hidden="true">badge</span>
+                  <span class="name">ログインIDをお忘れの方</span>
                 </div>
                 <div class="meta">
-                  <span class="meta-text">メンション　1件</span>
-                  <span class="meta-text">未読　2件</span>
-                  <span class="meta-text">最終更新日：2026/01/15</span>
+                  <span class="meta-text">`login-id-reminder.html`</span>
+                  <span class="meta-text">ID リマインダー</span>
                 </div>
               </a>
-
-              <a href="#" class="info-row">
+              <a href="pages/password-reminder.html" class="info-row">
                 <div class="main">
-                  <span class="material-symbols-rounded" aria-hidden="true">location_city</span>
-                  <span class="name">×●コーポA</span>
+                  <span class="material-symbols-rounded" aria-hidden="true">lock_reset</span>
+                  <span class="name">パスワードをお忘れの方</span>
                 </div>
                 <div class="meta">
-                  <span class="meta-text">未読　2件</span>
-                  <span class="meta-text">最終更新日：2026/01/15</span>
-                </div>
-              </a>
-
-              <a href="#" class="info-row">
-                <div class="main">
-                  <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
-                  <span class="name">〇●マンションA</span>
-                </div>
-                <div class="meta">
-                  <span class="meta-text">未読　2件</span>
-                  <span class="meta-text">最終更新日：2026/01/15</span>
-                </div>
-              </a>
-
-              <a href="#" class="info-row">
-                <div class="main">
-                  <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
-                  <span class="name">〇●マンションA</span>
-                </div>
-                <div class="meta">
-                  <span class="meta-text">未読　2件</span>
-                  <span class="meta-text">最終更新日：2026/01/15</span>
+                  <span class="meta-text">`password-reminder.html`</span>
+                  <span class="meta-text">パスワードリマインダー</span>
                 </div>
               </a>
             </div>
-          </div>
-        </section>
 
-        <section class="dashboard-bottom-grid">
-          <div id="remaining-tasks" class="section-block">
-            <div class="section-header">
-              <h2 class="section-title">残タスク一覧</h2>
-              <button type="button" class="ui-btn--outline ui-btn--primary" data-message="タスク一覧へ">
-                <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
-                タスク一覧へ
-              </button>
+            <p class="ui-label ui-label--section">管理・業務画面</p>
+            <div class="list-card-group" aria-label="管理・業務画面">
+              <a href="pages/dashboard.html" class="info-row">
+                <div class="main">
+                  <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+                  <span class="name">管理ダッシュボード</span>
+                </div>
+                <div class="meta">
+                  <span class="meta-text">`dashboard.html`</span>
+                  <span class="meta-text">確認が必要・チャット・タスク・書類</span>
+                </div>
+              </a>
+              <a href="pages/chat.html" class="info-row">
+                <div class="main">
+                  <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+                  <span class="name">工事スレッド</span>
+                </div>
+                <div class="meta">
+                  <span class="meta-text">`chat.html`</span>
+                  <span class="meta-text">チャット・スレッド一覧</span>
+                </div>
+              </a>
+              <a href="pages/schedule.html" class="info-row">
+                <div class="main">
+                  <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+                  <span class="name">工程表</span>
+                </div>
+                <div class="meta">
+                  <span class="meta-text">`schedule.html`</span>
+                  <span class="meta-text">ガント風工程表</span>
+                </div>
+              </a>
+              <a href="pages/calendar.html" class="info-row">
+                <div class="main">
+                  <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+                  <span class="name">業務カレンダー</span>
+                </div>
+                <div class="meta">
+                  <span class="meta-text">`calendar.html`</span>
+                  <span class="meta-text">予定表・カレンダー</span>
+                </div>
+              </a>
+              <a href="pages/clients.html" class="info-row">
+                <div class="main">
+                  <span class="material-symbols-rounded" aria-hidden="true">business</span>
+                  <span class="name">利用会社一覧</span>
+                </div>
+                <div class="meta">
+                  <span class="meta-text">`clients.html`</span>
+                  <span class="meta-text">クライアント一覧</span>
+                </div>
+              </a>
+              <a href="pages/detail-schedule.html" class="info-row">
+                <div class="main">
+                  <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
+                  <span class="name">詳細工程管理</span>
+                </div>
+                <div class="meta">
+                  <span class="meta-text">`detail-schedule.html`</span>
+                  <span class="meta-text">部屋・工程の詳細管理</span>
+                </div>
+              </a>
             </div>
 
-            <div class="list-card-group">
-              <a href="#" class="info-row">
+            <p class="ui-label ui-label--section">詳細工程管理（関連画面）</p>
+            <div class="list-card-group" aria-label="詳細工程管理の関連画面">
+              <a href="pages/detail-schedule-process-info.html" class="info-row">
                 <div class="main">
-                  <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
-                  <span class="name">〇●マンションA</span>
+                  <span class="material-symbols-rounded" aria-hidden="true">edit_note</span>
+                  <span class="name">工程情報変更（ダミー）</span>
                 </div>
                 <div class="meta">
-                  <span class="meta-text is-strong">残タスク　2件</span>
+                  <span class="meta-text">`detail-schedule-process-info.html`</span>
+                  <span class="meta-text">モーダル遷移先のダミー</span>
                 </div>
               </a>
-
-              <a href="#" class="info-row">
+              <a href="pages/detail-schedule-room-layout.html" class="info-row">
                 <div class="main">
-                  <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
-                  <span class="name">△■マンションA</span>
+                  <span class="material-symbols-rounded" aria-hidden="true">grid_view</span>
+                  <span class="name">部屋構成変更（ダミー）</span>
                 </div>
                 <div class="meta">
-                  <span class="meta-text is-strong">残タスク　2件</span>
+                  <span class="meta-text">`detail-schedule-room-layout.html`</span>
+                  <span class="meta-text">モーダル遷移先のダミー</span>
                 </div>
               </a>
-
-              <a href="#" class="info-row">
+              <a href="pages/room-detail.html" class="info-row">
                 <div class="main">
-                  <span class="material-symbols-rounded" aria-hidden="true">location_city</span>
-                  <span class="name">×●コーポA</span>
+                  <span class="material-symbols-rounded" aria-hidden="true">meeting_room</span>
+                  <span class="name">部屋詳細（ダミー）</span>
                 </div>
                 <div class="meta">
-                  <span class="meta-text is-strong">残タスク　2件</span>
+                  <span class="meta-text">`room-detail.html`</span>
+                  <span class="meta-text">部屋詳細のダミー画面</span>
                 </div>
               </a>
-
-              <a href="#" class="info-row">
-                <div class="main">
-                  <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
-                  <span class="name">〇●マンションA</span>
-                </div>
-                <div class="meta">
-                  <span class="meta-text is-strong">残タスク　2件</span>
-                </div>
-              </a>
-
-              <a href="#" class="info-row">
-                <div class="main">
-                  <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
-                  <span class="name">〇●マンションA</span>
-                </div>
-                <div class="meta">
-                  <span class="meta-text is-strong">残タスク　2件</span>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div id="missing-documents" class="section-block">
-            <div class="section-header">
-              <h2 class="section-title">未提出書類</h2>
-              <button type="button" class="ui-btn--outline ui-btn--primary" data-message="提出書類管理へ">
-                <span class="material-symbols-rounded" aria-hidden="true">folder</span>
-                提出書類管理へ
-              </button>
-            </div>
-
-            <div class="document-grid">
-              <article class="document-box">
-                <p class="label">提案書</p>
-                <p class="value">9件</p>
-              </article>
-
-              <article class="document-box">
-                <p class="label">代理店発注書</p>
-                <p class="value">10件</p>
-              </article>
-
-              <article class="document-box">
-                <p class="label">消防書類</p>
-                <p class="value">8件</p>
-              </article>
-
-              <article class="document-box">
-                <p class="label">住民案内・配布資料</p>
-                <p class="value">3件</p>
-              </article>
-
-              <article class="document-box">
-                <p class="label">受注書類</p>
-                <p class="value">5件</p>
-              </article>
-
-              <article class="document-box">
-                <p class="label">産廃</p>
-                <p class="value">2件</p>
-              </article>
             </div>
           </div>
         </section>

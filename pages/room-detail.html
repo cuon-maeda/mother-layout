@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotherMap 部屋詳細（ダミー）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <div class="admin-layout admin-layout--no-iconbar admin-layout--no-sidebar">
+    <main class="admin-main">
+      <div class="dashboard-content">
+        <section class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <h2 class="section-title" data-room-detail-page-title>部屋詳細</h2>
+              <a href="detail-schedule.html" class="ui-btn--outline ui-btn--primary">
+                <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+                詳細工程管理へ
+              </a>
+            </div>
+            <div class="ui-alert ui-alert--info">
+              <span class="material-symbols-rounded" aria-hidden="true">info</span>
+              <div>
+                <p class="title">ダミーページ</p>
+                <p class="text">部屋詳細画面は未実装です。本番では部屋番号ごとの詳細を表示します。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const room = params.get('room') || '—';
+      const title = document.querySelector('[data-room-detail-page-title]');
+      if (title) title.textContent = `部屋詳細（${room}）`;
+      document.title = `MotherMap 部屋詳細（${room}）`;
+    })();
+  </script>
+</body>
+</html>
