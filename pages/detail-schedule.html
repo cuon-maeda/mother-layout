@@ -314,22 +314,20 @@
                       <dd data-detail-schedule-summary-options>—</dd>
                     </div>
                   </dl>
-                  <ul class="slot-board-legend slot-board-legend--list" aria-label="一覧表の凡例">
-                    <li class="slot-board-legend-icons">
-                      <span class="slot-board-legend-entry">
-                        <span class="slot-room-icon slot-room-icon--history" aria-hidden="true"><span class="material-symbols-rounded">history</span></span>
-                        対応履歴あり
-                      </span>
-                      <span class="slot-board-legend-entry">
-                        <span class="slot-room-icon slot-room-icon--remarks" aria-hidden="true"><span class="material-symbols-rounded">sticky_note_2</span></span>
-                        部屋備考
-                      </span>
-                      <span class="slot-board-legend-entry">
-                        <span class="slot-room-priority" aria-hidden="true">優</span>
-                        優先工事
-                      </span>
-                    </li>
-                  </ul>
+                  <div class="legend" aria-label="一覧表の凡例">
+                    <span class="item">
+                      <span class="slot-room-icon slot-room-icon--history" aria-hidden="true"><span class="material-symbols-rounded">history</span></span>
+                      対応履歴あり
+                    </span>
+                    <span class="item">
+                      <span class="slot-room-icon slot-room-icon--remarks" aria-hidden="true"><span class="material-symbols-rounded">sticky_note_2</span></span>
+                      部屋備考
+                    </span>
+                    <span class="item">
+                      <span class="slot-room-priority" aria-hidden="true">優</span>
+                      優先工事
+                    </span>
+                  </div>
                   <div class="ui-scroll-x">
                     <table
                       class="ui-table ui-table--striped ui-table--hover detail-schedule-list-table"
@@ -372,53 +370,46 @@
                     </label>
                     <p class="ng-mode-hint" data-ng-mode-hint hidden>空いているセル（点線枠）をクリックして NG 枠を設定できます。部屋が配置されているセルは設定できません。</p>
                   </div>
-                  <button
-                    type="button"
-                    class="ui-btn--outline ui-btn--sm ui-btn--primary"
-                    data-modal-target="#detail-schedule-add-band-modal"
-                    data-detail-schedule-open-add-band
-                  >
-                    <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
-                    時間帯追加
-                  </button>
                 </div>
 
-                <ul class="slot-board-legend" aria-label="工事枠の凡例">
-                  <li class="slot-board-legend-ng" data-ng-mode-legend hidden>
-                    <span class="sample slot-sample slot-sample--ng-target" aria-hidden="true"></span>空セル（クリックで NG 枠を設定）
-                    <span class="sample slot-sample slot-sample--ng-set" aria-hidden="true"><span class="material-symbols-rounded">close</span></span>NG 枠（設定済み）
-                  </li>
-                  <li>
-                    <span class="sample slot-sample slot-sample--ng">NG</span>NG 枠
-                    <span class="sample slot-sample slot-sample--unconfirmed">未</span>未確定
-                    <span class="sample slot-sample slot-sample--confirmed">確</span>確定
-                    <span class="sample slot-sample slot-sample--done">済</span>対応済み
-                  </li>
-                  <li class="slot-board-legend-icons">
-                    <span class="slot-board-legend-entry">
-                      <span class="slot-room-icon slot-room-icon--history" aria-hidden="true"><span class="material-symbols-rounded">history</span></span>
-                      対応履歴あり
+                <div class="legend" aria-label="工事枠の凡例">
+                  <div class="legend-ng-group" data-ng-mode-legend hidden>
+                    <span class="item">
+                      <span class="swatch slot-sample--ng-target" aria-hidden="true"></span>
+                      空セル（クリックで NG 枠を設定）
                     </span>
-                    <span class="slot-board-legend-entry">
-                      <span class="slot-room-icon slot-room-icon--remarks" aria-hidden="true"><span class="material-symbols-rounded">sticky_note_2</span></span>
-                      部屋備考
+                    <span class="item">
+                      <span class="swatch slot-sample--ng-set" aria-hidden="true"><span class="material-symbols-rounded">close</span></span>
+                      NG 枠（設定済み）
                     </span>
-                    <span class="slot-board-legend-entry">
-                      <span class="slot-room-priority" aria-hidden="true">優</span>
-                      優先工事
-                    </span>
-                  </li>
-                </ul>
+                  </div>
+                  <span class="item"><span class="swatch slot-sample--ng">NG</span>NG 枠</span>
+                  <span class="item"><span class="swatch slot-sample--unconfirmed">未</span>未確定</span>
+                  <span class="item"><span class="swatch slot-sample--confirmed">確</span>確定</span>
+                  <span class="item"><span class="swatch slot-sample--done">済</span>対応済み</span>
+                  <span class="item">
+                    <span class="slot-room-icon slot-room-icon--history" aria-hidden="true"><span class="material-symbols-rounded">history</span></span>
+                    対応履歴あり
+                  </span>
+                  <span class="item">
+                    <span class="slot-room-icon slot-room-icon--remarks" aria-hidden="true"><span class="material-symbols-rounded">sticky_note_2</span></span>
+                    部屋備考
+                  </span>
+                  <span class="item">
+                    <span class="slot-room-priority" aria-hidden="true">優</span>
+                    優先工事
+                  </span>
+                </div>
 
-                <div class="ui-scroll-x">
+                <div class="ui-scroll-x slot-board-scroll">
+                  <div class="slot-board-panel">
                   <table class="ui-table slot-board" aria-label="工事枠スケジュール" data-detail-schedule-table>
                     <thead>
-                      <tr data-detail-schedule-thead>
-                        <th scope="col" class="col-time">時間帯</th>
-                      </tr>
+                      <tr data-detail-schedule-thead></tr>
                     </thead>
                     <tbody data-detail-schedule-board></tbody>
                   </table>
+                  </div>
                 </div>
 
                 <div class="slot-board-actions" data-detail-schedule-actions hidden>

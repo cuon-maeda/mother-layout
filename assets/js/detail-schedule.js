@@ -527,7 +527,20 @@
       </th>`;
     }).join('');
 
-    scheduleThead.innerHTML = `<th scope="col" class="col-time">時間帯</th>${dayHeaders}`;
+    scheduleThead.innerHTML = `<th scope="col" class="col-time">
+        <div class="col-time-head">
+          <span class="col-time-label">時間帯</span>
+          <button
+            type="button"
+            class="ui-btn--outline ui-btn--sm ui-btn--primary"
+            data-modal-target="#detail-schedule-add-band-modal"
+            data-detail-schedule-open-add-band
+          >
+            <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+            時間帯追加
+          </button>
+        </div>
+      </th>${dayHeaders}`;
   };
 
   const toggleNgCell = (bandIndex, rowIndex, dayIndex) => {
@@ -1157,8 +1170,10 @@
     renderBoard();
   });
 
-  document.querySelectorAll('[data-detail-schedule-open-add-band]').forEach((button) => {
-    button.addEventListener('click', prepareAddBandModal);
+  board?.addEventListener('click', (event) => {
+    if (event.target.closest('[data-detail-schedule-open-add-band]')) {
+      prepareAddBandModal();
+    }
   });
 
   addBandForm?.addEventListener('submit', (event) => {
