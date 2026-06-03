@@ -5720,8 +5720,8 @@
 
     .detail-schedule .slot-board .col-time,
     .detail-schedule .slot-board tbody th.time {
-      width: 48px;
-      max-width: 48px;
+      width: 58px;
+      max-width: 58px;
     }
 
     .detail-schedule .slot-board th,
@@ -5768,7 +5768,7 @@
       justify-content: center;
       gap: var(--space-xs);
       min-height: 100%;
-      max-width: 48px;
+      max-width: 58px;
       margin-inline: auto;
     }
 
@@ -6020,6 +6020,99 @@
       flex: 0 0 auto;
       font-size: 20px;
       color: var(--color-primary);
+    }
+
+    @media (max-width: 768px) {
+      .admin-layout--detail-schedule .admin-main {
+        scrollbar-gutter: stable;
+      }
+
+      .admin-layout--detail-schedule .dashboard-content--wide {
+        overflow-x: clip;
+      }
+
+      .detail-schedule-page {
+        overflow-x: clip;
+        width: 100%;
+      }
+
+      .detail-schedule.workspace {
+        width: 100%;
+        max-width: 100%;
+        gap: var(--space-md);
+      }
+
+      .detail-schedule-head {
+        margin-bottom: var(--space-md);
+      }
+
+      .detail-schedule-head .section-header-actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-sm);
+        width: 100%;
+        flex-wrap: nowrap;
+      }
+
+      .detail-schedule-head .section-header-actions > .detail-schedule-change-menu {
+        min-width: 0;
+      }
+
+      .detail-schedule-head .section-header-actions > .detail-schedule-change-menu > :is(button, a)[class*='ui-btn--'],
+      .detail-schedule-head .section-header-actions > :is(button, a)[class*='ui-btn--'] {
+        width: 100%;
+        min-width: 0;
+        justify-content: center;
+        padding-inline: var(--space-sm);
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .detail-schedule-head .section-header-actions .material-symbols-rounded {
+        font-size: 18px;
+      }
+
+      .detail-schedule .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-sm);
+      }
+
+      .detail-schedule .toolbar > :is(button, a)[class*='ui-btn--'] {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .detail-schedule .slot-board-actions .ui-btn-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-sm);
+        width: 100%;
+        flex-wrap: nowrap;
+      }
+
+      .detail-schedule .slot-board-actions .ui-btn-row :is(button, a)[class*='ui-btn--'] {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .detail-schedule .slot-board-legend {
+        gap: var(--space-sm) var(--space-md);
+      }
+
+      .detail-schedule.workspace > .aside .section-block {
+        padding: var(--space-lg) var(--space-md);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .detail-schedule-head .section-header-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .detail-schedule-head .section-header-actions > [data-detail-schedule-excel-export] {
+        grid-column: 1 / -1;
+      }
     }
 
     .detail-schedule.workspace.is-list-view {
