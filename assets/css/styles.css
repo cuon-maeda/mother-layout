@@ -5279,6 +5279,11 @@
       overflow: visible;
     }
 
+    /* sticky な aside の祖先に overflow:hidden があると効かない */
+    .detail-schedule-page > .section-block {
+      overflow: visible;
+    }
+
     .detail-schedule-head {
       position: relative;
       z-index: 10;
