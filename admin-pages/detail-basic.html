@@ -198,6 +198,10 @@
                   <span class="material-symbols-rounded" aria-hidden="true">edit</span>
                   編集
                 </a>
+                <button type="button" class="ui-btn--outline ui-btn--danger" data-modal-target="#detail-delete-modal">
+                  <span class="material-symbols-rounded" aria-hidden="true">delete</span>
+                  削除
+                </button>
               </div>
             </div>
 
@@ -323,6 +327,35 @@
 
   <div class="overlay" data-overlay hidden></div>
   <div class="toast" data-toast role="status" aria-live="polite"></div>
+
+  <div id="detail-delete-modal" class="ui-modal-overlay" data-modal-overlay aria-hidden="true" hidden>
+    <div class="ui-modal" role="dialog" aria-modal="true" aria-label="削除確認">
+      <div class="header">
+        <p class="title">削除してもよろしいですか？</p>
+        <button type="button" class="close" data-modal-close aria-label="閉じる">
+          <span class="material-symbols-rounded" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="body">
+        <p class="ui-help">「〇●マンションA 共用部改修」（PRJ-2026-014）を削除します。この操作は取り消せません。</p>
+        <div class="ui-alert ui-alert--warning">
+          <span class="material-symbols-rounded" aria-hidden="true">warning</span>
+          <div>
+            <p class="title">注意</p>
+            <p class="text">関連するメンション・タスク・書類にも影響する可能性があります。</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <button type="button" class="ui-btn--outline" data-modal-close>キャンセル</button>
+        <button type="button" class="ui-btn--danger" data-modal-close data-message="削除しました（デモ）">
+          <span class="material-symbols-rounded" aria-hidden="true">delete</span>
+          削除
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script src="../assets/js/app.js" defer></script>
 </body>
 </html>
