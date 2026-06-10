@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div id="top" class="admin-layout">
+  <div id="top" class="admin-layout admin-layout--no-iconbar">
     <header class="admin-header">
       <button type="button" class="sidebar-toggle" data-toggle="sidebar" aria-label="サイドバーを開閉" aria-expanded="false">
         <span class="material-symbols-rounded" aria-hidden="true">menu</span>
@@ -106,45 +106,6 @@
       </div>
     </header>
 
-    <nav class="admin-iconbar" aria-label="グローバルメニュー">
-      <ul>
-        <li>
-          <a href="dashboard.html" class="is-active" aria-current="page" aria-label="ダッシュボード" data-tooltip="ダッシュボードへ">
-            <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="chat.html" aria-label="工事スレッド" data-tooltip="工事スレッドへ">
-            <span class="material-symbols-rounded" aria-hidden="true">forum</span>
-          </a>
-        </li>
-        <li>
-          <a href="schedule.html" aria-label="工程表" data-tooltip="工程表へ">
-            <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
-          </a>
-        </li>
-        <li>
-          <a href="calendar.html" aria-label="予定表" data-tooltip="予定表へ">
-            <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" aria-label="タスク管理" data-tooltip="タスク管理へ">
-            <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" aria-label="書類管理" data-tooltip="書類管理へ">
-            <span class="material-symbols-rounded" aria-hidden="true">folder</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" aria-label="設定" data-tooltip="設定へ">
-            <span class="material-symbols-rounded" aria-hidden="true">settings</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
 
     <aside class="admin-sidebar">
       <section>
@@ -153,9 +114,15 @@
         <nav class="admin-side-nav" aria-label="管理メニュー">
           <ul>
             <li>
-              <a href="dashboard.html" class="is-active">
+              <a href="dashboard.html" class="is-active" aria-current="page">
                 <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
                 ダッシュボード
+              </a>
+            </li>
+            <li>
+              <a href="/properties">
+                <span class="material-symbols-rounded" aria-hidden="true">apartment</span>
+                物件一覧
               </a>
             </li>
             <li>
@@ -165,26 +132,14 @@
               </a>
             </li>
             <li>
-              <a href="/projects/new">
-                <span class="material-symbols-rounded" aria-hidden="true">add_circle</span>
-                工事登録
-              </a>
-            </li>
-            <li>
               <a href="chat.html">
                 <span class="material-symbols-rounded" aria-hidden="true">forum</span>
                 工事スレッド
               </a>
             </li>
             <li>
-              <a href="/tasks">
-                <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
-                タスク一覧
-              </a>
-            </li>
-            <li>
               <a href="schedule.html">
-                <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
+                <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
                 工程表
               </a>
             </li>
@@ -195,9 +150,15 @@
               </a>
             </li>
             <li>
+              <a href="/tasks">
+                <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+                タスク管理
+              </a>
+            </li>
+            <li>
               <a href="/documents">
-                <span class="material-symbols-rounded" aria-hidden="true">description</span>
-                提出書類管理
+                <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+                種類管理
               </a>
             </li>
           </ul>

@@ -132,6 +132,7 @@
             <li><a href="#nav" class="is-active"><span class="material-symbols-rounded" aria-hidden="true">menu</span>ナビ</a></li>
             <li><a href="#typography"><span class="material-symbols-rounded" aria-hidden="true">text_fields</span>タイポグラフィ</a></li>
             <li><a href="#forms"><span class="material-symbols-rounded" aria-hidden="true">tune</span>フォーム</a></li>
+            <li><a href="#construction-form"><span class="material-symbols-rounded" aria-hidden="true">edit_document</span>工事登録</a></li>
             <li><a href="#buttons"><span class="material-symbols-rounded" aria-hidden="true">radio_button_checked</span>ボタン</a></li>
             <li><a href="#cards"><span class="material-symbols-rounded" aria-hidden="true">grid_view</span>カード</a></li>
             <li><a href="#lists"><span class="material-symbols-rounded" aria-hidden="true">view_list</span>リスト</a></li>
@@ -162,6 +163,7 @@
           <a href="#nav" class="is-active"><span class="material-symbols-rounded" aria-hidden="true">menu</span>ナビ</a>
           <a href="#typography"><span class="material-symbols-rounded" aria-hidden="true">text_fields</span>タイポグラフィ</a>
           <a href="#forms"><span class="material-symbols-rounded" aria-hidden="true">tune</span>フォーム</a>
+          <a href="#construction-form"><span class="material-symbols-rounded" aria-hidden="true">edit_document</span>工事登録</a>
           <a href="#list-search"><span class="material-symbols-rounded" aria-hidden="true">filter_list</span>一覧検索</a>
           <a href="#buttons"><span class="material-symbols-rounded" aria-hidden="true">radio_button_checked</span>ボタン</a>
           <a href="#cards"><span class="material-symbols-rounded" aria-hidden="true">grid_view</span>カード</a>
@@ -349,6 +351,526 @@
                 <span class="ui-badge">ステータス</span>
               </div>
             </form>
+          </div>
+        </section>
+
+        <section id="construction-form" class="dashboard-section">
+          <div class="section-block">
+            <div class="section-header">
+              <div>
+                <h2 class="section-title">工事登録フォーム</h2>
+                <p class="section-subtitle">工事情報・担当者登録ウィザード向けコンポーネント</p>
+              </div>
+              <div class="section-header-actions">
+                <a class="ui-btn--outline ui-btn--primary" href="../pages/property-detail.html">
+                  <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                  物件詳細（入口）
+                </a>
+                <a class="ui-btn--outline ui-btn--primary" href="../pages/constructions-overall_schedule.html">
+                  <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                  工事情報登録
+                </a>
+                <a class="ui-btn--outline ui-btn--primary" href="../pages/constructions-representative.html">
+                  <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                  担当者登録
+                </a>
+                <a class="ui-btn--outline ui-btn--primary" href="../pages/construction_info.html">
+                  <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                  工事詳細登録
+                </a>
+                <a class="ui-btn--outline ui-btn--primary" href="../pages/photography_places.html">
+                  <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                  撮影場所登録
+                </a>
+                <a class="ui-btn--outline ui-btn--primary" href="../pages/options.html">
+                  <span class="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                  オプション登録
+                </a>
+              </div>
+            </div>
+
+            <div class="ui-alert ui-alert--info">
+              <span class="material-symbols-rounded" aria-hidden="true">info</span>
+              <div>
+                <p class="title">レイアウト</p>
+                <p class="text">実画面は物件詳細の「工事追加」から開始し、<code>admin-layout--no-iconbar</code>（アイコンバーなし）と <code>admin-layout--construction-form</code>（工事登録用スタイル）を併用します。<code>admin-sidebar</code> は表示したままです。<code>construction-form-page</code> / <code>construction-form-context</code> / <code>construction-form-panel</code> を組み合わせ、<code>construction-form.js</code> はステッパー・コンテキスト・前後ナビ・未保存警告などウィザード共通の UI を担当します（各ステップのフォーム操作はページ別 JS）。</p>
+              </div>
+            </div>
+
+            <div class="ui-form ui-form--gap-xl">
+              <div class="ui-field">
+                <span class="ui-label">コンテキストバー（`construction-form-context`）</span>
+                <div class="construction-form-context">
+                  <nav class="ui-breadcrumbs" aria-label="パンくず（サンプル）">
+                    <a href="../pages/dashboard.html">ダッシュボード</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <a href="../pages/clients.html">物件一覧</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <a href="../pages/property-detail.html">物件詳細</a>
+                    <span class="sep" aria-hidden="true">/</span>
+                    <span aria-current="page">工事登録</span>
+                  </nav>
+                  <dl class="meta">
+                    <div>
+                      <dt>物件</dt>
+                      <dd>〇●マンションA（B-10482）</dd>
+                    </div>
+                    <div>
+                      <dt>工事名称</dt>
+                      <dd>共用部改修</dd>
+                    </div>
+                    <div>
+                      <dt>ステップ</dt>
+                      <dd>1 / 5</dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">ステッパー（`ui-stepper`）</span>
+                <nav class="ui-stepper" aria-label="ステッパー（サンプル）">
+                  <a href="../pages/constructions-overall_schedule.html" class="step is-active" aria-current="step">
+                    <span class="num">1</span>
+                    <span class="label">工事情報</span>
+                  </a>
+                  <span class="sep" aria-hidden="true"></span>
+                  <a href="../pages/constructions-representative.html" class="step">
+                    <span class="num">2</span>
+                    <span class="label">担当者情報</span>
+                  </a>
+                  <span class="sep" aria-hidden="true"></span>
+                  <a href="../pages/construction_info.html" class="step">
+                    <span class="num">3</span>
+                    <span class="label">工事詳細</span>
+                  </a>
+                  <span class="sep" aria-hidden="true"></span>
+                  <a href="../pages/photography_places.html" class="step">
+                    <span class="num">4</span>
+                    <span class="label">撮影場所</span>
+                  </a>
+                  <span class="sep" aria-hidden="true"></span>
+                  <a href="../pages/options.html" class="step">
+                    <span class="num">5</span>
+                    <span class="label">オプション工事</span>
+                  </a>
+                </nav>
+                <p class="ui-help">リンク付きステップは <code>a.step</code>、未実装ステップは <code>span.step.is-disabled</code> です。</p>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">必須バッジ（`ui-badge--required`）</span>
+                <p class="ui-text-reset">
+                  管理番号 <span class="ui-badge ui-badge--required">必須</span>
+                </p>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">フォームカード + 登録テーブル（`ui-form-card` / `ui-form-table`）</span>
+                <section class="ui-form-card" aria-label="フォームカード（サンプル）">
+                  <div class="header">
+                    <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+                    工事情報
+                  </div>
+                  <div class="body">
+                    <table class="ui-form-table" aria-label="登録テーブル（サンプル）">
+                      <tbody>
+                        <tr>
+                          <th scope="row">
+                            管理番号
+                            <span class="ui-badge ui-badge--required">必須</span>
+                          </th>
+                          <td colspan="3">
+                            <input class="ui-control" type="text" aria-label="管理番号" />
+                          </td>
+                          <th scope="row">
+                            工事名称
+                            <span class="ui-badge ui-badge--required">必須</span>
+                          </th>
+                          <td colspan="3">
+                            <input class="ui-control" type="text" aria-label="工事名称" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">実施工期</th>
+                          <td colspan="7">
+                            <div class="date-range">
+                              <input class="ui-control" type="date" aria-label="実施工期（開始）" />
+                              <span class="range-sep" aria-hidden="true">〜</span>
+                              <input class="ui-control" type="date" aria-label="実施工期（終了）" />
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">施工業者パネル（`contractor-panel`）</span>
+                <div class="contractor-panel">
+                  <div class="toolbar">
+                    <select class="ui-control" aria-label="施工業者を選択">
+                      <option>施工業者4</option>
+                      <option>テスト施工行者</option>
+                    </select>
+                    <button type="button" class="ui-btn--primary">
+                      <span class="material-symbols-rounded" aria-hidden="true">add</span>
+                      施工業者追加
+                    </button>
+                  </div>
+                  <div class="list-wrap">
+                    <table class="ui-table ui-table--striped ui-table--contractor" aria-label="追加済み施工業者（サンプル）">
+                      <thead>
+                        <tr>
+                          <th scope="col">施工業者</th>
+                          <th scope="col">施工業者担当者(複数選択可)</th>
+                          <th scope="col" class="actions">操作</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="name" data-label="施工業者">施工業者4</td>
+                          <td data-label="施工業者担当者(複数選択可)">
+                            <div class="ui-checkgroup" role="group" aria-label="担当者">
+                              <label class="ui-choice"><input type="checkbox" /> テスト椎名</label>
+                              <label class="ui-choice"><input type="checkbox" /> まえだ</label>
+                            </div>
+                          </td>
+                          <td class="actions" data-label="操作">
+                            <button type="button" class="ui-btn--outline ui-btn--danger ui-btn--sm">削除</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">受注先行 + 空表示（`supplier-field-row` / `ui-empty-text`）</span>
+                <table class="ui-form-table" aria-label="受注先行（サンプル）">
+                  <tbody>
+                    <tr>
+                      <th scope="row">
+                        受注先
+                        <span class="ui-badge ui-badge--required">必須</span>
+                      </th>
+                      <td colspan="3">
+                        <div class="supplier-field-row">
+                          <select class="ui-control" aria-label="受注先">
+                            <option>テスト受注先</option>
+                          </select>
+                          <button type="button" class="ui-btn--primary ui-btn--sm" data-modal-target="#catalog-supplier-modal">
+                            受注先登録
+                          </button>
+                        </div>
+                      </td>
+                      <th scope="row">受注先担当</th>
+                      <td colspan="3">
+                        <p class="ui-empty-text">受注先担当が登録されていません</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">セグメントトグル（`ui-segment-toggle`）</span>
+                <div class="ui-segment-toggle" role="radiogroup" aria-label="電子看板使用（サンプル）">
+                  <label class="ui-segment-toggle__option">
+                    <input type="radio" name="demo-segment-toggle" value="true" checked />
+                    <span>する</span>
+                  </label>
+                  <label class="ui-segment-toggle__option">
+                    <input type="radio" name="demo-segment-toggle" value="false" />
+                    <span>しない</span>
+                  </label>
+                </div>
+                <p class="ui-help">「する／しない」など2択の切り替えに使用します。実画面は <a href="../pages/construction_info.html">工事詳細登録ページ</a> または <a href="../pages/photography_places.html">撮影場所登録ページ</a> を参照してください。</p>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">電子看板タイプ（`ui-radiogroup` / 工事詳細）</span>
+                <div class="ui-radiogroup" role="radiogroup" aria-label="電子看板タイプ（サンプル）">
+                  <label class="ui-choice"><input type="radio" name="demo-signboard-type" value="board" checked /> ボード</label>
+                  <label class="ui-choice"><input type="radio" name="demo-signboard-type" value="header" /> ヘッダー</label>
+                  <label class="ui-choice"><input type="radio" name="demo-signboard-type" value="footer" /> フッター</label>
+                </div>
+                <p class="ui-help">電子看板使用が「する」のときのみ表示します。実画面は <a href="../pages/construction_info.html">工事詳細登録ページ</a> を参照してください。</p>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">チェックトグル（`ui-check-toggle`）</span>
+                <div class="ui-check-toggle" role="group" aria-label="撮影タイミング（サンプル）">
+                  <label class="ui-segment-toggle__option">
+                    <input type="checkbox" name="demo-check-toggle" value="before" checked />
+                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--off" aria-hidden="true">radio_button_unchecked</span>
+                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--on" aria-hidden="true">check_circle</span>
+                    <span>施工前</span>
+                  </label>
+                  <label class="ui-segment-toggle__option">
+                    <input type="checkbox" name="demo-check-toggle" value="under" checked />
+                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--off" aria-hidden="true">radio_button_unchecked</span>
+                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--on" aria-hidden="true">check_circle</span>
+                    <span>施工中</span>
+                  </label>
+                  <label class="ui-segment-toggle__option">
+                    <input type="checkbox" name="demo-check-toggle" value="after" />
+                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--off" aria-hidden="true">radio_button_unchecked</span>
+                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--on" aria-hidden="true">check_circle</span>
+                    <span>施工後</span>
+                  </label>
+                </div>
+                <p class="ui-help">撮影タイミングなど複数選択に使用します。未選択は <code>radio_button_unchecked</code>、選択中は <code>check_circle</code> アイコンが表示されます。</p>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">動的リストパネル（共通シェル）</span>
+                <p class="ui-help">
+                  マスタ選択＋行追加の一覧は <code>photography-fields</code> / <code>option-fields</code> で同じ骨格を使います。
+                  <code>.toolbar</code>（select + 追加ボタン）→ <code>.list-wrap</code> → <code>table</code>。
+                  行の列はバリアントごとに <code>ui-table--*</code> と <code>&lt;template&gt;</code> で差し替えます。
+                </p>
+                <div class="option-fields">
+                  <div class="toolbar">
+                    <select class="ui-control" aria-label="項目を選択（共通シェル・サンプル）">
+                      <option>選択肢 A</option>
+                      <option>選択肢 B</option>
+                    </select>
+                    <button type="button" class="ui-btn--primary">
+                      <span class="material-symbols-rounded" aria-hidden="true">add</span>
+                      追加
+                    </button>
+                  </div>
+                  <div class="list-wrap">
+                    <p class="ui-empty-text">行追加後にテーブルが表示されます。行サンプルは下のバリアントを参照してください。</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">バリアント: 撮影場所（`photography-fields` / `ui-table--photography`）</span>
+                <p class="ui-help">
+                  差分: 「写真撮影」トグルでパネル表示、共用部・専有部の2パネル、行は場所名（入力可）・撮影タイミング・備考。
+                  撮影タイミングは上記 <code>ui-check-toggle</code> を使用します。
+                </p>
+                <section class="ui-form-card" aria-label="撮影場所バリアント（サンプル）">
+                  <div class="header">
+                    <span class="material-symbols-rounded" aria-hidden="true">description</span>
+                    共用部撮影場所
+                  </div>
+                  <div class="body">
+                    <table class="ui-form-table" aria-label="写真撮影（サンプル）">
+                      <tbody>
+                        <tr>
+                          <th scope="row">写真撮影</th>
+                          <td colspan="7">
+                            <div class="ui-segment-toggle" role="radiogroup" aria-label="写真撮影（サンプル）">
+                              <label class="ui-segment-toggle__option">
+                                <input type="radio" name="demo-photography-use" value="true" checked />
+                                <span>する</span>
+                              </label>
+                              <label class="ui-segment-toggle__option">
+                                <input type="radio" name="demo-photography-use" value="false" />
+                                <span>しない</span>
+                              </label>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="photography-fields">
+                      <div class="toolbar">
+                        <select class="ui-control" aria-label="撮影場所を選択（サンプル）">
+                          <option value="0">自由入力</option>
+                          <option value="1">インターホン</option>
+                        </select>
+                        <button type="button" class="ui-btn--primary">
+                          <span class="material-symbols-rounded" aria-hidden="true">add</span>
+                          撮影場所追加
+                        </button>
+                      </div>
+                      <div class="list-wrap">
+                        <table class="ui-table ui-table--photography" aria-label="撮影場所一覧（サンプル）">
+                          <thead>
+                            <tr>
+                              <th scope="col">撮影場所名</th>
+                              <th scope="col">撮影タイミング</th>
+                              <th scope="col">撮影場所備考</th>
+                              <th scope="col" class="actions">操作</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td data-label="撮影場所名">
+                                <input class="ui-control" type="text" value="インターホン" aria-label="撮影場所名（サンプル）" />
+                              </td>
+                              <td data-label="撮影タイミング">
+                                <div class="ui-check-toggle" role="group" aria-label="撮影タイミング（サンプル）">
+                                  <label class="ui-segment-toggle__option">
+                                    <input type="checkbox" checked />
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--off" aria-hidden="true">radio_button_unchecked</span>
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--on" aria-hidden="true">check_circle</span>
+                                    <span>施工前</span>
+                                  </label>
+                                  <label class="ui-segment-toggle__option">
+                                    <input type="checkbox" checked />
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--off" aria-hidden="true">radio_button_unchecked</span>
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--on" aria-hidden="true">check_circle</span>
+                                    <span>施工中</span>
+                                  </label>
+                                  <label class="ui-segment-toggle__option">
+                                    <input type="checkbox" checked />
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--off" aria-hidden="true">radio_button_unchecked</span>
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--on" aria-hidden="true">check_circle</span>
+                                    <span>施工後</span>
+                                  </label>
+                                </div>
+                              </td>
+                              <td data-label="撮影場所備考">
+                                <input class="ui-control" type="text" aria-label="撮影場所備考（サンプル）" />
+                              </td>
+                              <td class="actions" data-label="操作">
+                                <button type="button" class="ui-btn--outline ui-btn--danger ui-btn--sm">削除</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <p class="ui-help">動作は <a href="../pages/photography_places.html">撮影場所登録ページ</a> で確認できます。</p>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">バリアント: オプション工事（`option-fields` / `ui-table--options`）</span>
+                <p class="ui-help">
+                  差分: 常時表示、行は工事名（固定）・撮影タイミング・税抜金額・税込金額（自動計算）。
+                </p>
+                <section class="ui-form-card" aria-label="オプション工事バリアント（サンプル）">
+                  <div class="header">
+                    <span class="material-symbols-rounded" aria-hidden="true">build</span>
+                    オプション工事
+                  </div>
+                  <div class="body">
+                    <div class="option-fields">
+                      <div class="toolbar">
+                        <select class="ui-control" aria-label="オプション工事を選択（サンプル）">
+                          <option value="2" selected>カメラ付き玄関子機</option>
+                        </select>
+                        <button type="button" class="ui-btn--primary">
+                          <span class="material-symbols-rounded" aria-hidden="true">add</span>
+                          オプション工事追加
+                        </button>
+                      </div>
+                      <div class="list-wrap">
+                        <table class="ui-table ui-table--options" aria-label="オプション工事一覧（サンプル）">
+                          <thead>
+                            <tr>
+                              <th scope="col">オプション工事名</th>
+                              <th scope="col">撮影タイミング</th>
+                              <th scope="col">税抜金額</th>
+                              <th scope="col">税込金額</th>
+                              <th scope="col" class="actions">操作</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="name" data-label="オプション工事名">カメラ付き玄関子機</td>
+                              <td data-label="撮影タイミング">
+                                <div class="ui-check-toggle" role="group" aria-label="撮影タイミング（サンプル）">
+                                  <label class="ui-segment-toggle__option">
+                                    <input type="checkbox" checked />
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--off" aria-hidden="true">radio_button_unchecked</span>
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--on" aria-hidden="true">check_circle</span>
+                                    <span>施工前</span>
+                                  </label>
+                                  <label class="ui-segment-toggle__option">
+                                    <input type="checkbox" checked />
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--off" aria-hidden="true">radio_button_unchecked</span>
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--on" aria-hidden="true">check_circle</span>
+                                    <span>施工中</span>
+                                  </label>
+                                  <label class="ui-segment-toggle__option">
+                                    <input type="checkbox" checked />
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--off" aria-hidden="true">radio_button_unchecked</span>
+                                    <span class="material-symbols-rounded ui-check-toggle__icon ui-check-toggle__icon--on" aria-hidden="true">check_circle</span>
+                                    <span>施工後</span>
+                                  </label>
+                                </div>
+                              </td>
+                              <td data-label="税抜金額">
+                                <input class="ui-control" type="text" value="13,637" aria-label="税抜金額（サンプル）" />
+                              </td>
+                              <td data-label="税込金額">
+                                <span class="tax-included">¥ 15,001</span>
+                              </td>
+                              <td class="actions" data-label="操作">
+                                <button type="button" class="ui-btn--outline ui-btn--danger ui-btn--sm">削除</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <p class="ui-help">動作は <a href="../pages/options.html">オプション登録ページ</a> で確認できます。</p>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">フォームヘッダー（`construction-form-head`）</span>
+                <div class="construction-form-head">
+                  <div>
+                    <h1 class="title">工事情報登録</h1>
+                    <p class="subtitle">Construction and schedule registration</p>
+                  </div>
+                  <button type="button" class="ui-btn--outline ui-btn--primary">
+                    <span class="material-symbols-rounded" aria-hidden="true">save</span>
+                    一時保存
+                  </button>
+                </div>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">フッターナビ（`construction-form-actions`）</span>
+                <div class="construction-form-actions">
+                  <a href="#" class="ui-btn--outline ui-btn--primary">
+                    <span class="material-symbols-rounded" aria-hidden="true">arrow_back</span>
+                    <span>工事情報</span>
+                  </a>
+                  <div class="end">
+                    <button type="button" class="ui-btn--outline ui-btn--primary construction-form-stepper-skip">登録せず次へ</button>
+                    <button type="button" class="ui-btn--primary">
+                      <span>保存して次へ</span>
+                      <span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span>
+                    </button>
+                  </div>
+                </div>
+                <p class="ui-help">撮影場所ステップのみ右側に「登録せず次へ」が表示されます。最終ステップでは次へボタンが「登録を完了」になります。</p>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">工事追加モーダル（`ui-modal--property-construction`）</span>
+                <button type="button" class="ui-btn--outline ui-btn--primary" data-modal-target="#catalog-property-construction-modal">
+                  <span class="material-symbols-rounded" aria-hidden="true">dialogs</span>
+                  モーダルを開く
+                </button>
+                <p class="ui-help">物件詳細の「工事追加」から開くモーダルです。<a href="../pages/property-detail.html">物件詳細ページ</a> で動作を確認できます。</p>
+              </div>
+
+              <div class="ui-field">
+                <span class="ui-label">受注先登録モーダル（`ui-modal--supplier`）</span>
+                <button type="button" class="ui-btn--outline ui-btn--primary" data-modal-target="#catalog-supplier-modal">
+                  <span class="material-symbols-rounded" aria-hidden="true">dialogs</span>
+                  モーダルを開く
+                </button>
+                <p class="ui-help">担当者追加の動作は下のモーダル、または <a href="../pages/constructions-representative.html">担当者登録ページ</a> で確認できます。</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -1162,7 +1684,106 @@
 
   <div class="overlay" data-overlay hidden></div>
   <div class="toast is-show" data-toast role="status" aria-live="polite">これはトースト表示のサンプルです。</div>
+
+  <div id="catalog-property-construction-modal" class="ui-modal-overlay" data-modal-overlay aria-hidden="true" hidden>
+    <div class="ui-modal ui-modal--property-construction" role="dialog" aria-modal="true" aria-labelledby="catalog-property-construction-modal-title">
+      <div class="header">
+        <div class="heading">
+          <p class="title" id="catalog-property-construction-modal-title">工事追加</p>
+          <p class="subtitle">Add construction</p>
+        </div>
+        <button type="button" class="close" data-modal-close aria-label="閉じる">
+          <span class="material-symbols-rounded" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <form class="body" aria-label="工事追加（サンプル）">
+        <p class="ui-help">工事名称と予定工期を入力して、工事情報登録を開始します。</p>
+        <table class="ui-form-table" aria-label="工事追加情報">
+          <tbody>
+            <tr>
+              <th scope="row">工事名称</th>
+              <td>
+                <input class="ui-control" type="text" aria-label="工事名称" placeholder="あとから設定できます" />
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">予定工期</th>
+              <td>
+                <div class="date-range">
+                  <input class="ui-control" type="date" aria-label="予定工期（開始）" />
+                  <span class="range-sep" aria-hidden="true">〜</span>
+                  <input class="ui-control" type="date" aria-label="予定工期（終了）" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      <div class="footer">
+        <button type="button" class="ui-btn--outline" data-modal-close>キャンセル</button>
+        <button type="button" class="ui-btn--outline ui-btn--primary" data-modal-close>登録</button>
+        <button type="button" class="ui-btn--primary" data-modal-close>工事情報登録へ進む</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="catalog-supplier-modal" class="ui-modal-overlay" data-modal-overlay aria-hidden="true" hidden>
+    <div class="ui-modal ui-modal--supplier" role="dialog" aria-modal="true" aria-labelledby="catalog-supplier-modal-title">
+      <div class="header">
+        <div class="heading">
+          <p class="title" id="catalog-supplier-modal-title">受注先登録</p>
+          <p class="subtitle">Supplier registration</p>
+        </div>
+        <button type="button" class="close" data-modal-close aria-label="閉じる">
+          <span class="material-symbols-rounded" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <form class="body" aria-label="受注先登録（サンプル）">
+        <table class="ui-form-table" aria-label="受注先情報">
+          <tbody>
+            <tr>
+              <th scope="row">受注先</th>
+              <td><input class="ui-control" type="text" aria-label="受注先" /></td>
+            </tr>
+            <tr>
+              <th scope="row">受注先住所</th>
+              <td><input class="ui-control" type="text" aria-label="受注先住所" /></td>
+            </tr>
+            <tr>
+              <th scope="row">受注先電話番号</th>
+              <td><input class="ui-control" type="tel" aria-label="受注先電話番号" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="staff-fields">
+          <div class="staff-field-list" data-supplier-staff-list>
+            <div class="staff-field-row">
+              <span class="label">担当者-1</span>
+              <input class="ui-control" type="text" aria-label="担当者-1" />
+            </div>
+          </div>
+          <button type="button" class="ui-btn--primary" data-supplier-staff-add>
+            <span class="material-symbols-rounded" aria-hidden="true">add</span>
+            担当者追加
+          </button>
+        </div>
+      </form>
+      <div class="footer is-centered">
+        <button type="button" class="ui-btn--primary" data-supplier-register>登録</button>
+      </div>
+    </div>
+  </div>
+
+  <template id="supplier-staff-row-template">
+    <div class="staff-field-row">
+      <span class="label"></span>
+      <input class="ui-control" type="text" autocomplete="off" />
+      <button type="button" class="ui-btn--outline ui-btn--danger ui-btn--sm" data-supplier-staff-remove>削除</button>
+    </div>
+  </template>
+
   <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/constructions-representative.js" defer></script>
 </body>
 </html>
 

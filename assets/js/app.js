@@ -363,5 +363,73 @@
     showToast('\u30d8\u30eb\u30d7\u3092\u958b\u304d\u307e\u3059');
   });
 
+  const syncSegmentToggleGroup = (group) => {
+    if (!group) return;
+    group.querySelectorAll('.ui-segment-toggle__option').forEach((option) => {
+      const input = option.querySelector('input[type="radio"]');
+      option.classList.toggle('is-selected', Boolean(input?.checked));
+    });
+  };
+
+  const initSegmentToggles = () => {
+    const groups = document.querySelectorAll('.ui-segment-toggle');
+    let lastTap = { option: null, time: 0 };
+    let touchStart = null;
+
+    groups.forEach((group) => {
+      if (!group.querySelector('input[type="radio"]')) return;
+      syncSegmentToggleGroup(group);
+      group.addEventListener('change', () => syncSegmentToggleGroup(group));
+    });
+
+    const activateSegmentOption = (option) => {
+      const input = option.querySelector('input[type="radio"]');
+      if (!input) return;
+
+      const now = Date.now();
+      if (lastTap.option === option && now - lastTap.time < 400) return;
+      lastTap = { option, time: now };
+
+      const wasChecked = input.checked;
+      input.checked = true;
+      syncSegmentToggleGroup(option.closest('.ui-segment-toggle'));
+
+      if (!wasChecked) {
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    };
+
+    document.addEventListener('touchstart', (event) => {
+      const option = event.target.closest('.ui-segment-toggle__option');
+      if (!option?.querySelector('input[type="radio"]')) {
+        touchStart = null;
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+      touchStart = { option, x: touch.clientX, y: touch.clientY };
+    }, { passive: true });
+
+    document.addEventListener('touchend', (event) => {
+      if (!touchStart) return;
+
+      const touch = event.changedTouches[0];
+      const moved = Math.hypot(touch.clientX - touchStart.x, touch.clientY - touchStart.y) > 10;
+      const option = touchStart.option;
+      touchStart = null;
+
+      if (moved) return;
+      activateSegmentOption(option);
+    }, { passive: true });
+
+    document.addEventListener('click', (event) => {
+      const option = event.target.closest('.ui-segment-toggle__option');
+      if (!option?.querySelector('input[type="radio"]')) return;
+      activateSegmentOption(option);
+    });
+  };
+
+  initSegmentToggles();
+
   window.MotherMapShell = { openModal, closeModal, showToast };
 })();
