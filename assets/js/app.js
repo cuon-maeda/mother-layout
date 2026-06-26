@@ -68,7 +68,9 @@
       target.hidden = true;
       target.setAttribute('aria-hidden', 'true');
       if (activeModal === target) activeModal = null;
-      document.body.style.overflow = '';
+      if (!document.querySelector('.ui-modal-overlay.is-open:not([hidden])')) {
+        document.body.style.overflow = '';
+      }
     }, 240);
   };
 

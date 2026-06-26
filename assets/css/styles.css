@@ -2723,7 +2723,7 @@
       align-items: center;
     }
 
-    /* ui-btn: メイン画面とモーダル（モーダルは admin-main の外にあるため両方に指定） */
+    /* ui-btn: メイン画面とモーダル（dialog は admin-main の外にあるため両方に指定） */
     :is(.admin-main, .ui-modal) :is(button, a)[class*="ui-btn--"] {
       display: inline-flex;
       align-items: center;
@@ -8290,4 +8290,259 @@
       min-width: 12rem;
       min-height: 48px;
       font-size: 15px;
+    }
+
+    /* --- Construction photos (施工写真一覧) --- */
+
+    .construction-photos-page > .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .construction-photos-page .section-header {
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+
+    .construction-photos-page .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-md) var(--space-lg);
+      padding: var(--space-md);
+      background: var(--color-surface-soft);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+    }
+
+    .construction-photos-page .filter {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .construction-photos-page .filter .ui-label {
+      white-space: nowrap;
+    }
+
+    .construction-photos-page .filter .ui-control {
+      min-width: 10rem;
+    }
+
+    .construction-photos-page .list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .construction-photos-page .empty {
+      margin: 0;
+      padding: var(--space-xl);
+      text-align: center;
+      color: var(--color-muted);
+      background: var(--color-surface-soft);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-md);
+    }
+
+    .construction-photos-page .category {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--color-surface);
+    }
+
+    .construction-photos-page .category > .title {
+      margin: 0;
+      padding: var(--space-md) var(--space-lg);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text);
+      background: linear-gradient(180deg, var(--color-primary-tint) 0%, var(--color-surface-soft) 100%);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .construction-photos-page .item {
+      padding: var(--space-lg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .construction-photos-page .item:last-child {
+      border-bottom: none;
+    }
+
+    .construction-photos-page .item > .title {
+      margin: 0 0 var(--space-md);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .construction-photos-page .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+
+    .construction-photos-page .photo-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      min-width: 0;
+    }
+
+    .construction-photos-page .photo-card .timing {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: 0.02em;
+    }
+
+    .construction-photos-page .photo-card .image-wrap {
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--color-surface-soft);
+    }
+
+    .construction-photos-page .photo-card .image-wrap img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .construction-photos-page .photo-card .view-switch {
+      width: 100%;
+    }
+
+    .construction-photos-page .photo-card .view-switch .ui-segment-toggle__option {
+      flex: 1;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 6px;
+      min-height: 26px;
+    }
+
+    .construction-photos-page .photo-card .edit-btn {
+      width: 100%;
+      min-height: 36px;
+      font-size: 12px;
+    }
+
+    .construction-photos-page .photo-card .date-display {
+      margin: 0;
+      font-size: 12px;
+      color: var(--color-muted);
+    }
+
+    .construction-photos-page .photo-card .comment-display {
+      margin: 0;
+      font-size: 12px;
+      color: var(--color-muted);
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .construction-photos-page .photo-card .comment-display[hidden] {
+      display: none;
+    }
+
+    .ui-modal.ui-modal--photo-detail {
+      width: min(640px, 100%);
+    }
+
+    .ui-modal.ui-modal--mosaic {
+      width: min(920px, 100%);
+    }
+
+    .ui-modal--photo-detail > .body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .ui-modal--photo-detail > .body .meta-text {
+      margin: 0;
+    }
+
+    .ui-modal--photo-detail .preview {
+      flex: 0 0 auto;
+      width: 100%;
+      height: min(42vh, 320px);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--color-surface-soft);
+    }
+
+    .ui-modal--photo-detail .preview img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: var(--color-surface-soft);
+    }
+
+    .ui-modal--photo-detail .view-switch[hidden] {
+      display: none;
+    }
+
+    .ui-modal--photo-detail .view-switch {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
+    .ui-modal--photo-detail .ui-field textarea.ui-control {
+      min-height: 6rem;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .ui-modal--photo-detail > .footer {
+      justify-content: space-between;
+    }
+
+    .ui-modal-overlay[data-mm-mosaic-overlay].is-open {
+      z-index: 61;
+    }
+
+    .ui-modal--mosaic > .body .help {
+      margin: 0;
+      font-size: 13px;
+      color: var(--color-muted);
+    }
+
+    .ui-modal--mosaic .canvas-wrap {
+      display: flex;
+      justify-content: center;
+      background: var(--color-surface-soft);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      overflow: auto;
+    }
+
+    @media (max-width: 960px) {
+      .construction-photos-page .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .construction-photos-page .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .construction-photos-page .filter {
+        width: 100%;
+      }
+
+      .construction-photos-page .filter .ui-control {
+        flex: 1;
+      }
     }

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotherMap 施工写真一覧</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+
+<body>
+  <div id="top" class="admin-layout admin-layout--chat">
+    <header class="admin-header">
+      <button type="button" class="sidebar-toggle" data-toggle="sidebar" aria-label="サイドバーを開閉" aria-expanded="false">
+        <span class="material-symbols-rounded" aria-hidden="true">menu</span>
+      </button>
+
+      <div class="admin-logo">
+        <a href="dashboard.html" aria-label="MotherMap">
+          <img src="../assets/images/mothermap_logo.png" alt="MotherMap" class="logo-full" />
+          <img src="../assets/images/mothermap_logo_mini.png" alt="" class="logo-mini" aria-hidden="true" />
+        </a>
+      </div>
+
+      <nav class="admin-navbar" aria-label="ヘッダーメニュー">
+        <ul>
+          <li>
+            <a href="dashboard.html" aria-label="ダッシュボード">
+              <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+              <span class="admin-navbar-label">ダッシュボード</span>
+            </a>
+          </li>
+          <li>
+            <a href="chat.html" class="is-active" aria-current="page" aria-label="工事スレッド">
+              <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+              <span class="admin-navbar-label">工事スレッド</span>
+            </a>
+          </li>
+          <li>
+            <a href="schedule.html" aria-label="工程表">
+              <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+              <span class="admin-navbar-label">工程表</span>
+            </a>
+          </li>
+          <li>
+            <a href="calendar.html" aria-label="予定表">
+              <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+              <span class="admin-navbar-label">予定表</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="タスク管理">
+              <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+              <span class="admin-navbar-label">タスク管理</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="書類管理">
+              <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+              <span class="admin-navbar-label">書類管理</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" aria-label="設定">
+              <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+              <span class="admin-navbar-label">設定</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="admin-header-actions">
+        <button type="button" data-action="notify" aria-label="通知">
+          <span class="material-symbols-rounded" aria-hidden="true">notifications</span>
+          <span class="notification-badge" aria-hidden="true"></span>
+        </button>
+
+        <button type="button" data-action="help" aria-label="ヘルプ">
+          <span class="material-symbols-rounded" aria-hidden="true">help</span>
+        </button>
+
+        <div class="admin-user-menu">
+          <button type="button" data-toggle="user-menu" aria-expanded="false" aria-controls="user-dropdown">
+            <span class="avatar">真</span>
+            <span class="user-name">真鍋 智彦</span>
+            <span class="material-symbols-rounded" aria-hidden="true">expand_more</span>
+          </button>
+
+          <div id="user-dropdown" class="dropdown-menu" data-menu="user" role="menu">
+            <a href="#" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">person</span>
+              プロフィール
+            </a>
+            <a href="#" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">manage_accounts</span>
+              アカウント設定
+            </a>
+            <button type="button" role="menuitem">
+              <span class="material-symbols-rounded" aria-hidden="true">logout</span>
+              ログアウト
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="admin-iconbar" aria-label="グローバルメニュー">
+      <ul>
+        <li>
+          <a href="dashboard.html" aria-label="ダッシュボード" data-tooltip="ダッシュボードへ">
+            <span class="material-symbols-rounded" aria-hidden="true">dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="chat.html" class="is-active" aria-current="page" aria-label="工事スレッド" data-tooltip="工事スレッドへ">
+            <span class="material-symbols-rounded" aria-hidden="true">forum</span>
+          </a>
+        </li>
+        <li>
+          <a href="schedule.html" aria-label="工程表" data-tooltip="工程表へ">
+            <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+          </a>
+        </li>
+        <li>
+          <a href="calendar.html" aria-label="予定表" data-tooltip="予定表へ">
+            <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="タスク管理" data-tooltip="タスク管理へ">
+            <span class="material-symbols-rounded" aria-hidden="true">task_alt</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="書類管理" data-tooltip="書類管理へ">
+            <span class="material-symbols-rounded" aria-hidden="true">folder</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="設定" data-tooltip="設定へ">
+            <span class="material-symbols-rounded" aria-hidden="true">settings</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <aside class="admin-sidebar">
+      <section>
+        <h2>工事スレッド</h2>
+
+        <nav class="thread-nav" aria-label="工事スレッド一覧">
+          <ul class="list">
+            <li class="item">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">forum</span>
+                <span class="body">
+                  <span class="name">全体</span>
+                </span>
+              </a>
+            </li>
+
+            <li class="item is-active">
+              <a href="chat.html" class="link">
+                <span class="icon material-symbols-rounded" aria-hidden="true">apartment</span>
+                <span class="body">
+                  <span class="name">〇●マンションA</span>
+                  <span class="meta is-strong">未読 2件</span>
+                </span>
+              </a>
+              <ul class="sub" aria-label="〇●マンションA の関連ページ">
+                <li>
+                  <a href="#">
+                    <span class="material-symbols-rounded" aria-hidden="true">view_timeline</span>
+                    全体工程管理
+                  </a>
+                </li>
+                <li>
+                  <a href="detail-schedule.html">
+                    <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
+                    詳細工程管理
+                  </a>
+                </li>
+                <li>
+                  <a href="construction-photos.html" class="is-active" aria-current="page">
+                    <span class="material-symbols-rounded" aria-hidden="true">photo_library</span>
+                    施工写真一覧
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span class="material-symbols-rounded" aria-hidden="true">construction</span>
+                    残工事情報
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="admin-main">
+      <div class="dashboard-content dashboard-content--wide" data-construction-photos>
+        <section class="dashboard-section construction-photos-page">
+          <div class="section-block">
+            <div class="section-header">
+              <div class="section-header-start">
+                <h2 class="section-title">施工写真一覧</h2>
+                <p class="meta-text">〇●マンションA ／ 共用部改修</p>
+              </div>
+              <div class="section-header-actions ui-btn-row">
+                <button type="button" class="ui-btn--primary" data-cp-export>
+                  <span class="material-symbols-rounded" aria-hidden="true">print</span>
+                  施工写真出力
+                </button>
+              </div>
+            </div>
+
+            <div class="toolbar">
+              <div class="ui-segment-toggle" role="radiogroup" aria-label="共用部・専用部の切替" data-cp-area-toggle>
+                <label class="ui-segment-toggle__option">
+                  <input type="radio" name="cp_area" value="common" data-cp-area checked />
+                  <span>共用部</span>
+                </label>
+                <label class="ui-segment-toggle__option">
+                  <input type="radio" name="cp_area" value="private" data-cp-area />
+                  <span>専用部</span>
+                </label>
+              </div>
+
+              <label class="filter" data-cp-room-filter-wrap hidden>
+                <span class="ui-label">部屋番号</span>
+                <select class="ui-control" data-cp-room-filter aria-label="部屋番号で絞り込み">
+                  <option value="all">すべて</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="list" data-cp-list aria-live="polite"></div>
+          </div>
+        </section>
+
+        <footer class="admin-footer">
+          <p>&copy; 2026 MotherMap. All rights reserved.</p>
+          <a href="#top">
+            <span class="material-symbols-rounded" aria-hidden="true">arrow_upward</span>
+            ページ上部へ
+          </a>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="ui-modal-overlay" id="cp-detail-overlay" data-modal-overlay data-cp-detail-overlay hidden aria-hidden="true">
+    <div class="ui-modal ui-modal--photo-detail" role="dialog" aria-modal="true" aria-labelledby="cp-detail-title">
+      <div class="header">
+        <p class="title" id="cp-detail-title">写真の編集</p>
+        <button type="button" class="close" data-modal-close aria-label="閉じる">
+          <span class="material-symbols-rounded" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="body">
+        <p class="meta-text" data-cp-detail-subtitle></p>
+        <div class="preview">
+          <img data-cp-detail-preview alt="" />
+        </div>
+        <div class="view-switch" data-cp-detail-view-switch hidden></div>
+        <label class="ui-field">
+          <span class="ui-label">撮影日</span>
+          <input type="date" class="ui-control" data-cp-detail-date />
+        </label>
+        <label class="ui-field">
+          <span class="ui-label">コメント</span>
+          <textarea class="ui-control" rows="4" data-cp-detail-comment></textarea>
+        </label>
+      </div>
+      <div class="footer">
+        <button type="button" class="ui-btn--outline" data-cp-detail-mosaic>モザイクを編集</button>
+        <button type="button" class="ui-btn--primary" data-modal-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui-modal-overlay" id="mm-mosaic-overlay" data-modal-overlay data-mm-mosaic-overlay hidden aria-hidden="true">
+    <div class="ui-modal ui-modal--mosaic" role="dialog" aria-modal="true" aria-labelledby="mosaic-dialog-title">
+      <div class="header">
+        <p class="title" id="mosaic-dialog-title">部分モザイク</p>
+        <button type="button" class="close" data-modal-close aria-label="閉じる">
+          <span class="material-symbols-rounded" aria-hidden="true">close</span>
+        </button>
+      </div>
+      <div class="body">
+        <p class="help">ドラッグしてモザイクする範囲を指定してください。</p>
+        <div class="canvas-wrap">
+          <canvas data-mm-mosaic-canvas></canvas>
+        </div>
+      </div>
+      <div class="footer">
+        <button type="button" class="ui-btn--outline" data-mm-mosaic-reset>リセット</button>
+        <button type="button" class="ui-btn--outline" data-modal-close>キャンセル</button>
+        <button type="button" class="ui-btn--primary" data-mm-mosaic-apply>適用</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" data-overlay hidden></div>
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/mosaic-editor.js" defer></script>
+  <script src="../assets/js/construction-photos.js" defer></script>
+</body>
+</html>
