@@ -8385,6 +8385,10 @@
       gap: var(--space-md);
     }
 
+    .construction-photos-page .category > .grid {
+      padding: var(--space-lg);
+    }
+
     .construction-photos-page .photo-card {
       display: flex;
       flex-direction: column;

@@ -85,45 +85,37 @@
     room: 'all',
     categories: {
       common: [
-        {
-          id: 'common-ext',
-          name: '外装工事',
-          items: [
-            makeItem('common-ext-n', '北側外壁', null, { before: '2026-01-20', during: '2026-01-25', after: '2026-02-05' }),
-            makeItem('common-ext-s', '南側外壁', null, { before: '2026-01-21', during: '2026-01-26', after: '2026-02-06' }),
-          ],
-        },
-        {
-          id: 'common-ent',
-          name: 'エントランス',
-          items: [
-            makeItem('common-ent-1f', '1Fエントランス', null, { before: '2026-01-18', during: '2026-01-22', after: '2026-02-01' }),
-          ],
-        },
+        makeItem('common-ext-n', '北側外壁', null, { before: '2026-01-20', during: '2026-01-25', after: '2026-02-05' }),
+        makeItem('common-ext-s', '南側外壁', null, { before: '2026-01-21', during: '2026-01-26', after: '2026-02-06' }),
+        makeItem('common-ent-1f', '1Fエントランス', null, { before: '2026-01-18', during: '2026-01-22', after: '2026-02-01' }),
       ],
-      private: [
-        {
-          id: 'private-interior',
-          name: '室内工事',
-          items: ROOMS.flatMap((room) => [
-            makeItem(`private-liv-${room}`, 'リビング', room, { before: '2026-01-27', during: '2026-01-28', after: '2026-01-31' }),
-            makeItem(`private-kit-${room}`, 'キッチン', room, { before: '2026-01-27', during: '2026-01-29', after: '2026-01-31' }),
-            makeItem(`private-bath-${room}`, '浴室', room, { before: '2026-01-28', during: '2026-01-30', after: '2026-02-01' }),
-          ]),
-        },
-        {
-          id: 'private-balcony',
-          name: 'バルコニー',
-          items: ROOMS.map((room) =>
-            makeItem(`private-balc-${room}`, 'バルコニー', room, { before: '2026-01-29', during: '2026-01-30', after: '2026-02-02' }),
-          ),
-        },
-      ],
+      private: ROOMS.map((room) => ({
+        id: `private-room-${room}`,
+        name: room,
+        items: [
+          makeItem(`private-liv-${room}`, 'リビング', room, { before: '2026-01-27', during: '2026-01-28', after: '2026-01-31' }),
+          makeItem(`private-kit-${room}`, 'キッチン', room, { before: '2026-01-27', during: '2026-01-29', after: '2026-01-31' }),
+          makeItem(`private-bath-${room}`, '浴室', room, { before: '2026-01-28', during: '2026-01-30', after: '2026-02-01' }),
+          makeItem(`private-balc-${room}`, 'バルコニー', room, { before: '2026-01-29', during: '2026-01-30', after: '2026-02-02' }),
+        ],
+      })),
     },
   };
 
   function findPhotoContext(photoId) {
-    const categories = state.categories[state.area];
+    if (state.area === 'common') {
+      for (const item of state.categories.common) {
+        for (const timing of TIMING_ORDER) {
+          const photo = item.photos[timing];
+          if (photo?.id === photoId) {
+            return { photo, item, timing, categoryName: item.name };
+          }
+        }
+      }
+      return null;
+    }
+
+    const categories = state.categories.private;
     for (const category of categories) {
       for (const item of category.items) {
         for (const timing of TIMING_ORDER) {
@@ -141,18 +133,11 @@
     return findPhotoContext(photoId)?.photo ?? null;
   }
 
-  function getVisibleCategories() {
-    const categories = state.categories[state.area];
-    if (state.area === 'common' || state.room === 'all') {
-      return categories;
+  function getVisiblePrivateCategories() {
+    if (state.room === 'all') {
+      return state.categories.private;
     }
-
-    return categories
-      .map((category) => ({
-        ...category,
-        items: category.items.filter((item) => item.room === state.room),
-      }))
-      .filter((category) => category.items.length > 0);
+    return state.categories.private.filter((category) => category.name === state.room);
   }
 
   function getDisplayImage(photo) {
@@ -214,10 +199,17 @@
     if (!context) return;
 
     const { photo, item, timing, categoryName } = context;
-    const roomSuffix = item.room ? `（${item.room}号室）` : '';
+    const timingLabel = TIMING_LABELS[timing];
 
-    detailTitle.textContent = `${item.name} — ${TIMING_LABELS[timing]}`;
-    detailSubtitle.textContent = `${categoryName}${roomSuffix}`;
+    if (state.area === 'common') {
+      detailTitle.textContent = `${item.name} — ${timingLabel}`;
+      detailSubtitle.hidden = true;
+      detailSubtitle.textContent = '';
+    } else {
+      detailTitle.textContent = `${categoryName}号室`;
+      detailSubtitle.hidden = false;
+      detailSubtitle.textContent = `${item.name} — ${timingLabel}`;
+    }
     detailPreview.src = getDisplayImage(photo);
     detailPreview.alt = `${item.name} ${TIMING_LABELS[timing]}`;
     detailDateInput.value = photo.shotDate || '';
@@ -294,8 +286,42 @@
   }
 
   function renderList() {
-    const categories = getVisibleCategories();
     listHost.replaceChildren();
+
+    if (state.area === 'common') {
+      const items = state.categories.common;
+      if (!items.length) {
+        const empty = document.createElement('p');
+        empty.className = 'empty';
+        empty.textContent = '表示する写真がありません。';
+        listHost.appendChild(empty);
+        return;
+      }
+
+      items.forEach((item) => {
+        const section = document.createElement('section');
+        section.className = 'category';
+
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.className = 'title';
+        categoryTitle.textContent = item.name;
+
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+
+        TIMING_ORDER.forEach((timing) => {
+          if (item.photos[timing]) {
+            grid.appendChild(createPhotoCard(item.photos[timing], item.name, timing));
+          }
+        });
+
+        section.append(categoryTitle, grid);
+        listHost.appendChild(section);
+      });
+      return;
+    }
+
+    const categories = getVisiblePrivateCategories();
 
     if (!categories.length) {
       const empty = document.createElement('p');
@@ -311,7 +337,7 @@
 
       const categoryTitle = document.createElement('h3');
       categoryTitle.className = 'title';
-      categoryTitle.textContent = category.name;
+      categoryTitle.textContent = `${category.name}号室`;
 
       section.appendChild(categoryTitle);
 
@@ -321,8 +347,7 @@
 
         const itemTitle = document.createElement('h4');
         itemTitle.className = 'title';
-        const roomSuffix = item.room ? `（${item.room}号室）` : '';
-        itemTitle.textContent = `${item.name}${roomSuffix}`;
+        itemTitle.textContent = item.name;
 
         const grid = document.createElement('div');
         grid.className = 'grid';
